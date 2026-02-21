@@ -727,7 +727,7 @@ class PlannerFragment : Fragment() {
             }
             budgetTotalSpentInline.text = formatCurrency(spent)
 
-            val groupedExpense = monthTransactions
+            val groupedExpenseAll = monthTransactions
                 .asSequence()
                 .filter { it.type == TransactionType.EXPENSE && it.amount > 0.0 }
                 .groupBy { tx ->
@@ -736,7 +736,7 @@ class PlannerFragment : Fragment() {
                 .mapValues { (_, items) -> items.sumOf { it.amount } }
                 .entries
                 .sortedByDescending { it.value }
-                .take(3)
+            val groupedExpense = groupedExpenseAll.take(3)
 
             val topBase = groupedExpense.firstOrNull()?.value ?: 0.0
             topExpensesEmpty.visibility = if (groupedExpense.isEmpty()) View.VISIBLE else View.GONE
@@ -756,22 +756,18 @@ class PlannerFragment : Fragment() {
 
             val donutSegments = mutableListOf<BudgetDonutChartView.ChartSegment>()
             if (income > 0.0) {
-                val spentPct = ((spent / income) * 100.0).coerceIn(0.0, 100.0).toFloat()
-                val savingPct = ((saved / income) * 100.0).coerceIn(0.0, 100.0).toFloat()
-                val remainingPct = (100f - spentPct - savingPct).coerceAtLeast(0f)
-
-                if (spentPct > 0f) {
-                    donutSegments += BudgetDonutChartView.ChartSegment(
-                        percentage = spentPct,
-                        color = BudgetDonutChartView.UI_DONUT_SPENT_COLOR
-                    )
+                var consumedPct = 0f
+                groupedExpenseAll.take(4).forEachIndexed { index, item ->
+                    val pct = ((item.value / income) * 100.0).coerceAtLeast(0.0).toFloat()
+                    if (pct > 0f) {
+                        consumedPct += pct
+                        donutSegments += BudgetDonutChartView.ChartSegment(
+                            percentage = pct,
+                            color = BudgetDonutChartView.UI_DONUT_COLORS[index % BudgetDonutChartView.UI_DONUT_COLORS.size]
+                        )
+                    }
                 }
-                if (savingPct > 0f) {
-                    donutSegments += BudgetDonutChartView.ChartSegment(
-                        percentage = savingPct,
-                        color = BudgetDonutChartView.UI_DONUT_SAVING_COLOR
-                    )
-                }
+                val remainingPct = (100f - consumedPct).coerceAtLeast(0f)
                 if (remainingPct > 0f) {
                     donutSegments += BudgetDonutChartView.ChartSegment(
                         percentage = remainingPct,
@@ -779,20 +775,14 @@ class PlannerFragment : Fragment() {
                     )
                 }
             } else {
-                val total = spent + saved
+                val total = groupedExpenseAll.sumOf { it.value }
                 if (total > 0.0) {
-                    val spentPct = ((spent / total) * 100.0).coerceIn(0.0, 100.0).toFloat()
-                    val savingPct = ((saved / total) * 100.0).coerceIn(0.0, 100.0).toFloat()
-                    if (spentPct > 0f) {
+                    groupedExpenseAll.take(4).forEachIndexed { index, item ->
+                        val pct = ((item.value / total) * 100.0).coerceAtLeast(0.0).toFloat()
+                        if (pct <= 0f) return@forEachIndexed
                         donutSegments += BudgetDonutChartView.ChartSegment(
-                            percentage = spentPct,
-                            color = BudgetDonutChartView.UI_DONUT_SPENT_COLOR
-                        )
-                    }
-                    if (savingPct > 0f) {
-                        donutSegments += BudgetDonutChartView.ChartSegment(
-                            percentage = savingPct,
-                            color = BudgetDonutChartView.UI_DONUT_SAVING_COLOR
+                            percentage = pct,
+                            color = BudgetDonutChartView.UI_DONUT_COLORS[index % BudgetDonutChartView.UI_DONUT_COLORS.size]
                         )
                     }
                 }
