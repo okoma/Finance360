@@ -19,14 +19,16 @@ class BudgetDonutChartView @JvmOverloads constructor(
     data class ChartSegment(val percentage: Float, val color: Int)
 
     companion object {
-        val UI_DONUT_COLORS: List<Int> = listOf(
-            Color.parseColor("#4DB6AC"),
-            Color.parseColor("#81C784"),
-            Color.parseColor("#FFD54F"),
-            Color.parseColor("#FFB74D")
-        )
+        val UI_DONUT_SPENT_COLOR: Int = Color.parseColor("#FF9800")
+        val UI_DONUT_SAVING_COLOR: Int = Color.parseColor("#4DB6AC")
         val UI_DONUT_REMAINING_COLOR: Int = Color.parseColor("#FF8A65")
+        private val UI_IDLE_COLOR: Int = Color.parseColor("#81C784")
         private val UI_PROGRESS_COLOR: Int = Color.parseColor("#42A5F5")
+        private val UI_IDLE_SEGMENTS: List<ChartSegment> = listOf(
+            ChartSegment(40f, UI_DONUT_SPENT_COLOR),
+            ChartSegment(30f, UI_DONUT_SAVING_COLOR),
+            ChartSegment(30f, UI_IDLE_COLOR)
+        )
     }
 
     private val strokeWidthPx = 28f
@@ -54,7 +56,7 @@ class BudgetDonutChartView @JvmOverloads constructor(
     }
 
     fun setData(items: List<ChartSegment>) {
-        segments = items
+        segments = if (items.isEmpty()) UI_IDLE_SEGMENTS else items
         invalidate()
     }
 

@@ -756,23 +756,45 @@ class PlannerFragment : Fragment() {
 
             val donutSegments = mutableListOf<BudgetDonutChartView.ChartSegment>()
             if (income > 0.0) {
-                var consumedPct = 0f
-                groupedExpense.take(4).forEachIndexed { index, item ->
-                    val pct = ((item.value / income) * 100.0).coerceAtLeast(0.0).toFloat()
-                    if (pct > 0f) {
-                        consumedPct += pct
-                        donutSegments += BudgetDonutChartView.ChartSegment(
-                            percentage = pct,
-                            color = BudgetDonutChartView.UI_DONUT_COLORS[index % BudgetDonutChartView.UI_DONUT_COLORS.size]
-                        )
-                    }
+                val spentPct = ((spent / income) * 100.0).coerceIn(0.0, 100.0).toFloat()
+                val savingPct = ((saved / income) * 100.0).coerceIn(0.0, 100.0).toFloat()
+                val remainingPct = (100f - spentPct - savingPct).coerceAtLeast(0f)
+
+                if (spentPct > 0f) {
+                    donutSegments += BudgetDonutChartView.ChartSegment(
+                        percentage = spentPct,
+                        color = BudgetDonutChartView.UI_DONUT_SPENT_COLOR
+                    )
                 }
-                val remainingPct = (100f - consumedPct).coerceAtLeast(0f)
+                if (savingPct > 0f) {
+                    donutSegments += BudgetDonutChartView.ChartSegment(
+                        percentage = savingPct,
+                        color = BudgetDonutChartView.UI_DONUT_SAVING_COLOR
+                    )
+                }
                 if (remainingPct > 0f) {
                     donutSegments += BudgetDonutChartView.ChartSegment(
                         percentage = remainingPct,
                         color = BudgetDonutChartView.UI_DONUT_REMAINING_COLOR
                     )
+                }
+            } else {
+                val total = spent + saved
+                if (total > 0.0) {
+                    val spentPct = ((spent / total) * 100.0).coerceIn(0.0, 100.0).toFloat()
+                    val savingPct = ((saved / total) * 100.0).coerceIn(0.0, 100.0).toFloat()
+                    if (spentPct > 0f) {
+                        donutSegments += BudgetDonutChartView.ChartSegment(
+                            percentage = spentPct,
+                            color = BudgetDonutChartView.UI_DONUT_SPENT_COLOR
+                        )
+                    }
+                    if (savingPct > 0f) {
+                        donutSegments += BudgetDonutChartView.ChartSegment(
+                            percentage = savingPct,
+                            color = BudgetDonutChartView.UI_DONUT_SAVING_COLOR
+                        )
+                    }
                 }
             }
             budgetDonutChart.setData(donutSegments)
