@@ -3,7 +3,6 @@ package com.i2medier.financialpro.planner.presentation
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -32,7 +31,7 @@ class TransactionHistoryAdapter(
         private val amount: TextView = itemView.findViewById(R.id.tvTransactionAmount)
         private val date: TextView = itemView.findViewById(R.id.tvTransactionDate)
         private val note: TextView = itemView.findViewById(R.id.tvTransactionNote)
-        private val delete: ImageView = itemView.findViewById(R.id.btnDeleteTransaction)
+        private val delete: View = itemView.findViewById(R.id.btnDeleteTransaction)
 
         fun bind(item: TransactionEntity) {
             typeText.text = when (item.type) {

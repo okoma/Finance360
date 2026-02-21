@@ -7,19 +7,20 @@ import java.util.Locale
 
 object CurrencyManager {
     fun getCurrency(context: Context): Currency {
-        val locale = Locale.getDefault()
+        val locale = CountrySettingsManager.getSelectedLocale(context)
         return runCatching { Currency.getInstance(locale) }.getOrElse { Currency.getInstance("USD") }
     }
 
     fun getCurrencyCode(context: Context): String = getCurrency(context).currencyCode
 
     fun getCurrencySymbol(context: Context): String {
-        val locale = Locale.getDefault()
+        val locale = CountrySettingsManager.getSelectedLocale(context)
         return runCatching { getCurrency(context).getSymbol(locale) }.getOrDefault("$")
     }
 
     fun format(context: Context, amount: Double): String {
-        val formatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
+        val locale = CountrySettingsManager.getSelectedLocale(context)
+        val formatter = NumberFormat.getCurrencyInstance(locale)
         formatter.currency = getCurrency(context)
         return runCatching { formatter.format(amount) }.getOrDefault("$amount")
     }

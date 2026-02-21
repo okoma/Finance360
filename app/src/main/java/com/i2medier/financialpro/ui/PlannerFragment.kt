@@ -754,7 +754,6 @@ class PlannerFragment : Fragment() {
                 }
             }
 
-            val donutColors = listOf("#4DB6AC", "#81C784", "#FFD54F", "#FFB74D")
             val donutSegments = mutableListOf<BudgetDonutChartView.ChartSegment>()
             if (income > 0.0) {
                 var consumedPct = 0f
@@ -764,7 +763,7 @@ class PlannerFragment : Fragment() {
                         consumedPct += pct
                         donutSegments += BudgetDonutChartView.ChartSegment(
                             percentage = pct,
-                            color = android.graphics.Color.parseColor(donutColors[index % donutColors.size])
+                            color = BudgetDonutChartView.UI_DONUT_COLORS[index % BudgetDonutChartView.UI_DONUT_COLORS.size]
                         )
                     }
                 }
@@ -772,7 +771,7 @@ class PlannerFragment : Fragment() {
                 if (remainingPct > 0f) {
                     donutSegments += BudgetDonutChartView.ChartSegment(
                         percentage = remainingPct,
-                        color = android.graphics.Color.parseColor("#FF8A65")
+                        color = BudgetDonutChartView.UI_DONUT_REMAINING_COLOR
                     )
                 }
             }

@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import kotlin.math.max
 import kotlin.math.min
 
 class BudgetDonutChartView @JvmOverloads constructor(
@@ -17,22 +18,38 @@ class BudgetDonutChartView @JvmOverloads constructor(
 
     data class ChartSegment(val percentage: Float, val color: Int)
 
+    companion object {
+        val UI_DONUT_COLORS: List<Int> = listOf(
+            Color.parseColor("#4DB6AC"),
+            Color.parseColor("#81C784"),
+            Color.parseColor("#FFD54F"),
+            Color.parseColor("#FFB74D")
+        )
+        val UI_DONUT_REMAINING_COLOR: Int = Color.parseColor("#FF8A65")
+        private val UI_PROGRESS_COLOR: Int = Color.parseColor("#42A5F5")
+    }
+
+    private val strokeWidthPx = 28f
+    private val insetPx = 24f
+
     private val bgPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.parseColor("#E2E8F0")
         style = Paint.Style.STROKE
-        strokeWidth = 28f
+        strokeWidth = strokeWidthPx
+        strokeCap = Paint.Cap.ROUND
     }
 
     private val fgPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeWidth = 28f
-        strokeCap = Paint.Cap.BUTT
+        strokeWidth = strokeWidthPx
+        strokeCap = Paint.Cap.ROUND
     }
 
     private var segments: List<ChartSegment> = emptyList()
+    private val drawRect = RectF()
 
     fun setProgress(value: Float) {
-        segments = listOf(ChartSegment(value.coerceIn(0f, 1f) * 100f, Color.parseColor("#0EA5E9")))
+        segments = listOf(ChartSegment(value.coerceIn(0f, 1f) * 100f, UI_PROGRESS_COLOR))
         invalidate()
     }
 
@@ -44,17 +61,38 @@ class BudgetDonutChartView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val size = min(width, height).toFloat()
-        val pad = 24f
-        val rect = RectF(pad, pad, size - pad, size - pad)
-        canvas.drawArc(rect, -90f, 360f, false, bgPaint)
+        val left = ((width - size) / 2f) + insetPx
+        val top = ((height - size) / 2f) + insetPx
+        val right = width - left
+        val bottom = height - top
+        drawRect.set(left, top, right, bottom)
+        canvas.drawArc(drawRect, -90f, 360f, false, bgPaint)
 
+        val normalizedSegments = normalizedSegments()
         var start = -90f
-        for (segment in segments) {
+        for (segment in normalizedSegments) {
             val sweep = (segment.percentage / 100f) * 360f
             if (sweep <= 0f) continue
             fgPaint.color = segment.color
-            canvas.drawArc(rect, start, sweep, false, fgPaint)
+            canvas.drawArc(drawRect, start, sweep, false, fgPaint)
             start += sweep
+        }
+    }
+
+    private fun normalizedSegments(): List<ChartSegment> {
+        val positive = segments
+            .filter { it.percentage > 0f }
+            .map { ChartSegment(it.percentage.coerceAtMost(100f), it.color) }
+        if (positive.isEmpty()) return emptyList()
+
+        val total = positive.sumOf { it.percentage.toDouble() }.toFloat()
+        if (total <= 0f) return emptyList()
+
+        if (total <= 100f) return positive
+
+        return positive.map { segment ->
+            val normalized = (segment.percentage / total) * 100f
+            segment.copy(percentage = max(0f, normalized))
         }
     }
 }

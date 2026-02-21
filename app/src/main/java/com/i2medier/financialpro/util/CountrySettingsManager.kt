@@ -1,7 +1,8 @@
 package com.i2medier.financialpro.util
 
 import android.content.Context
-import android.content.res.Configuration
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import java.util.Locale
 
 data class CountryOption(
@@ -37,14 +38,19 @@ object CountrySettingsManager {
             .edit()
             .putString(KEY_COUNTRY, option.countryCode)
             .apply()
+        applySelectedLocale(context.applicationContext)
     }
 
     fun applySelectedLocale(context: Context) {
         val selected = getSelectedCountry(context)
         val locale = Locale("en", selected.countryCode)
         Locale.setDefault(locale)
-        val config = Configuration(context.resources.configuration)
-        config.setLocale(locale)
-        context.resources.updateConfiguration(config, context.resources.displayMetrics)
+        val appLocales = LocaleListCompat.forLanguageTags(locale.toLanguageTag())
+        AppCompatDelegate.setApplicationLocales(appLocales)
+    }
+
+    fun getSelectedLocale(context: Context): Locale {
+        val selected = getSelectedCountry(context)
+        return Locale("en", selected.countryCode)
     }
 }

@@ -3,7 +3,6 @@ package com.i2medier.financialpro.planner.presentation
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -35,8 +34,8 @@ class BillAdapter(
         private val dueDate: TextView = itemView.findViewById(R.id.tvBillDueDate)
         private val status: TextView = itemView.findViewById(R.id.tvBillStatus)
         private val btnMarkPaid: TextView = itemView.findViewById(R.id.btnMarkPaid)
-        private val btnEdit: ImageView = itemView.findViewById(R.id.btnEditBill)
-        private val btnDelete: ImageView = itemView.findViewById(R.id.btnDeleteBill)
+        private val btnEdit: View = itemView.findViewById(R.id.btnEditBill)
+        private val btnDelete: View = itemView.findViewById(R.id.btnDeleteBill)
 
         fun bind(bill: BillEntity) {
             title.text = bill.title
