@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+
+    <include layout="@layout/toolbar" />
+
+    <RadioGroup
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_10sdp">
+
+        <RadioButton
+            android:gravity="center"
+            android:id="@+id/rbMonth"
+            android:padding="@dimen/_8sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/month"
+            android:layout_weight="1"
+            style="@style/radioText" />
+
+        <RadioButton
+            android:gravity="center"
+            android:id="@+id/rbYear"
+            android:padding="@dimen/_8sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/year"
+            android:layout_weight="1"
+            style="@style/radioText" />
+    </RadioGroup>
+
+    <include layout="@layout/layout_header_compound_interest" />
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvList"
+            android:paddingBottom="@dimen/_8sdp"
+            android:layout_above="@+id/banner1"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/rvList">
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Totals"
+                android:layout_weight="1" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/txtPrincipal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="$100"
+                android:layout_weight="1" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/txtInterest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="$100"
+                android:layout_weight="1" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/txtPaid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="$100"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+
+        <RelativeLayout
+            android:id="@+id/banner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

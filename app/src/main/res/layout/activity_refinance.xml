@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
+>
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llButton"
+        android:layout_below="@+id/toolBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Input Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <!-- Section Header: Current Loan -->
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/current_loan"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/money_recive"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="8dp"
+                        android:gravity="center_vertical" />
+
+                    <!-- Row 1: Loan Balance + Terms -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                        <!-- Loan Balance -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="@dimen/_4sdp">
+
+                            <TextView
+                                style="@style/CalcTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/loan_balance"
+                                android:drawableStart="@drawable/money_recive"
+                                android:drawablePadding="5dp"
+                                android:paddingBottom="2dp"
+                                android:gravity="center_vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_calc_edittext">
+
+                                <TextView
+                                    android:id="@+id/txtCurrencySymbolLoanBalance"
+                                    style="@style/CalcCurrencyText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingHorizontal="8dp"
+                                    android:text="@string/dollar" />
+
+                                <EditText
+                                    android:id="@+id/etLoanBalance"
+                                    style="@style/CalcEditText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="7" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Terms -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_4sdp">
+
+                            <TextView
+                                style="@style/CalcTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/terms"
+                                android:drawableStart="@drawable/calendar"
+                                android:drawablePadding="5dp"
+                                android:paddingBottom="2dp"
+                                android:gravity="center_vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_calc_edittext">
+
+                                <EditText
+                                    android:id="@+id/etTerms"
+                                    style="@style/CalcEditText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:inputType="number"
+                                    android:maxLength="4"
+                                    android:paddingLeft="@dimen/_6sdp" />
+
+                                <Spinner
+                                    android:id="@+id/spTerm"
+                                    style="@style/CalcEditText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:padding="@dimen/_4sdp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Row 2: Monthly Payment + Interest Rate (Current) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                        <!-- Monthly Payment -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="@dimen/_4sdp">
+
+                            <TextView
+                                style="@style/CalcTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/payment"
+                                android:drawableStart="@drawable/money_recive"
+                                android:drawablePadding="5dp"
+                                android:paddingBottom="2dp"
+                                android:gravity="center_vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_calc_edittext">
+
+                                <TextView
+                                    android:id="@+id/txtCurrencySymbolMonthlyPayment"
+                                    style="@style/CalcCurrencyText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingHorizontal="8dp"
+                                    android:text="@string/dollar" />
+
+                                <EditText
+                                    android:id="@+id/etMonthlyPayment"
+                                    style="@style/CalcEditText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Interest Rate (Current) -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_4sdp">
+
+                            <TextView
+                                style="@style/CalcTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/interest_rate"
+                                android:drawableStart="@drawable/interest_circle"
+                                android:drawablePadding="5dp"
+                                android:paddingBottom="2dp"
+                                android:gravity="center_vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_calc_edittext">
+
+                                <EditText
+                                    android:id="@+id/etInterestRate"
+                                    style="@style/CalcEditText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:paddingLeft="@dimen/_6sdp" />
+
+                                <TextView
+                                    style="@style/CalcCurrencyText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingHorizontal="8dp"
+                                    android:text="@string/percentage" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Section Header: Refinanced Loan -->
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/refinanced_loan"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/money_send"
+                        android:drawablePadding="5dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:gravity="center_vertical" />
+
+                    <!-- Row 3: Interest Rate (Refinanced) + Fees -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Interest Rate (Refinanced) -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="@dimen/_4sdp">
+
+                            <TextView
+                                style="@style/CalcTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/interest_rate"
+                                android:drawableStart="@drawable/interest_circle"
+                                android:drawablePadding="5dp"
+                                android:paddingBottom="2dp"
+                                android:gravity="center_vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_calc_edittext">
+
+                                <EditText
+                                    android:id="@+id/etInterestRate1"
+                                    style="@style/CalcEditText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5"
+                                    android:paddingLeft="@dimen/_6sdp" />
+
+                                <TextView
+                                    style="@style/CalcCurrencyText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingHorizontal="8dp"
+                                    android:text="@string/percentage" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Fees -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_4sdp">
+
+                            <TextView
+                                style="@style/CalcTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/fees"
+                                android:drawableStart="@drawable/money_send"
+                                android:drawablePadding="5dp"
+                                android:paddingBottom="2dp"
+                                android:gravity="center_vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_calc_edittext">
+
+                                <TextView
+                                    android:id="@+id/txtCurrencySymbolRefinancedFee"
+                                    style="@style/CalcCurrencyText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingHorizontal="8dp"
+                                    android:text="@string/dollar" />
+
+                                <EditText
+                                    android:id="@+id/etFees"
+                                    style="@style/CalcEditText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="5" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Result Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/llResult"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/resultLayoutMain">
+
+                    <TextView
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/_4sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/result"
+                        style="@style/result" />
+
+                    <View
+                        android:background="@color/colorWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp" />
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginRight="@dimen/_8sdp">
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_result"
+                            android:padding="@dimen/_4sdp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_8sdp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/monthly_payment"
+                                style="@style/resultTextView" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:id="@+id/clMonthlyPayment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/resultText" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_result"
+                            android:padding="@dimen/_4sdp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_8sdp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/monthly_payment"
+                                style="@style/resultTextView" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:id="@+id/rlMonthlyPayment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/resultText" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginRight="@dimen/_8sdp">
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_result"
+                            android:padding="@dimen/_4sdp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_8sdp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_payments"
+                                style="@style/resultTextView" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:id="@+id/clTotalPayment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/resultText" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_result"
+                            android:padding="@dimen/_4sdp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_8sdp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_payments"
+                                style="@style/resultTextView" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:id="@+id/rlTotalPayment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/resultText" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp">
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_result"
+                            android:padding="@dimen/_4sdp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_8sdp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_interest"
+                                style="@style/resultTextView" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:id="@+id/clFinanceCharge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/resultText" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_result"
+                            android:padding="@dimen/_4sdp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_8sdp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_interest"
+                                style="@style/resultTextView" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:id="@+id/rlFinanceCharge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/resultText" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Calculated Explanation Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/refinanceExplanationCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/calc_card_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                android:visibility="gone"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explanation"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/business_person"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="2dp"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/refinanceExplanation"
+                        style="@style/CalcTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Description Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/refinance_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/knowledge"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="2dp"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/refinanceText"
+                        style="@style/CalcTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/llButton"
+        android:background="@color/colorWhite"
+        android:paddingLeft="@dimen/_8sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingRight="@dimen/_8sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/banner1">
+
+        <Button
+            android:id="@+id/btnStatistics"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/statistics" />
+
+        <Button
+            android:id="@+id/btnShare"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/share_result"
+            android:visibility="gone"/>
+
+                <Button
+            android:id="@+id/btnAddToPlanner"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/add_to_planner"
+            android:visibility="gone" />
+
+<Button
+            android:id="@+id/btnCalculate"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/calculate" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/banner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center" />
+
+    </RelativeLayout>
+</RelativeLayout>

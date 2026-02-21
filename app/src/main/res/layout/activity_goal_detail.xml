@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootGoalDetail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layoutGoalDetailHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="14dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/planner_goal_detail_title"
+            android:textColor="@color/colorDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollGoalDetail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="10dp"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F2F4F8"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:id="@+id/tvGoalTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorDark"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvGoalDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#5E6B76"
+                            android:textSize="13sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:id="@+id/tvGoalProgress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorDark"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ProgressBar
+                            android:id="@+id/progressGoal"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="9dp"
+                            android:layout_marginTop="8dp"
+                            android:max="100"
+                            android:progressDrawable="@drawable/progress_horizontal" />
+
+                        <TextView
+                            android:id="@+id/tvGoalDaysLeft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#334155"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tvGoalDailySuggestion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#0E7490"
+                            android:textSize="13sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tvGoalTargetDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textColor="#5E6B76"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tvGoalCreatedAt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#5E6B76"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tvGoalLinkedSavings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#5E6B76"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btnAddMoney"
+                                android:layout_width="0dp"
+                                android:layout_height="42dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_button"
+                                android:text="@string/planner_add_money"
+                                android:textAllCaps="false"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnEditGoal"
+                                android:layout_width="0dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_modal_btn_secondary"
+                                android:text="@string/planner_edit_goal"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorDark"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnDeleteGoal"
+                                android:layout_width="0dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_goal_delete_outline"
+                                android:text="@string/planner_delete"
+                                android:textAllCaps="false"
+                                android:textColor="#D32F2F"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F2F4F8"
+                        android:padding="12dp"
+                        android:text="@string/planner_goal_activity_title"
+                        android:textColor="@color/colorDark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGoalTimelineEmpty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:text="@string/planner_goal_activity_empty"
+                        android:textColor="#5E6B76"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvGoalTimeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="true"
+                        android:paddingHorizontal="4dp"
+                        android:paddingBottom="6dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

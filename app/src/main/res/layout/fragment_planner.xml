@@ -1,0 +1,2328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btnBackHome"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_weight="1"
+                android:text="@string/monthly_planner"
+                android:textColor="@color/colorDark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnReminderSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="@string/planner_tab_net_worth"
+                android:textColor="@color/colorDark"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvReminderStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingStart="2dp"
+            android:text="@string/planner_reminder_status_default"
+            android:textColor="@color/colorDark"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/stickyPlannerTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp">
+
+        <LinearLayout
+            android:id="@+id/sectionSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="78dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stat_income"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planner_income"
+                    android:textColor="#D7F8FF"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvIncomeAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planner_sample_income"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="78dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stat_planned"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planner_planned"
+                    android:textColor="#D7E8FF"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvPlannedAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planner_sample_planned"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="78dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stat_spent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planner_spent"
+                    android:textColor="#FFF0D8"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvSpentAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planner_sample_spent"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="78dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_stat_savings"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planner_saved"
+                    android:textColor="#D8FFE7"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvSavingsAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/planner_sample_saved"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/bg_planner_tabs_host_white"
+            android:elevation="3dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/tabSummary"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_planner_tab_selected"
+                android:gravity="center"
+                android:text="@string/planner_tab_budget"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tabHistory"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/planner_tab_history"
+                android:textColor="@color/colorDark" />
+
+            <TextView
+                android:id="@+id/tabGoals"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/planner_tab_goals"
+                android:textColor="@color/colorDark" />
+
+            <TextView
+                android:id="@+id/tabAdd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/planner_tab_bills"
+                android:textColor="@color/colorDark" />
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/layoutGoalsSubTabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="6dp"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipGoalsSubAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_chip_selected_blue"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="7dp"
+                    android:text="@string/planner_goals_sub_all"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipGoalsSubStreak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_chip_unselected"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="7dp"
+                    android:text="@string/planner_goals_sub_streak"
+                    android:textColor="@color/colorDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipGoalsSubMissed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_chip_unselected"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="7dp"
+                    android:text="@string/planner_goals_sub_missed"
+                    android:textColor="@color/colorDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipGoalsSubTips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_chip_unselected"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="7dp"
+                    android:text="@string/planner_goals_sub_tips"
+                    android:textColor="@color/colorDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/plannerScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingTop="6dp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/panelSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/layoutBudgetModern"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="320dp"
+                        android:layout_height="46dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_planner_tabs_host_white"
+                        android:elevation="2dp"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:id="@+id/btnBudgetPrevMonth"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="‹"
+                            android:textColor="@color/colorDark"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvBudgetMonthLabel"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/colorDark"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btnBudgetNextMonth"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="›"
+                            android:textColor="@color/colorDark"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvBudgetBasedOnHint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@string/planner_budget_based_on_transactions"
+                        android:textColor="#475569"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="92dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_stat_income"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_income"
+                                android:textColor="#D7F8FF"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetCardIncome"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="92dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_stat_spent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_spent"
+                                android:textColor="#FFF0D8"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetCardSpent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="92dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_stat_savings"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_saved"
+                                android:textColor="#D8FFE7"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetCardSavings"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <include
+                        android:id="@+id/budgetComparisonCard"
+                        layout="@layout/card_budget_comparison"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="280dp"
+                                android:layout_height="280dp">
+
+                                <com.i2medier.financialpro.ui.widgets.BudgetDonutChartView
+                                    android:id="@+id/donutBudgetChart"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/planner_spent_label"
+                                        android:textColor="#64748B"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetCenterSpent"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:textColor="#1E293B"
+                                        android:textSize="28sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetCenterRemaining"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:textColor="#64748B"
+                                        android:textSize="14sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="200dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="12dp"
+                                        android:orientation="vertical">
+
+                                        <ProgressBar
+                                            android:id="@+id/progressBudgetCenter"
+                                            style="?android:attr/progressBarStyleHorizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="8dp"
+                                            android:max="100"
+                                            android:progressDrawable="@drawable/progress_horizontal" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="4dp"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/tvBudgetMeterLeft"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:textColor="#4DB6AC"
+                                                android:textSize="12sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:id="@+id/tvBudgetMeterRight"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="end"
+                                                android:textColor="#FF9800"
+                                                android:textSize="12sp"
+                                                android:textStyle="bold" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/budget_ui_ic_wallet" />
+
+                                <TextView
+                                    android:id="@+id/tvBudgetSavedAmount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:textColor="#4DB6AC"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ProgressBar
+                                    android:id="@+id/progressBudgetMain"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="8dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_weight="1"
+                                    android:max="100"
+                                    android:progressDrawable="@drawable/progress_horizontal" />
+
+                                <TextView
+                                    android:id="@+id/tvBudgetTotalSpentInline"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#FF9800"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/planner_top_expenses"
+                        android:textColor="@color/colorDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvTopExpensesEmpty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/planner_top_expenses_empty"
+                        android:textColor="#5E6B76"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardTopExpense1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ivTopExpense1Icon"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:src="@drawable/budget_ui_ic_home" />
+
+                                <TextView
+                                    android:id="@+id/tvTopExpense1Name"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorDark"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvTopExpense1Amount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorDark"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <ProgressBar
+                                android:id="@+id/progressTopExpense1"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:layout_marginTop="6dp"
+                                android:max="100"
+                                android:progressDrawable="@drawable/progress_horizontal" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardTopExpense2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ivTopExpense2Icon"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:src="@drawable/budget_ui_ic_restaurant" />
+
+                                <TextView
+                                    android:id="@+id/tvTopExpense2Name"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorDark"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvTopExpense2Amount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorDark"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <ProgressBar
+                                android:id="@+id/progressTopExpense2"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:layout_marginTop="6dp"
+                                android:max="100"
+                                android:progressDrawable="@drawable/progress_horizontal" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardTopExpense3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ivTopExpense3Icon"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:src="@drawable/budget_ui_ic_directions_car" />
+
+                                <TextView
+                                    android:id="@+id/tvTopExpense3Name"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorDark"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvTopExpense3Amount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorDark"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <ProgressBar
+                                android:id="@+id/progressTopExpense3"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:layout_marginTop="6dp"
+                                android:max="100"
+                                android:progressDrawable="@drawable/progress_horizontal" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="2dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnQuickAddExpense"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_btn_budget_expense"
+                            android:drawableStart="@drawable/budget_ui_ic_add_circle"
+                            android:drawablePadding="6dp"
+                            android:text="@string/planner_quick_add_expense"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnQuickAddIncome"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_btn_budget_income"
+                            android:drawableStart="@drawable/budget_ui_ic_add_circle"
+                            android:drawablePadding="6dp"
+                            android:text="@string/planner_quick_add_income"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnQuickAddSaving"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_btn_budget_saving"
+                            android:drawableStart="@drawable/budget_ui_ic_savings"
+                            android:drawablePadding="6dp"
+                            android:text="@string/planner_quick_add_saving"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F2F4F8"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/tvBudgetHeadline"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_budget_headline_default"
+                                android:textColor="@color/colorDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetSpentIncome"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:textColor="#334155"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <ProgressBar
+                                android:id="@+id/progressBudgetUsage"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:max="100"
+                                android:progressDrawable="@drawable/progress_horizontal" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetRemaining"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:textColor="#334155"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetSavingsRate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:textColor="#5E6B76"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F2F4F8"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_budget_allocation_title"
+                                android:textColor="@color/colorDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/tvBudgetTargetValue"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorDark"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBudgetTargetUsed"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:layout_marginTop="6dp"
+                                android:max="100"
+                                android:progressDrawable="@drawable/progress_horizontal" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetTargetHint"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:textColor="#5E6B76"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetSavingsTargetValue"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:textColor="@color/colorDark"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBudgetSavingsToTarget"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:layout_marginTop="6dp"
+                                android:max="100"
+                                android:progressDrawable="@drawable/progress_horizontal" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetSavingsTargetHint"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:textColor="#5E6B76"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F2F4F8"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_budget_month_insight_title"
+                                android:textColor="@color/colorDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/tvBudgetDailySpend"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorDark"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetDaysLeft"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:textColor="#334155"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvBudgetRunRate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:textColor="#5E6B76"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F2F4F8"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_budget_trend_title"
+                                android:textColor="@color/colorDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/tvBudgetTrendSummary"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#334155"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="10dp"
+                                android:gravity="bottom"
+                                android:orientation="horizontal"
+                                android:weightSum="7">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/viewBudgetBar0"
+                                        android:layout_width="12dp"
+                                        android:layout_height="10dp"
+                                        android:background="@drawable/bg_budget_chart_bar" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetDay0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:textColor="#5E6B76"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/viewBudgetBar1"
+                                        android:layout_width="12dp"
+                                        android:layout_height="10dp"
+                                        android:background="@drawable/bg_budget_chart_bar" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetDay1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:textColor="#5E6B76"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/viewBudgetBar2"
+                                        android:layout_width="12dp"
+                                        android:layout_height="10dp"
+                                        android:background="@drawable/bg_budget_chart_bar" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetDay2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:textColor="#5E6B76"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/viewBudgetBar3"
+                                        android:layout_width="12dp"
+                                        android:layout_height="10dp"
+                                        android:background="@drawable/bg_budget_chart_bar" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetDay3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:textColor="#5E6B76"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/viewBudgetBar4"
+                                        android:layout_width="12dp"
+                                        android:layout_height="10dp"
+                                        android:background="@drawable/bg_budget_chart_bar" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetDay4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:textColor="#5E6B76"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/viewBudgetBar5"
+                                        android:layout_width="12dp"
+                                        android:layout_height="10dp"
+                                        android:background="@drawable/bg_budget_chart_bar" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetDay5"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:textColor="#5E6B76"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="bottom|center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/viewBudgetBar6"
+                                        android:layout_width="12dp"
+                                        android:layout_height="10dp"
+                                        android:background="@drawable/bg_budget_chart_bar" />
+
+                                    <TextView
+                                        android:id="@+id/tvBudgetDay6"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:textColor="#5E6B76"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Savings Streak"
+                    android:textColor="@color/colorDark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/chipSummaryStreak"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_chip_selected_blue"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="7dp"
+                            android:text="@string/planner_goals_sub_streak"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipSummaryMissed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_chip_unselected"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="7dp"
+                            android:text="@string/planner_goals_sub_missed"
+                            android:textColor="@color/colorDark"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chipSummaryTips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_chip_unselected"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="7dp"
+                            android:text="@string/planner_goals_sub_tips"
+                            android:textColor="@color/colorDark"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:id="@+id/panelSummaryStreak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#F2F4F8"
+                                android:orientation="vertical"
+                                android:padding="12dp">
+
+                                <TextView
+                                    android:id="@+id/tvSummaryStreakStatus"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/planner_streak_default"
+                                    android:textColor="@color/colorDark"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvSummarySavedTodayStatus"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:text="@string/planner_saved_today_no"
+                                    android:textColor="#334155"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="12dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/planner_last_7_days"
+                                    android:textColor="#5E6B76"
+                                    android:textSize="12sp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:weightSum="7">
+
+                                    <TextView
+                                        android:id="@+id/tvSummaryStreakDay0"
+                                        android:layout_width="0dp"
+                                        android:layout_height="28dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvSummaryStreakDay1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="28dp"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvSummaryStreakDay2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="28dp"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvSummaryStreakDay3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="28dp"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvSummaryStreakDay4"
+                                        android:layout_width="0dp"
+                                        android:layout_height="28dp"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvSummaryStreakDay5"
+                                        android:layout_width="0dp"
+                                        android:layout_height="28dp"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvSummaryStreakDay6"
+                                        android:layout_width="0dp"
+                                        android:layout_height="28dp"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/panelSummaryMissed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_goals_sub_missed"
+                                android:textColor="@color/colorDark"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvSummaryMissedBody"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:textColor="#334155"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/panelSummaryTips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_goals_sub_tips"
+                                android:textColor="@color/colorDark"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvSummaryTipsBody"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:textColor="#334155"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/panelGoals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+            <FrameLayout
+                android:id="@+id/nativeAdPlannerGoals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+            <LinearLayout
+                android:id="@+id/panelGoalsAll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardGoal1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/tvGoalTitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/planner_sample_goal_one"
+                        android:textColor="@color/colorDark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvGoalProgress1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_sample_goal_one_progress"
+                                android:textColor="@color/colorDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <ProgressBar
+                                android:id="@+id/progressGoal1"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:layout_marginTop="6dp"
+                                android:max="100"
+                                android:progress="33"
+                                android:progressDrawable="@drawable/progress_horizontal" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnAddMoney1"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_button"
+                            android:text="@string/planner_add_money"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardGoal2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/tvGoalTitle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/planner_sample_goal_two"
+                        android:textColor="@color/colorDark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvGoalProgress2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_sample_goal_two_progress"
+                                android:textColor="@color/colorDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <ProgressBar
+                                android:id="@+id/progressGoal2"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp"
+                                android:layout_marginTop="6dp"
+                                android:max="100"
+                                android:progress="33"
+                                android:progressDrawable="@drawable/progress_horizontal" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnAddMoney2"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bg_button"
+                            android:text="@string/planner_add_money"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnCreateGoal"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_button_blue_gradient"
+                android:text="@string/create_new_goal"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGoals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="true" />
+
+            <LinearLayout
+                android:id="@+id/layoutGoalsEmptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@drawable/bg_goal_empty_box">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center"
+                        android:alpha="0.9"
+                        android:src="@drawable/lamp" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="@string/planner_goals_empty"
+                    android:textColor="@color/colorDark"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btnCreateGoalEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_button_blue_gradient"
+                    android:text="@string/create_new_goal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/panelGoalsStreak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F2F4F8"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/tvGoalsStreakStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_streak_default"
+                                android:textColor="@color/colorDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvGoalsSavedTodayStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="@string/planner_saved_today_no"
+                                android:textColor="#334155"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_last_7_days"
+                                android:textColor="#5E6B76"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="7">
+
+                                <TextView
+                                    android:id="@+id/tvGoalsStreakDay0"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvGoalsStreakDay1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvGoalsStreakDay2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvGoalsStreakDay3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvGoalsStreakDay4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvGoalsStreakDay5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tvGoalsStreakDay6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/panelGoalsMissed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/planner_goals_sub_missed"
+                            android:textColor="@color/colorDark"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvGoalsMissedBody"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#334155"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/panelGoalsTips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/planner_goals_sub_tips"
+                            android:textColor="@color/colorDark"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvGoalsTipsBody"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#334155"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/panelNetWorth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F2F4F8"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/planner_net_worth"
+                                android:textColor="@color/colorDark"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvNetWorthTotal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textColor="@color/colorDark"
+                                android:textSize="21sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/tvNetWorthAssets"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#2E7D32"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvNetWorthLiabilities"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:textColor="#C62828"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvNetWorthTrend"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:textColor="#334155"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvNetWorthHint"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:textColor="#5E6B76"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/panelHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+            <FrameLayout
+                android:id="@+id/nativeAdPlannerHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/btnAddTransaction"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_button"
+                android:text="@string/planner_add_transaction"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTransactionsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/planner_recent_transactions"
+                android:textColor="@color/colorDark"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutTransactionFilters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipFilterAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_chip_selected_blue"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/planner_filter_all"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipFilterIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_chip_unselected"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/planner_filter_income"
+                    android:textColor="@color/colorDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipFilterExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_chip_unselected"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/planner_filter_expense"
+                    android:textColor="@color/colorDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipFilterSaving"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_chip_unselected"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/planner_filter_saving"
+                    android:textColor="@color/colorDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTransactions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="true" />
+
+            <TextView
+                android:id="@+id/tvTransactionsEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_planner_tab_container"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="@string/planner_transactions_empty"
+                android:textColor="@color/colorDark"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/panelBills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <FrameLayout
+                    android:id="@+id/nativeAdPlannerBills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
+                <Button
+                    android:id="@+id/btnAddBill"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_button_blue_gradient"
+                    android:text="@string/planner_add_bill"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/layoutBillFilters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/chipBillAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_chip_selected_blue"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp"
+                        android:text="@string/planner_filter_all"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/chipBillUnpaid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_chip_unselected"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp"
+                        android:text="@string/planner_bill_filter_unpaid"
+                        android:textColor="@color/colorDark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/chipBillPaid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_chip_unselected"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp"
+                        android:text="@string/planner_bill_filter_paid"
+                        android:textColor="@color/colorDark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/chipBillDueSoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_chip_unselected"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp"
+                        android:text="@string/planner_bill_filter_due_soon"
+                        android:textColor="@color/colorDark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:nestedScrollingEnabled="true" />
+
+                <TextView
+                    android:id="@+id/tvBillsEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_planner_tab_container"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="@string/planner_bills_empty"
+                    android:textColor="@color/colorDark"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

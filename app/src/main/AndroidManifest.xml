@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
+    <application
+        android:name=".FinancialProApp"
+        android:allowBackup="true"
+        android:icon="@drawable/icon200"
+        android:roundIcon="@drawable/icon200"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+
+        <activity
+            android:name="com.i2medier.financialpro.activity.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.i2medier.financialpro.activity.BondYieldCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.NetWorthCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.NPVCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.RentalYieldCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.PresentValueCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.ROIActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.LoanComparisonActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.RefinanceStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.AmortizationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.LoanAffordabilityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.RefinanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.SimpleInterestStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.SimpleInterestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.CompoundStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.MortgageStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.CarLeaseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.StatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.AutoLoanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.MortgageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.CompoundInterestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.InterestOnlyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.i2medier.financialpro.action.OPEN_PLANNER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:scheme="financialpro"
+                    android:host="planner" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.i2medier.financialpro.activity.Disclosure"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.SaveShareActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.RetirementCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.RetirementStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.EmergencyFundCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.DebtPayoffCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.DebtPayoffStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.BudgetCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.CreditCardPayoffCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.CreditCardPayoffStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.TaxCalculatorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.ReminderCenterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.GoalDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.BillDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.NetWorthOverviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.AccountManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.i2medier.financialpro.activity.LegalInfoActivity"
+            android:screenOrientation="portrait" />
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <receiver
+            android:name="com.i2medier.financialpro.planner.reminder.PlannerReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.i2medier.financialpro.planner.reminder.PlannerReminderActionReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.i2medier.financialpro.planner.reminder.PlannerBootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+
+    </application>
+
+</manifest>

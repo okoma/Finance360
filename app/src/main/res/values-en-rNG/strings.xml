@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="retirement_calculator">Pension Planner</string>
+    <string name="retirement_title">What is Pension Planning?</string>
+    <string name="include_social_security">Include Pension Income</string>
+    <string name="social_security_description">Estimate pension income for a more practical retirement plan.</string>
+    <string name="estimated_social_security">Estimated Monthly Pension Income</string>
+    <string name="include_employer_match">Include Employer Pension Contribution</string>
+    <string name="employer_match_description">Include employer pension contributions in your retirement projection.</string>
+    <string name="calc_sub_retirement">Plan pension savings</string>
+</resources>

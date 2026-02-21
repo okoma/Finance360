@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp">
+
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:background="@drawable/dialog_bg_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="@dimen/_16sdp"
+                        android:textColor="@color/colorWhite"
+                        android:layout_gravity="center"
+                        android:id="@+id/txtLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginBottom="@dimen/_6sdp"
+                        android:text="Month"
+                        android:fontFamily="@font/regular" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/graphcolor1"
+                            android:layout_width="@dimen/_14sdp"
+                            android:layout_height="@dimen/_14sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_4sdp"
+                            android:text="@string/principal"
+                            style="@style/resultTextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/graphcolor2"
+                            android:layout_width="@dimen/_14sdp"
+                            android:layout_height="@dimen/_14sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_4sdp"
+                            android:text="@string/interest"
+                            style="@style/resultTextView" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:id="@+id/llTaxINSPMI"
+                        android:visibility="gone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/graphcolor3"
+                            android:layout_width="@dimen/_14sdp"
+                            android:layout_height="@dimen/_14sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_4sdp"
+                            android:text="@string/tax_ins_pmi"
+                            style="@style/resultTextView" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barchart"
+                        android:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_300sdp"
+                        android:layout_margin="@dimen/_10sdp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_gravity="right"
+                android:id="@+id/close"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_18sdp"
+                app:cardElevation="@dimen/_2sdp">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/ivClose"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/cross"
+                    app:tint="@color/colorPrimary" />
+            </androidx.cardview.widget.CardView>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

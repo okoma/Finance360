@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llButton"
+        android:layout_below="@+id/toolBar">
+
+       <ImageView
+           android:id="@+id/img"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       </ImageView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/llButton"
+        android:background="@color/colorWhite"
+        android:paddingLeft="@dimen/_8sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingRight="@dimen/_8sdp"
+        android:layout_above="@+id/banner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:id="@+id/btnStatistics"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="@string/statistics"
+            android:visibility="invisible"
+            android:layout_weight="1"
+            style="@style/button" />
+
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_4sdp"
+            android:layout_marginRight="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="Share Image"
+            android:layout_weight="1"
+            style="@style/button" />
+
+        <Button
+            android:id="@+id/btnCalculate"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_4sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="@string/calculate"
+            android:visibility="invisible"
+            android:layout_weight="1"
+            style="@style/button" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/banner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center" />
+
+    </RelativeLayout>
+</RelativeLayout>

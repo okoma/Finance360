@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_app_gradient"
+>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/icon200" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dashboard_title"
+                    android:textColor="@color/colorDark"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/semi_bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dashboard_subtitle"
+                    android:textColor="#667085"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@android:drawable/ic_menu_search"
+                app:tint="@color/colorDark" />
+
+            <ImageView
+                android:id="@+id/ivNotificationBell"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="14dp"
+                android:src="@android:drawable/ic_dialog_info"
+                app:tint="@color/colorDark" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategoryChips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="10dp"
+        android:clipToPadding="false" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingHorizontal="6dp"
+        android:paddingBottom="12dp"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="14dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvPlanTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/this_month_plan"
+                            android:textColor="@color/colorDark"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/semi_bold" />
+
+                        <ImageButton
+                            android:id="@+id/btnPlanMore"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/plan_period_options"
+                            android:src="@android:drawable/ic_menu_more"
+                            app:tint="#98A2B3" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#E6EAF0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/spent_vs_budget"
+                        android:textColor="@color/colorDark"
+                        android:textSize="16sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressSpent"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="8dp"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="48"
+                        android:progressDrawable="@drawable/progress_horizontal" />
+
+                    <TextView
+                        android:id="@+id/tvSpentVsBudgetValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="$1,200 / $2,500"
+                        android:textColor="@color/colorDark"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/semi_bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#E6EAF0" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/money_recive" />
+
+                            <TextView
+                                android:id="@+id/tvSavingsTarget"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="Savings target: $800"
+                                android:textColor="#576581"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="16dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:background="#D7DCE6" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/calendar"
+                                app:tint="#8C97A8" />
+
+                            <TextView
+                                android:id="@+id/tvBillsDue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="Bills due: 4"
+                                android:textColor="#576581"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/planActionsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F2F4F8"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btnOpenPlanner"
+                                android:layout_width="0dp"
+                                android:layout_height="42dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_button_blue_gradient"
+                                android:text="@string/open_planner"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorWhite"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnAddGoal"
+                                android:layout_width="0dp"
+                                android:layout_height="42dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_button_blue_gradient"
+                                android:text="@string/add_goal"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorWhite"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <FrameLayout
+                android:id="@+id/nativeAdHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/featured_calculators"
+                android:textColor="@color/colorDark"
+                android:textSize="16sp"
+                android:fontFamily="@font/semi_bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFeatured"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:paddingVertical="6dp"
+                android:scrollbarStyle="outsideOverlay" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/browse_categories"
+                android:textColor="@color/colorDark"
+                android:textSize="16sp"
+                android:fontFamily="@font/semi_bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cardLoans"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_loans"
+                    android:drawableEnd="@drawable/dollar_circle"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:padding="12dp"
+                    android:text="Loans\n12 tools"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cardSavings"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_category_savings"
+                    android:drawableEnd="@drawable/money_recive"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:padding="12dp"
+                    android:text="Savings\n12 tools"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cardInvesting"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_category_investing"
+                    android:drawableEnd="@drawable/trend_up"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:padding="12dp"
+                    android:text="Investing\n12 tools"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cardTax"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_category_tax"
+                    android:drawableEnd="@drawable/ic_percentage"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:padding="12dp"
+                    android:text="Tax\n12 tools"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

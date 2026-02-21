@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/calc_primary_teal"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/year"
+            android:layout_weight="1"
+            style="@style/headerStatistics" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/interest"
+            android:layout_weight="1"
+            style="@style/headerStatistics" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/balance"
+            android:layout_weight="1"
+            style="@style/headerStatistics" />
+    </LinearLayout>
+
+    <View
+        android:background="@color/colorGray"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp" />
+</LinearLayout>

@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
+>
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llButton"
+        android:layout_below="@+id/toolBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Input Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <!-- Row 1: Principal (Full Width) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                        <TextView
+                            style="@style/CalcTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/principal"
+                            android:drawableStart="@drawable/money_recive"
+                            android:drawablePadding="5dp"
+                            android:paddingBottom="2dp"
+                            android:gravity="center_vertical" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bg_calc_edittext">
+
+                            <TextView
+                                android:id="@+id/txtCurrencySymbolPrincipal"
+                                style="@style/CalcCurrencyText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="8dp"
+                                android:text="@string/dollar" />
+
+                            <EditText
+                                android:id="@+id/etPrincipal"
+                                style="@style/CalcEditText"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:inputType="numberDecimal"
+                                android:maxLength="7" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Row 2: Interest Rate (Full Width) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                        <TextView
+                            style="@style/CalcTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/interest_rate"
+                            android:drawableStart="@drawable/interest_circle"
+                            android:drawablePadding="5dp"
+                            android:paddingBottom="2dp"
+                            android:gravity="center_vertical" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bg_calc_edittext">
+
+                            <EditText
+                                android:id="@+id/etInterestRate"
+                                style="@style/CalcEditText"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:inputType="numberDecimal"
+                                android:maxLength="5"
+                                android:paddingLeft="@dimen/_6sdp" />
+
+                            <TextView
+                                android:id="@+id/txtCurrencySymbolInterest"
+                                style="@style/CalcCurrencyText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="8dp"
+                                android:text="@string/percentage" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Row 3: Terms (Full Width) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                        <TextView
+                            style="@style/CalcTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/terms"
+                            android:drawableStart="@drawable/calendar"
+                            android:drawablePadding="5dp"
+                            android:paddingBottom="2dp"
+                            android:gravity="center_vertical" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bg_calc_edittext">
+
+                            <EditText
+                                android:id="@+id/etTerms"
+                                style="@style/CalcEditText"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:paddingLeft="@dimen/_6sdp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/calc_primary_teal" />
+
+                            <Spinner
+                                android:id="@+id/spTerm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:popupBackground="@color/calc_card_white"
+                                android:paddingHorizontal="8dp"
+                                android:gravity="center" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Row 4: Start Date (Full Width) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                        <TextView
+                            style="@style/CalcTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/start_date"
+                            android:drawableStart="@drawable/calendar"
+                            android:drawablePadding="5dp"
+                            android:paddingBottom="2dp"
+                            android:gravity="center_vertical" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bg_calc_edittext">
+
+                            <TextView
+                                android:id="@+id/etDate"
+                                style="@style/CalcEditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="@dimen/_6sdp"
+                                android:inputType="date" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Result Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/llResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/calc_card_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Seamless Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="12dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/result"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <!-- Result Row: Principal + Interest -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2"
+                            android:gravity="center_horizontal">
+
+                            <!-- Principal -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/bg_calc_result"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/principal"
+                                    android:textColor="@color/calc_text_secondary"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/txtPrincipal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/calc_text_primary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <!-- Interest -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/bg_calc_result"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/interest"
+                                    android:textColor="@color/calc_text_secondary"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/txtInterest"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/calc_text_primary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Graph Layout -->
+            <LinearLayout
+                android:id="@+id/graphlayot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_margin="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/calc_card_white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/piechart"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp"
+                        android:layout_margin="@dimen/_10sdp" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Calculated Explanation Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/simpleInterestExplanationCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/calc_card_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                android:visibility="gone"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explanation"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/business_person"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="2dp"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/simpleInterestExplanation"
+                        style="@style/CalcTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Calculator Description Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/simple_interest_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/knowledge"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="2dp"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/simpleInterestText"
+                        style="@style/CalcTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/llButton"
+        android:background="@color/colorWhite"
+        android:paddingLeft="@dimen/_8sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingRight="@dimen/_8sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/banner1">
+
+        <Button
+            android:id="@+id/btnStatistics"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/statistics"
+            android:visibility="visible"/>
+
+        <Button
+            android:id="@+id/btnShare"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/share_result"
+            android:visibility="gone" />
+
+                <Button
+            android:id="@+id/btnAddToPlanner"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/add_to_planner"
+            android:visibility="gone" />
+
+<Button
+            android:id="@+id/btnCalculate"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/calculate" />
+    </LinearLayout>
+
+    <!-- Banner -->
+    <RelativeLayout
+        android:id="@+id/banner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center" />
+    </RelativeLayout>
+</RelativeLayout>

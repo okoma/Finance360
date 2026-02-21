@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8sdp">
+
+        <!-- Row 1: Primary Residence + Vacation Properties -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Primary Residence -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/primary"
+                    android:drawableStart="@drawable/car"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency11"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etPrimaryResidence"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Vacation Properties -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vacation"
+                    android:drawableStart="@drawable/car"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency12"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etVacationProperties"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 2: Cars + Boats -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Cars -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/car"
+                    android:drawableStart="@drawable/car"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency13"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etCars"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Boats -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/boat"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency14"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etBoats"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 3: Home Furnishing + Art -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Home Furnishing -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency15"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etHomeFurnishing"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Art -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/art"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency16"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etArt"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 4: Jewelry + Collectibles -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Jewelry -->
+            <LinearLayout
+                android:id="@+id/linearCouponrate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jewelry"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency17"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etJewelry"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Collectibles -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/collect"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency18"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etCollectibles"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 5: Other (Full Width - 9 inputs = odd, last one full) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Other -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency19"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etPersonalOthers"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

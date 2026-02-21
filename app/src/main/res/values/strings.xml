@@ -1,0 +1,1247 @@
+<resources>
+
+
+    <string name="app_name">Finance360™</string>
+
+    <string name="acceptAndContinue">Accept and Continue</string>
+    <string name="addyear">ADD YEAR</string>
+    <string name="amortization_calculator">Amortization Calculator</string>
+    <string name="amortization_title">What is Amortization?</string>
+    <string name="amortization_description_html"><![CDATA[
+Amortization is the process of gradually paying off a loan over time through fixed monthly payments. Each payment includes two parts:<br/><br/>
+<b>Interest:</b> The cost of borrowing money<br/>
+<b>Principal:</b> The amount you borrowed<br/><br/>
+Over time, you pay less interest and more toward the principal with each payment. This continues until the loan is fully repaid.<br/><br/>
+<b>For example</b>, let’s say you borrow <b>%1$s20,000</b> for a car at a fixed interest rate over <b>5 years</b>.<br/>
+Each month, you\'ll make the same payment, but the portion that goes to interest decreases, while the portion going to the principal increases.
+
+]]></string>
+    <string name="amortization_explain_html">
+    <![CDATA[
+  Each month, you\'ll pay <b>%1$s</b> toward your loan.
+  Over the entire loan term, that adds up to <b>%2$s</b> in total payments.<br/><br/>
+  Out of that, <b>%3$s</b> is interest, <i>that’s the fee you pay to borrow money</i>.
+    ]]>
+</string>
+
+    <string name="car_Laese_title">What is Car Lease?</string>
+    <string name="car_lease_description_html"><![CDATA[
+An auto loan is a type of loan that helps you buy a car without paying the full amount upfront.<br/><br/>
+
+Instead, you borrow money from a lender (such as a bank, credit union, or car dealership) and repay it in fixed monthly installments — usually over <b>2</b> to <b>7</b> years.<br/>
+You’ll also pay interest, which is the cost of borrowing money.<br/><br/>
+
+Let\'s say you want to buy a car that costs <b>%1$s20,000</b>, but you only have <b>%1$s5,000</b> saved.<br/><br/>
+You make a <b>%1$s5,000</b> down payment and take out a <b>%1$s15,000</b> auto loan. The loan term is <b>5 years</b> with a <b>5%%</b> annual interest rate.<br/><br/>
+You\'ll make monthly payments that cover both the interest and the amount borrowed. By the end of the <b>5 years</b>, your loan will be fully paid off — and the car will be completely yours.
+
+
+    ]]></string>
+
+    <string name="carLaese_explain_html">
+    <![CDATA[
+  🚗 Here\'s your car lease breakdown:<br/><br/>
+  
+  <b>💰 Lease Details:</b><br/>
+  • <b>Vehicle Price:</b> %1$s<br/>
+  • <b>Down Payment:</b> %2$s<br/>
+  • <b>Interest Rate:</b> %3$s%% per year<br/>
+  • <b>Residual Value:</b> %4$s (estimated value at end of lease)<br/>
+  • <b>Lease Term:</b> %6$s months<br/><br/>
+  
+  <b>💵 Your Payments:</b><br/>
+  • <b>Monthly Lease Payment:</b> %5$s<br/>
+  • <b>Total Payments Over Lease Term:</b> %7$s (includes taxes and finance charges)<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  With a lease, you\'re essentially renting the car for <b>%6$s months</b>. Your monthly payment of <b>%5$s</b> covers the vehicle\'s depreciation (how much value it loses) plus interest and fees. At the end of the lease, you can return the car or buy it for the residual value of <b>%4$s</b>.<br/><br/>
+  
+  <b>✅ Key Considerations:</b><br/>
+  • Leasing typically has lower monthly payments than buying<br/>
+  • You don\'t own the car at the end unless you buy it<br/>
+  • Make sure the total cost of <b>%7$s</b> fits your budget<br/>
+  • Consider mileage limits and wear-and-tear charges in your lease agreement!
+
+    ]]>
+</string>
+
+    <string name="art">Art</string>
+    <string name="assets">Assets</string>
+    <string name="auto_loan_calculator">Auto Loan Calculator</string>
+    <string name="auto_loan_title">What is an Auto Loan?</string>
+    <string name="auto_loan_description_html"><![CDATA[
+An auto loan is a type of loan that helps you buy a car without paying the full amount upfront.<br/><br/>
+
+Instead, you borrow money from a lender (such as a bank, credit union, or car dealership) and repay it in fixed monthly installments — usually over <b>2</b> to <b>7</b> years.<br/>
+You’ll also pay interest, which is the cost of borrowing money.<br/><br/>
+
+Let\'s say you want to buy a car that costs <b>%1$s20,000</b>, but you only have <b>%1$s5,000</b> saved.<br/><br/>
+You make a <b>%1$s5,000</b> down payment and take out a <b>%1$s15,000</b> auto loan. The loan term is <b>5 years</b> with a <b>5%%</b> annual interest rate.<br/><br/>
+You\'ll make monthly payments that cover both the interest and the amount borrowed. By the end of the <b>5 years</b>, your loan will be fully paid off — and the car will be completely yours.
+
+
+    ]]></string>
+    <string name="auto_loan_explain_html">
+    <![CDATA[
+  Great news! Here\'s a clear breakdown of your auto loan:<br/><br/>
+  
+  <b>💰 Monthly Payment:</b> %1$s<br/>
+  This is the amount you\'ll pay each month. Make sure this fits comfortably in your budget!<br/><br/>
+  
+  <b>📊 Loan Breakdown:</b><br/>
+  • <b>Amount Borrowed:</b> %3$s (the actual loan amount)<br/>
+  • <b>Total Interest:</b> %4$s (the cost of borrowing this money)<br/>
+  • <b>Total You\'ll Pay:</b> %2$s (loan amount + interest)<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  Over the life of your loan, you\'ll pay back the <b>%3$s</b> you borrowed, plus <b>%4$s</b> in interest charges. The interest is what the lender charges for letting you borrow the money. The lower your interest rate, the less you\'ll pay overall!<br/><br/>
+  
+  <b>✅ Next Steps:</b><br/>
+  Make sure your monthly payment of <b>%1$s</b> fits comfortably in your monthly budget. It\'s always smart to leave room for unexpected expenses and other financial goals.
+
+    ]]></string>
+
+    <string name="compound_interest_title">What is Compound Interest?</string>
+    <string name="compound_interest_description_html"><![CDATA[
+Compound interest is when you earn interest on both your initial investment and the interest that has already been earned. This creates a "snowball effect" where your money grows faster over time.<br/><br/>
+<b>How it works:</b> Unlike simple interest (which only pays interest on your original amount), compound interest pays interest on your original amount plus any interest you\'ve already earned.<br/><br/>
+<b>For example</b>, if you invest <b>%1$s10,000</b> at a <b>5%%</b> annual interest rate compounded monthly:<br/>
+- After 1 year, you\'ll have earned interest on your <b>%1$s10,000</b><br/>
+- After 2 years, you\'ll earn interest on <b>%1$s10,000</b> plus the interest from year 1<br/>
+- This compounding effect accelerates your wealth growth over time<br/><br/>
+The more frequently interest compounds (daily, monthly, quarterly), the faster your money grows. This is why starting early and investing regularly can significantly boost your returns.
+    ]]></string>
+    <string name="compound_interest_explain_html">
+    <![CDATA[
+  🎉 Excellent! Here\'s how compound interest is working for you:<br/><br/>
+  
+  <b>💰 Your Investment Breakdown:</b><br/>
+  • <b>Initial Investment:</b> %1$s<br/>
+  %4$s
+  • <b>Interest Earned:</b> %5$s<br/>
+  • <b>Annual Interest Rate:</b> %3$s%%<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  Compound interest is like a snowball effect! Your money earns interest on your original investment, and then earns interest on that interest too. This creates exponential growth over time — the longer you invest, the faster your money grows!<br/><br/>
+  
+  <b>✅ Why This Matters:</b><br/>
+  With compound interest, you\'re earning <b>%5$s</b> in interest, which is money working for you. The earlier you start investing and the longer you let it compound, the more wealth you can build. This is one of the most powerful tools for building long-term wealth!
+
+    ]]>
+</string>
+
+    <string name="interest_only_title">What is Interest Only?</string>
+    <string name="interest_only_description_html"><![CDATA[
+An interest-only loan is a type of loan where you only pay the interest charges for a certain period, without paying down the principal (the amount you borrowed).<br/><br/>
+<b>How it works:</b> During the interest-only period, your monthly payments are lower because you\'re only covering the interest. After this period ends, your payments increase significantly because you must pay both interest and principal.<br/><br/>
+<b>For example</b>, if you borrow <b>%1$s200,000</b> at a <b>4%%</b> interest rate with a <b>5-year</b> interest-only period:<br/>
+- For the first 5 years, you\'ll pay only interest (about <b>%1$s667</b> per month)<br/>
+- After 5 years, you\'ll need to pay both interest and principal, which increases your monthly payment<br/><br/>
+Interest-only loans are often used for mortgages or investment properties where borrowers expect their income to increase or plan to sell the property before the principal payments begin.
+    ]]></string>
+    <string name="interest_only_explain_html">
+    <![CDATA[
+  📋 Here\'s your interest-only loan breakdown:<br/><br/>
+  
+  <b>💰 Payment Structure:</b><br/>
+  • <b>Loan Amount:</b> %1$s<br/>
+  • <b>Interest Rate:</b> %2$s%%<br/>
+  • <b>Interest-Only Payment:</b> %3$s per month (during interest-only period)<br/>
+  • <b>Principal &amp; Interest Payment:</b> %4$s per month (after interest-only period)<br/><br/>
+  
+  <b>📊 Total Cost Breakdown:</b><br/>
+  • <b>Total You\'ll Pay:</b> %5$s<br/>
+  • <b>Total Interest:</b> %6$s<br/>
+  • <b>Amount Borrowed:</b> %1$s<br/><br/>
+  
+  <b>⚠️ Important to Know:</b><br/>
+  During the interest-only period, your payments are lower (<b>%3$s</b>), but you\'re only paying interest — not reducing the loan amount. After this period ends, your payments jump to <b>%4$s</b> because you\'ll need to pay both interest and principal. Make sure you\'re prepared for this increase!
+
+    ]]>
+</string>
+
+    <string name="loan_affordability_title">What is Loan Affordability?</string>
+    <string name="loan_affordability_description_html"><![CDATA[
+Loan affordability helps you determine the maximum loan amount you can borrow based on how much you can afford to pay each month.<br/><br/>
+<b>How it works:</b> Instead of starting with a loan amount, you start with your maximum monthly payment. The calculator then determines the largest loan you can afford based on:<br/>
+- Your maximum monthly payment<br/>
+- Interest rate<br/>
+- Loan term (length of repayment)<br/><br/>
+<b>For example</b>, if you can afford <b>%1$s500</b> per month, with a <b>5%%</b> interest rate over <b>5 years</b>, you can afford a loan of approximately <b>%1$s26,500</b>.<br/><br/>
+This calculator is especially useful when you have a fixed budget and want to know what loan amount fits within your monthly payment capacity. It helps you make informed decisions and avoid over-borrowing.
+    ]]></string>
+    <string name="loan_affordability_explain_html">
+    <![CDATA[
+  ✅ Perfect! Based on your budget, here\'s what you can afford:<br/><br/>
+  
+  <b>💰 Your Loan Details:</b><br/>
+  • <b>Maximum Monthly Payment:</b> %1$s (your budget limit)<br/>
+  • <b>Loan Amount You Can Afford:</b> %4$s<br/>
+  • <b>Interest Rate:</b> %2$s%%<br/>
+  • <b>Loan Term:</b> %3$s<br/><br/>
+  
+  <b>📊 Total Cost Breakdown:</b><br/>
+  • <b>Total Payments Over Life of Loan:</b> %5$s<br/>
+  • <b>Total Interest:</b> %6$s<br/>
+  • <b>Loan Amount:</b> %4$s<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  You can comfortably borrow up to <b>%4$s</b> while keeping your monthly payment at <b>%1$s</b>. This fits perfectly within your budget, so you can manage your finances without stress while still achieving your goals!
+
+    ]]>
+</string>
+
+    <string name="mortgage_title">What is Mortgage?</string>
+    <string name="mortgage_description_html"><![CDATA[
+A mortgage is a loan used to purchase real estate, typically a home. The property itself serves as collateral for the loan, meaning the lender can take possession if you fail to make payments.<br/><br/>
+<b>How it works:</b> When you take out a mortgage, you borrow money to buy a property and repay it over a set period (usually 15-30 years) through monthly payments. Each payment includes:<br/>
+- <b>Principal:</b> The amount borrowed<br/>
+- <b>Interest:</b> The cost of borrowing<br/>
+- <b>Property Tax:</b> Annual taxes divided into monthly payments<br/>
+- <b>Insurance:</b> Homeowners insurance<br/>
+- <b>PMI:</b> Private Mortgage Insurance (if down payment is less than 20%%)<br/><br/>
+<b>For example</b>, if you buy a home for <b>%1$s300,000</b> with a <b>%1$s60,000</b> down payment, you\'ll borrow <b>%1$s240,000</b>. At a <b>4%%</b> interest rate over <b>30 years</b>, your monthly payment (including taxes and insurance) will be approximately <b>%1$s1,500</b>.
+    ]]></string>
+    <string name="mortgage_explain_html">
+    <![CDATA[
+  🏠 Congratulations! Here\'s your complete mortgage breakdown:<br/><br/>
+  
+  <b>💰 Monthly Payment:</b> %5$s<br/>
+  This includes everything: principal, interest, property taxes, and insurance. This is your all-in monthly housing cost!<br/><br/>
+  
+  <b>📊 Loan Details:</b><br/>
+  • <b>Purchase Price:</b> %1$s<br/>
+  • <b>Down Payment:</b> %2$s<br/>
+  • <b>Loan Amount:</b> %6$s<br/>
+  • <b>Interest Rate:</b> %3$s%%<br/>
+  • <b>Loan Term:</b> %4$s<br/><br/>
+  
+  <b>💵 Total Cost Breakdown:</b><br/>
+  • <b>Total Payments Over Life of Loan:</b> %7$s<br/>
+  • <b>Total Interest:</b> %8$s<br/>
+  • <b>Amount Borrowed:</b> %6$s<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  Your monthly payment of <b>%5$s</b> covers all your homeownership costs in one payment. Over the life of your loan, you\'ll pay <b>%7$s</b> total, which includes <b>%8$s</b> in interest. Make sure this monthly payment fits comfortably in your budget!
+
+    ]]>
+</string>
+
+    <string name="networth_title">What is Net Worth?</string>
+    <string name="networth_description_html"><![CDATA[
+Net worth is a measure of your financial health. It\'s calculated by subtracting your total liabilities (what you owe) from your total assets (what you own).<br/><br/>
+<b>Assets include:</b><br/>
+- Liquid assets (cash, savings, checking accounts)<br/>
+- Investment assets (stocks, bonds, real estate investments)<br/>
+- Retirement assets (401(k), IRAs, pensions)<br/>
+- Personal assets (home, car, jewelry, collectibles)<br/><br/>
+<b>Liabilities include:</b><br/>
+- Short-term debts (credit cards, short-term loans, outstanding taxes)<br/>
+- Long-term debts (mortgages, student loans, auto loans)<br/><br/>
+<b>For example</b>, if you have <b>%1$s500,000</b> in assets and <b>%1$s200,000</b> in liabilities, your net worth is <b>%1$s300,000</b>.<br/><br/>
+A positive net worth means you own more than you owe, which is a sign of financial stability. Tracking your net worth over time helps you measure your financial progress and make informed decisions about your money.
+    ]]></string>
+    <string name="networth_explain_html">
+    <![CDATA[
+  Your financial snapshot shows:<br/><br/>
+  <b>Total Assets:</b> %1$s<br/>
+  This includes all your liquid assets, investments, retirement accounts, and personal property.<br/><br/>
+  <b>Total Liabilities:</b> %2$s<br/>
+  This includes all your debts, loans, and financial obligations.<br/><br/>
+  <b>Net Worth:</b> %3$s<br/><br/>
+  %4$s %5$s This is your true financial position — the difference between what you own and what you owe. %6$s
+    ]]>
+</string>
+
+    <string name="npv_title">What is Net Present Value?</string>
+    <string name="npv_description_html"><![CDATA[
+Net Present Value (NPV) is a financial metric used to evaluate the profitability of an investment or project by comparing the present value of cash inflows to the present value of cash outflows.<br/><br/>
+<b>How it works:</b> NPV accounts for the time value of money — the concept that money today is worth more than the same amount in the future due to its earning potential. It discounts future cash flows back to their present value using a discount rate.<br/><br/>
+<b>For example</b>, if you invest <b>%1$s10,000</b> today and expect to receive <b>%1$s3,000</b> per year for the next 5 years, NPV helps determine if this investment is worthwhile compared to other opportunities.<br/><br/>
+<b>Interpretation:</b><br/>
+- <b>Positive NPV:</b> The investment is profitable and worth pursuing<br/>
+- <b>Negative NPV:</b> The investment will lose money and should be avoided<br/>
+- <b>Zero NPV:</b> The investment breaks even<br/><br/>
+NPV is widely used in business and finance to make investment decisions, evaluate projects, and compare different investment opportunities.
+    ]]></string>
+    <string name="npv_explain_html">
+    <![CDATA[
+  💼 Here\'s your Net Present Value analysis:<br/><br/>
+  
+  <b>💰 Investment Details:</b><br/>
+  • <b>Initial Investment:</b> %1$s<br/>
+  • <b>Discount Rate:</b> %2$s%%<br/>
+  • <b>Net Present Value (NPV):</b> %3$s<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  %4$s This means the investment %5$s compared to alternative opportunities with the same risk level. NPV accounts for the time value of money — it shows whether your investment is worth more or less than what you put in, considering the discount rate.<br/><br/>
+  
+  <b>✅ Decision Guide:</b><br/>
+  • <b>Positive NPV (%3$s):</b> The investment is profitable and worth pursuing! It\'s expected to generate value above your required return.<br/>
+  • <b>Negative NPV:</b> The investment would lose money — consider other options.<br/>
+  • <b>Zero NPV:</b> The investment breaks even — it\'s neither good nor bad.<br/><br/>
+  
+  Use this NPV to compare different investment opportunities and make smarter financial decisions!
+
+    ]]>
+</string>
+
+    <string name="simple_interest_title">What is Simple Interest?</string>
+    <string name="simple_interest_description_html"><![CDATA[
+Simple interest is a straightforward way to calculate interest on a loan or investment. Unlike compound interest, simple interest is calculated only on the original principal amount — it doesn\'t earn interest on previously earned interest.<br/><br/>
+<b>How it works:</b> Simple interest is calculated using the formula:<br/>
+<b>Interest = Principal × Rate × Time</b><br/><br/>
+<b>For example</b>, if you invest <b>%1$s10,000</b> at a <b>5%%</b> annual interest rate for <b>3 years</b>:<br/>
+- Your interest each year is <b>%1$s500</b> (5%% of %1$s10,000)<br/>
+- Over 3 years, you\'ll earn <b>%1$s1,500</b> in total interest<br/>
+- Your total amount will be <b>%1$s11,500</b><br/><br/>
+Simple interest is commonly used for short-term loans, car loans, and some savings accounts. It\'s easier to calculate than compound interest, but typically results in lower returns over time.
+    ]]></string>
+    <string name="simple_interest_explain_html">
+    <![CDATA[
+  📈 Here\'s your simple interest calculation:<br/><br/>
+  
+  <b>💰 Investment Breakdown:</b><br/>
+  • <b>Principal Amount:</b> %1$s (your original investment)<br/>
+  • <b>Interest Rate:</b> %2$s%% per year<br/>
+  • <b>Time Period:</b> %3$s<br/><br/>
+  
+  <b>💵 Your Returns:</b><br/>
+  • <b>Interest Earned:</b> %4$s<br/>
+  • <b>Total Amount:</b> %5$s (principal + interest)<br/><br/>
+  
+  <b>💡 How Simple Interest Works:</b><br/>
+  With simple interest, you earn interest only on your original <b>%1$s</b> investment. Unlike compound interest, it doesn\'t earn interest on previously earned interest. This makes it straightforward and predictable — you\'ll earn the same amount of interest each period, making it easy to plan your finances!
+
+    ]]>
+</string>
+
+    <string name="roi_title">What is Return on Investment (ROI)?</string>
+    <string name="roi_description_html"><![CDATA[
+Return on Investment (ROI) is a financial metric used to measure the profitability of an investment. It shows you how much profit or loss you\'ve made relative to the amount you invested.<br/><br/>
+<b>How it works:</b> ROI is calculated as a percentage:<br/>
+<b>ROI = (Return - Investment) / Investment × 100%%</b><br/><br/>
+<b>For example</b>, if you invest <b>%1$s5,000</b> and it grows to <b>%1$s6,500</b>:<br/>
+- Your profit is <b>%1$s1,500</b><br/>
+- Your ROI is <b>30%%</b> ((%1$s1,500 / %1$s5,000) × 100%%)<br/><br/>
+<b>Interpretation:</b><br/>
+- <b>Positive ROI:</b> Your investment made money<br/>
+- <b>Negative ROI:</b> Your investment lost money<br/>
+- <b>Higher ROI:</b> Better investment performance<br/><br/>
+ROI helps you compare different investment opportunities and make informed decisions about where to put your money.
+    ]]></string>
+    <string name="roi_explain_html">
+    <![CDATA[
+  📊 Here\'s your investment performance breakdown:<br/><br/>
+  
+  <b>💰 Investment Details:</b><br/>
+  • <b>Amount Invested:</b> %1$s<br/>
+  • <b>Amount Returned:</b> %2$s<br/>
+  • <b>Profit/Loss:</b> %4$s<br/>
+  • <b>ROI:</b> %3$s%%<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  %5$s Your ROI of <b>%3$s%%</b> shows how efficiently your investment performed. This percentage tells you the return you got relative to what you put in. A higher ROI means a more profitable investment!<br/><br/>
+  
+  <b>✅ Key Takeaway:</b><br/>
+  You invested <b>%1$s</b> and got back <b>%2$s</b>, which is a <b>%4$s</b>. Use this ROI to compare different investment opportunities and make smarter financial decisions in the future!
+
+    ]]>
+</string>
+
+    <string name="present_value_title">What is Present Value?</string>
+    <string name="present_value_description_html"><![CDATA[
+Present Value (PV) is the current worth of a future sum of money, discounted at a specific interest rate. It helps you understand how much a future amount is worth today.<br/><br/>
+<b>How it works:</b> Due to the time value of money, a dollar today is worth more than a dollar in the future because you can invest it and earn interest. Present Value discounts future amounts back to their current value.<br/><br/>
+<b>For example</b>, if someone promises to pay you <b>%1$s10,000</b> in <b>5 years</b> and the discount rate is <b>5%%</b>:<br/>
+- The present value is approximately <b>%1$s7,835</b><br/>
+- This means <b>%1$s7,835</b> today is equivalent to <b>%1$s10,000</b> in 5 years<br/><br/>
+Present Value is essential for:<br/>
+- Evaluating investment opportunities<br/>
+- Comparing cash flows at different times<br/>
+- Making financial decisions<br/>
+- Understanding the true cost of future payments<br/><br/>
+It helps you make apples-to-apples comparisons between money received or paid at different times.
+    ]]></string>
+    <string name="present_value_explain_html">
+    <![CDATA[
+  Based on a future value of <b>%1$s</b> at a discount rate of <b>%2$s%%</b> over <b>%3$s</b> periods, the present value calculation shows:<br/><br/>
+  <b>Future Value:</b> %1$s<br/>
+  <b>Discount Rate:</b> %2$s%%<br/>
+  <b>Present Value:</b> %4$s<br/>
+  <b>Total Interest/Discount:</b> %5$s<br/><br/>
+  The present value represents how much that future amount is worth today. The difference between future value and present value shows the time value of money — how much value is lost or gained due to the time period.
+    ]]>
+</string>
+
+    <string name="rental_yield_title">What is Rental Yield?</string>
+    <string name="rental_yield_description_html"><![CDATA[
+Rental yield is a percentage that measures the annual rental income from a property relative to its purchase price. It helps investors evaluate the profitability of rental properties.<br/><br/>
+<b>How it works:</b> There are two types of rental yield:<br/>
+- <b>Gross Yield:</b> Annual rental income ÷ Property price × 100%%<br/>
+- <b>Net Yield:</b> (Annual rental income - Expenses) ÷ Property price × 100%%<br/><br/>
+<b>For example</b>, if you buy a property for <b>%1$s200,000</b> and rent it for <b>%1$s1,500</b> per month:<br/>
+- Annual rental income: <b>%1$s18,000</b><br/>
+- Gross yield: <b>9%%</b> (%1$s18,000 ÷ %1$s200,000 × 100%%)<br/>
+- After expenses of <b>%1$s3,000</b>, net yield: <b>7.5%%</b><br/><br/>
+Rental yield helps you:<br/>
+- Compare different investment properties<br/>
+- Assess if a property is a good investment<br/>
+- Understand your return before property appreciation<br/>
+- Make informed real estate decisions<br/><br/>
+A higher yield generally indicates a better rental investment, but you should also consider property appreciation, location, and market conditions.
+    ]]></string>
+    <string name="rental_yield_explain_html">
+    <![CDATA[
+  🏘️ Here\'s your rental property investment analysis:<br/><br/>
+  
+  <b>💰 Property Details:</b><br/>
+  • <b>Property Price:</b> %1$s<br/>
+  • <b>Annual Rental Income:</b> %2$s<br/>
+  • <b>Annual Expenses:</b> %3$s (maintenance, taxes, insurance, etc.)<br/><br/>
+  
+  <b>📊 Your Yields:</b><br/>
+  • <b>Gross Yield:</b> %4$s%% (return before expenses)<br/>
+  • <b>Net Yield:</b> %5$s%% (your actual return after expenses)<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  The gross yield of <b>%4$s%%</b> shows your return before expenses, while the net yield of <b>%5$s%%</b> is your real return after accounting for all property costs. Higher yields mean better investment performance!<br/><br/>
+  
+  <b>✅ Key Takeaway:</b><br/>
+  Your net yield of <b>%5$s%%</b> is what you\'ll actually earn on your <b>%1$s</b> investment. Compare this to other investment opportunities to see if this rental property is a good fit for your portfolio!
+
+    ]]>
+</string>
+
+    <string name="loan_comparison_title">What is Loan Comparison?</string>
+    <string name="loan_comparison_description_html"><![CDATA[
+Loan comparison helps you evaluate and compare two different loan options side by side to determine which one is better for your financial situation.<br/><br/>
+<b>What to compare:</b><br/>
+- <b>Monthly Payment:</b> How much you\'ll pay each month<br/>
+- <b>Total Interest:</b> Total cost of borrowing<br/>
+- <b>Total Payments:</b> Total amount paid over the loan term<br/>
+- <b>Processing Fees:</b> Upfront costs<br/><br/>
+<b>For example</b>, comparing two <b>%1$s100,000</b> loans:<br/>
+- <b>Loan 1:</b> 4%% interest, 30 years → Lower monthly payment, higher total interest<br/>
+- <b>Loan 2:</b> 3.5%% interest, 15 years → Higher monthly payment, lower total interest<br/><br/>
+Loan comparison helps you:<br/>
+- Choose the loan that fits your budget<br/>
+- Minimize total interest costs<br/>
+- Understand the true cost of each option<br/>
+- Make informed borrowing decisions<br/><br/>
+Consider both your monthly budget and long-term financial goals when comparing loans. Sometimes a slightly higher monthly payment can save you thousands in interest over time.
+    ]]></string>
+    <string name="loan_comparison_explain_html">
+    <![CDATA[
+  📊 Side-by-side comparison of your two loan options:<br/><br/>
+  
+  <b>💳 Loan 1:</b><br/>
+  • Monthly Payment: %1$s<br/>
+  • Total Payments: %2$s<br/>
+  • Total Interest: %3$s<br/>
+  • Processing Fee: %4$s<br/><br/>
+  
+  <b>💳 Loan 2:</b><br/>
+  • Monthly Payment: %5$s<br/>
+  • Total Payments: %6$s<br/>
+  • Total Interest: %7$s<br/>
+  • Processing Fee: %8$s<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  %9$s This comparison helps you see which loan offers better value. Consider both your monthly budget (can you afford the monthly payment?) and your long-term goals (do you want to minimize total interest?).<br/><br/>
+  
+  <b>✅ Decision Tips:</b><br/>
+  • If monthly cash flow is tight, choose the loan with the lower monthly payment<br/>
+  • If you want to save money long-term, choose the loan with lower total interest<br/>
+  • Don\'t forget to factor in processing fees when comparing total costs!
+
+    ]]>
+</string>
+
+    <string name="refinance_title">What is Refinancing?</string>
+    <string name="refinance_description_html"><![CDATA[
+Refinancing is the process of replacing an existing loan with a new loan that has different terms, typically to get a lower interest rate, reduce monthly payments, or change the loan duration.<br/><br/>
+<b>How it works:</b> When you refinance, you take out a new loan to pay off your current loan. The new loan may have:<br/>
+- A lower interest rate (saving you money over time)<br/>
+- Different loan terms (shorter or longer duration)<br/>
+- Different monthly payment amounts<br/><br/>
+<b>For example</b>, if you have a <b>%1$s200,000</b> mortgage at <b>5%%</b> interest:<br/>
+- Current monthly payment: <b>%1$s1,074</b><br/>
+- Refinancing to <b>3.5%%</b> could reduce payment to <b>%1$s898</b><br/>
+- You could save <b>%1$s176</b> per month or <b>%1$s63,360</b> over 30 years<br/><br/>
+<b>Considerations:</b><br/>
+- Refinancing fees and closing costs<br/>
+- How long you plan to stay in the home<br/>
+- Whether you\'ll break even on the costs<br/>
+- Your credit score and financial situation<br/><br/>
+Refinancing can be a smart financial move, but it\'s important to calculate whether the savings outweigh the costs.
+    ]]></string>
+    <string name="refinance_explain_html">
+    <![CDATA[
+  🔄 Here\'s how refinancing compares to your current loan:<br/><br/>
+  
+  <b>📋 Current Loan:</b><br/>
+  • Monthly Payment: %1$s<br/>
+  • Total Payments: %2$s<br/>
+  • Total Interest: %3$s<br/><br/>
+  
+  <b>🆕 Refinanced Loan:</b><br/>
+  • Monthly Payment: %4$s<br/>
+  • Total Payments: %5$s<br/>
+  • Total Interest: %6$s<br/>
+  • Refinancing Fees: %7$s (upfront cost)<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  %8$s Refinancing can help you save money, but you need to make sure the savings justify the upfront costs. The refinancing fees of <b>%7$s</b> need to be covered by your savings over time.<br/><br/>
+  
+  <b>✅ Key Considerations:</b><br/>
+  • How long do you plan to keep the loan? (Longer = more time to recoup fees)<br/>
+  • Monthly savings: Compare <b>%1$s</b> vs <b>%4$s</b><br/>
+  • Total savings: Compare <b>%2$s</b> vs <b>%5$s</b><br/>
+  • Make sure the savings outweigh the <b>%7$s</b> in fees!
+
+    ]]>
+</string>
+
+    <string name="bond_yield_title">What is Bond Yield?</string>
+    <string name="bond_yield_description_html"><![CDATA[
+Bond yield is the return an investor receives on a bond investment. It\'s expressed as a percentage and represents the income you\'ll earn relative to the bond\'s price.<br/><br/>
+<b>Types of Bond Yield:</b><br/>
+- <b>Current Yield:</b> Annual coupon payment ÷ Current market price × 100%%<br/>
+- <b>Yield to Maturity (YTM):</b> The total return if you hold the bond until it matures<br/><br/>
+<b>For example</b>, if you buy a bond with:<br/>
+- Face value (par): <b>%1$s1,000</b><br/>
+- Current price: <b>%1$s950</b><br/>
+- Annual coupon rate: <b>5%%</b> (<b>%1$s50</b> per year)<br/>
+- Current yield: <b>5.26%%</b> (%1$s50 ÷ %1$s950 × 100%%)<br/><br/>
+<b>Key factors:</b><br/>
+- <b>Coupon Rate:</b> The interest rate the bond pays<br/>
+- <b>Current Price:</b> What you pay to buy the bond<br/>
+- <b>Par Value:</b> The face value repaid at maturity<br/>
+- <b>Years to Maturity:</b> How long until the bond matures<br/><br/>
+Understanding bond yields helps you compare different bond investments and make informed decisions about fixed-income securities.
+    ]]></string>
+    <string name="bond_yield_explain_html">
+    <![CDATA[
+  📈 Here\'s your bond investment analysis:<br/><br/>
+  
+  <b>💵 Bond Details:</b><br/>
+  • Current Price: %1$s (what you pay to buy it)<br/>
+  • Par Value: %2$s (what you\'ll get back at maturity)<br/>
+  %3$s
+  • Years to Maturity: %4$s<br/><br/>
+  
+  <b>📊 Your Yields:</b><br/>
+  • <b>Current Yield:</b> %5$s%% (annual return based on current price)<br/>
+  • <b>Yield to Maturity:</b> %6$s%% (total return if held until maturity)<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  %7$s The current yield of <b>%5$s%%</b> shows your annual return based on what you pay today. The yield to maturity of <b>%6$s%%</b> reflects your total return if you hold the bond until it matures. Higher yields mean better returns!<br/><br/>
+  
+  <b>✅ Important Considerations:</b><br/>
+  While higher yields are generally better, also consider the bond\'s credit risk (how likely it is to default) and whether it aligns with your investment goals and timeline. Make sure this bond fits your overall investment strategy!
+
+    ]]>
+</string>
+
+
+
+
+    <string name="auto_loans">Auto Loans</string>
+    <string name="balance">Balance</string>
+    <string name="boat">Boats</string>
+    <string name="bond_yield_calculator">Bond Yield Calculator</string>
+    <string name="bonds">Bonds</string>
+    <string name="business">Business Interests</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="car">Cars</string>
+    <string name="car_lease_calculator">Car Lease Calculator</string>
+    <string name="cash">Cash</string>
+    <string name="cashflow">Cash Flow</string>
+    <string name="checking">Checking Accounts</string>
+    <string name="collect">Collectibles</string>
+    <string name="compare">COMPARE</string>
+    <string name="compound_interest_calculator">Compound Interest calculator</string>
+    <string name="compounded">Compounded</string>
+    <string name="add_to_planner">Add to Planner</string>
+    <string name="couponrate">Coupon Rate</string>
+    <string name="credit">Credit Cards</string>
+    <string name="current_loan">Current Loan</string>
+    <string name="currentprice">Current Price</string>
+    <string name="currentyield">Current Yield</string>
+    <string name="deprecation_charge">Deprecation Charge</string>
+    <string name="disc">Discount Rate</string>
+    <string name="discount">Discount Rate</string>
+    <string name="dollar">$</string>
+    <string name="down_payment">Down Payment</string>
+    <string name="expenses">Expenses</string>
+    <string name="fees">Fees</string>
+    <string name="finance">Finance360™</string>
+    <string name="finance_charge">Finance Charge</string>
+    <string name="future">Future value</string>
+    <string name="gross">Gross Yield</string>
+    <string name="home">Home Furnishings</string>
+    <string name="initial_investment">Initial Investment</string>
+    <string name="interest">Interest</string>
+    <string name="interest_only_calculator">Interest Only Calculator</string>
+    <string name="interest_only_payment">Interest Only Payment</string>
+    <string name="interest_only_period">Interest Only Period</string>
+    <string name="interest_rate">Interest Rate</string>
+    <string name="interestamount">Interest</string>
+    <string name="internal_rate_of_return_calculator">Internal Rate of Return Calculator</string>
+    <string name="invest">Investment Assets</string>
+    <string name="investedamount">Amount Invested</string>
+    <string name="investloan">Investment Loans</string>
+    <string name="investment">Investment</string>
+    <string name="iras">IRAs</string>
+    <string name="jewelry">Jewelry</string>
+    <string name="keogh">Keogh Accounts</string>
+    <string name="ks">401Ks</string>
+    <string name="leases">Leases</string>
+    <string name="liabilities">Liabilities</string>
+    <string name="life">Life insurance</string>
+    <string name="liquid">Liquid Assets</string>
+    <string name="loan">Short Term Loans</string>
+    <string name="loan_1">Loan 1</string>
+    <string name="loan_2">Loan 2</string>
+    <string name="loan_affordability_calculator">Loan Affordability Calculator</string>
+    <string name="loan_amount">Loan Amount</string>
+    <string name="loan_balance">Loan Balance</string>
+    <string name="loan_comparison_calculator">Loan Comparison Calculator</string>
+    <string name="loanfinance">Loan &amp; Finance Planner</string>
+    <string name="loans">Loans</string>
+    <string name="longterm">Long Term Liabilities</string>
+    <string name="max_monthly_payment">Max Monthly Payment</string>
+    <string name="month">Month</string>
+    <string name="monthly_payment">Monthly Payment</string>
+    <string name="mortages">Mortgages</string>
+    <string name="mortgage_calculator">Mortgage Calculator</string>
+    <string name="mutual">Mutual Funds</string>
+    <string name="net">Net Yield</string>
+    <string name="net_present_value_calculator">Net Present Value Calculator</string>
+    <string name="net_worth_calculator">Net Worth Calculator</string>
+    <string name="netpresent">Net Present Value</string>
+    <string name="netwrth">Net Worth</string>
+    <string name="npv_calculator">NPV Calculator</string>
+    <string name="number">Number of Periods</string>
+    <string name="other">Other</string>
+    <string name="outstanding">Outstanding Taxes</string>
+    <string name="over_payments">Total Payment</string>
+    <string name="owed_on_trade">Owed on Trade-In</string>
+    <string name="par">Par Value</string>
+    <string name="payment">Payment</string>
+    <string name="paymentFre">Payment Frequency</string>
+    <string name="pension">Pensions</string>
+    <string name="percentage">%</string>
+    <string name="permissionDisclose">Permission Disclosure</string>
+    <string name="personal">Personal Assets</string>
+    <string name="personalloan">Personal Loans</string>
+    <string name="pmi">PMI</string>
+    <string name="present">Present Value</string>
+    <string name="present_value_calculator">Present Value Calculator</string>
+    <string name="primary">Primary Residence</string>
+    <string name="principal">Principal</string>
+    <string name="principal_interest_payment">Principal &amp; Interest Payment</string>
+    <string name="principalamount">Principal</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="processing_fee">Processing Fee</string>
+    <string name="property_insurance">Property Insurance</string>
+    <string name="property_tax">Property Tax</string>
+    <string name="propertyprice">Property Price</string>
+    <string name="purchase_price">Purchase Price</string>
+    <string name="rate_the_app">Rate the app</string>
+    <string name="rating_dialog_cancel">Cancel</string>
+    <string name="rating_dialog_experience">How was your experience with us?</string>
+    <string name="rating_dialog_feedback_title">Feedback</string>
+    <string name="rating_dialog_maybe_later">Maybe later</string>
+    <string name="rating_dialog_never">Never</string>
+    <string name="rating_dialog_submit">Submit</string>
+    <string name="rating_dialog_suggestions">Suggest us what went wrong and we\'ll work on it!</string>
+    <string name="realestate">Real Estate</string>
+    <string name="refinance">Refinancing Costs</string>
+    <string name="refinance_calculator">Refinance Calculator</string>
+    <string name="refinanced_cost">Refinanced Cost</string>
+    <string name="refinanced_loan">Refinanced Loan</string>
+    <string name="regular_investment">Regular Investment</string>
+    <string name="rent">Rent</string>
+    <string name="rental_yield_calculator">Rental Yield Calculator</string>
+    <string name="reset">RESET</string>
+    <string name="residual_value">Residual Value</string>
+    <string name="result">Result</string>
+    <string name="retire">Retirement Assets</string>
+    <string name="return_on_investment_calculator">Return on Investment Calculator</string>
+    <string name="returnamount">Amount Returned</string>
+    <string name="ro">Return on Investment</string>
+    <string name="roi_calculator">ROI Calculator</string>
+    <string name="sales_tax">Sales Tax</string>
+    <string name="sales_tax_rate">Sales Tax Rate</string>
+    <string name="saving">Savings Accounts</string>
+    <string name="search_menu_title">Search</string>
+    <string name="share">Share</string>
+    <string name="share_result">SHARE RESULT</string>
+    <string name="shortterm">Short Term Liabilities</string>
+    <string name="simple_interest_calculator">Simple Interest Calculator</string>
+    <string name="start_date">Start Date</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stock">Stocks</string>
+    <string name="student">Student Loans</string>
+    <string name="tax_ins_pmi">TaxIns&amp;PMI</string>
+    <string name="term">Term</string>
+    <string name="termdeposit">Term Deposits</string>
+    <string name="terms">Terms</string>
+    <string name="termsOfService">Terms Of Service</string>
+    <string name="termsOfServiceSummery">This app is governed by i2Medier Terms of Service. By continuing to use this app you represent that you have read and accept the Terms of Service, Privacy Policy and Permission disclosure.</string>
+    <string name="termsOfServices">Terms Of Service</string>
+    <string name="terms_in_month">Terms in Month</string>
+    <string name="terms_in_year">Terms in Year</string>
+    <string name="total_interest">Total Interest</string>
+    <string name="total_paid">Total Paid</string>
+    <string name="total_payments">Total Payments</string>
+    <string name="total_principal">Total Principal</string>
+    <string name="totalassest">Total Assets</string>
+    <string name="totalliabilities">Total Liabilities</string>
+    <string name="trade_in_amount">Trade-In Value</string>
+    <string name="vacancyrate">Vacancy Rate</string>
+    <string name="vacation">Vacation Properties</string>
+    <string name="vehicle_price">Car Price</string>
+    <string name="year">Year</string>
+    <string name="yearsto">Years to Maturity</string>
+    <string name="yieldto">Yield to Maturity</string>
+    <string name="yr">Yr</string>
+
+    <!-- Retirement Calculator -->
+    <string name="retirement_calculator">Retirement Calculator</string>
+    <string name="retirement_title">What is Retirement Planning?</string>
+    <string name="current_age">Current Age</string>
+    <string name="retirement_age">Retirement Age</string>
+    <string name="current_savings">Current Savings</string>
+    <string name="monthly_contribution">Monthly Contribution</string>
+    <string name="expected_return">Expected Return Rate</string>
+    <string name="include_social_security">Include Social Security</string>
+    <string name="social_security_description">Estimate your Social Security benefits to get a more complete retirement picture</string>
+    <string name="estimated_social_security">Estimated Monthly Social Security</string>
+    <string name="include_employer_match">Include 401(k) Employer Match</string>
+    <string name="employer_match_description">Add employer matching contributions to boost your retirement savings calculation</string>
+    <string name="employer_match_rate">Employer Match Rate</string>
+    <string name="match_limit">Match Limit</string>
+    <string name="retirement_description_html"><![CDATA[
+Retirement planning helps you determine how much money you\'ll have when you retire and whether it\'s enough to support your lifestyle.<br/><br/>
+
+<b>How it works:</b> You start with your current savings and add regular monthly contributions. Over time, your money grows through compound interest and investment returns. The calculator shows you:<br/>
+• Total amount you\'ll have at retirement<br/>
+• Monthly income you can withdraw<br/>
+• How long your savings will last<br/><br/>
+
+<b>For example</b>, if you\'re <b>30 years old</b> with <b>%1$s10,000</b> saved, contribute <b>%1$s500</b> monthly, and expect a <b>7%%</b> annual return, by age <b>65</b> you\'ll have approximately <b>%1$s1.2 million</b> for retirement.
+    ]]></string>
+    <string name="retirement_explain_html"><![CDATA[
+🎯 Great planning! Here\'s your retirement outlook:<br/><br/>
+
+<b>💰 Retirement Savings:</b><br/>
+• <b>Total at Retirement:</b> %1$s (what you\'ll have saved)<br/>
+• <b>Monthly Income Available:</b> %2$s (safe withdrawal amount)<br/>
+• <b>Years of Income:</b> %3$s (how long it will last)<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+By contributing <b>%4$s</b> monthly starting at age <b>%5$s</b>, you\'ll have <b>%1$s</b> saved by age <b>%6$s</b>. This gives you <b>%2$s</b> per month in retirement, which should last for <b>%3$s</b> years if you follow the 4%% withdrawal rule.<br/><br/>
+
+<b>✅ Next Steps:</b><br/>
+• Make sure <b>%2$s</b> monthly covers your retirement expenses<br/>
+• Consider increasing contributions if you want more income<br/>
+• Review your plan annually and adjust as needed<br/>
+• Factor in Social Security and other income sources
+    ]]></string>
+
+    <!-- Emergency Fund Calculator -->
+    <string name="emergency_fund_calculator">Emergency Fund Calculator</string>
+    <string name="emergency_fund_title">What is an Emergency Fund?</string>
+    <string name="monthly_expenses">Monthly Expenses</string>
+    <string name="months_coverage">Months of Coverage</string>
+    <string name="current_emergency_savings">Current Emergency Savings</string>
+    <string name="monthly_savings">Monthly Savings</string>
+    <string name="emergency_fund_description_html"><![CDATA[
+An emergency fund is money set aside to cover unexpected expenses like medical bills, job loss, or major repairs. Financial experts recommend having 3-6 months of expenses saved.<br/><br/>
+
+<b>How it works:</b> The calculator determines how much you need based on your monthly expenses and desired months of coverage. It also shows how long it will take to reach your goal based on your monthly savings.<br/><br/>
+
+<b>For example</b>, if your monthly expenses are <b>%1$s3,000</b> and you want <b>6 months</b> of coverage, you need <b>%1$s18,000</b> in your emergency fund. If you save <b>%1$s500</b> monthly, it will take about <b>3 years</b> to reach your goal.
+    ]]></string>
+    <string name="emergency_fund_explain_html"><![CDATA[
+🛡️ Your emergency fund plan:<br/><br/>
+
+<b>💰 Fund Details:</b><br/>
+• <b>Target Amount:</b> %1$s (%2$s months of expenses)<br/>
+• <b>Current Savings:</b> %3$s<br/>
+• <b>Amount Needed:</b> %4$s<br/>
+• <b>Monthly Savings:</b> %5$s<br/>
+• <b>Time to Goal:</b> %6$s months (%7$s years)<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+With monthly expenses of <b>%8$s</b>, you need <b>%1$s</b> to cover <b>%2$s</b> months. You currently have <b>%3$s</b>, so you need to save <b>%4$s</b> more. At <b>%5$s</b> per month, you\'ll reach your goal in <b>%6$s</b> months.<br/><br/>
+
+<b>✅ Next Steps:</b><br/>
+• Keep your emergency fund in a high-yield savings account<br/>
+• Only use it for true emergencies<br/>
+• Replenish it if you need to withdraw funds<br/>
+• Consider increasing to 6-12 months if you\'re self-employed
+    ]]></string>
+
+    <!-- Debt Payoff Calculator -->
+    <string name="debt_payoff_calculator">Debt Payoff Calculator</string>
+    <string name="debt_payoff_title">What is Debt Payoff Planning?</string>
+    <string name="total_debt">Total Debt</string>
+    <string name="interest_rate_debt">Interest Rate</string>
+    <string name="debt_payoff_description_html"><![CDATA[
+A debt payoff calculator helps you plan how to eliminate your debt efficiently. It shows how long it will take to pay off your debt and how much interest you\'ll pay.<br/><br/>
+
+<b>How it works:</b> Enter your total debt, monthly payment, and interest rate. The calculator shows your payoff timeline and total interest paid. You can also see how increasing your payment affects the timeline.<br/><br/>
+
+<b>For example</b>, if you have <b>%1$s10,000</b> in debt at <b>15%%</b> interest and pay <b>%1$s300</b> monthly, it will take about <b>4 years</b> to pay off, with <b>%1$s4,400</b> in total interest.
+    ]]></string>
+    <string name="debt_payoff_explain_html"><![CDATA[
+💳 Your debt payoff plan:<br/><br/>
+
+<b>📊 Payoff Details:</b><br/>
+• <b>Total Debt:</b> %1$s<br/>
+• <b>Monthly Payment:</b> %2$s<br/>
+• <b>Interest Rate:</b> %3$s%%<br/>
+• <b>Payoff Time:</b> %4$s months (%5$s years)<br/>
+• <b>Total Interest:</b> %6$s<br/>
+• <b>Total Paid:</b> %7$s<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+By paying <b>%2$s</b> monthly on your <b>%1$s</b> debt at <b>%3$s%%</b> interest, you\'ll pay it off in <b>%4$s</b> months. You\'ll pay <b>%6$s</b> in interest, bringing your total to <b>%7$s</b>.<br/><br/>
+
+<b>✅ Tips to Pay Off Faster:</b><br/>
+• Pay more than the minimum when possible<br/>
+• Use the debt avalanche method (highest interest first)<br/>
+• Consider balance transfer cards for lower rates<br/>
+• Avoid taking on new debt while paying off existing debt
+    ]]></string>
+
+    <!-- Budget Calculator -->
+    <string name="budget_calculator">Budget Calculator</string>
+    <string name="budget_title">What is Budget Planning?</string>
+    <string name="monthly_income">Monthly Income</string>
+    <string name="housing">Housing</string>
+    <string name="utilities">Utilities</string>
+    <string name="food">Food</string>
+    <string name="transportation">Transportation</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="other_expenses">Other Expenses</string>
+    <string name="budget_description_html"><![CDATA[
+A budget calculator helps you track your income and expenses to ensure you\'re living within your means and saving for the future.<br/><br/>
+
+<b>How it works:</b> Enter your monthly income and all your expense categories. The calculator shows your total expenses, remaining balance, and what percentage of income goes to each category. This helps you identify areas where you can save.<br/><br/>
+
+<b>For example</b>, if you earn <b>%1$s5,000</b> monthly and spend <b>%1$s4,200</b>, you have <b>%1$s800</b> remaining. The calculator shows if you\'re following the 50/30/20 rule (needs/wants/savings).
+    ]]></string>
+    <string name="budget_explain_html"><![CDATA[
+📊 Your budget breakdown:<br/><br/>
+
+<b>💰 Income & Expenses:</b><br/>
+• <b>Monthly Income:</b> %1$s<br/>
+• <b>Total Expenses:</b> %2$s<br/>
+• <b>Remaining Balance:</b> %3$s<br/>
+• <b>Savings Rate:</b> %4$s%%<br/><br/>
+
+<b>📈 Expense Breakdown:</b><br/>
+• <b>Housing:</b> %5$s (%6$s%%)<br/>
+• <b>Utilities:</b> %7$s (%8$s%%)<br/>
+• <b>Food:</b> %9$s (%10$s%%)<br/>
+• <b>Transportation:</b> %11$s (%12$s%%)<br/>
+• <b>Entertainment:</b> %13$s (%14$s%%)<br/>
+• <b>Other:</b> %15$s (%16$s%%)<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+You\'re spending <b>%2$s</b> out of <b>%1$s</b> income, leaving <b>%3$s</b> for savings. Your savings rate is <b>%4$s%%</b>. Financial experts recommend saving at least 20%% of income.<br/><br/>
+
+<b>✅ Budget Tips:</b><br/>
+• Aim for 50%% needs, 30%% wants, 20%% savings<br/>
+• Review and adjust your budget monthly<br/>
+• Look for ways to reduce expenses in high categories<br/>
+• Build an emergency fund with your savings
+    ]]></string>
+
+    <!-- Credit Card Payoff Calculator -->
+    <string name="credit_card_payoff_calculator">Credit Card Payoff Calculator</string>
+    <string name="credit_card_payoff_title">What is Credit Card Payoff?</string>
+    <string name="credit_card_balance">Credit Card Balance</string>
+    <string name="apr">APR (Annual Percentage Rate)</string>
+    <string name="minimum_payment">Minimum Payment</string>
+    <string name="credit_card_payoff_description_html"><![CDATA[
+A credit card payoff calculator helps you understand how long it will take to pay off your credit card debt and how much interest you\'ll pay.<br/><br/>
+
+<b>How it works:</b> Enter your credit card balance, APR, and monthly payment. The calculator shows your payoff timeline, total interest, and how much you\'ll save by paying more than the minimum.<br/><br/>
+
+<b>For example</b>, if you have <b>%1$s5,000</b> in credit card debt at <b>18%%</b> APR and pay only the minimum (<b>%1$s100</b>), it could take <b>8+ years</b> to pay off with thousands in interest. Paying <b>%1$s200</b> monthly cuts that to <b>2.5 years</b>.
+    ]]></string>
+    <string name="credit_card_payoff_explain_html"><![CDATA[
+💳 Your credit card payoff plan:<br/><br/>
+
+<b>📊 Payoff Details:</b><br/>
+• <b>Credit Card Balance:</b> %1$s<br/>
+• <b>APR:</b> %2$s%%<br/>
+• <b>Monthly Payment:</b> %3$s<br/>
+• <b>Payoff Time:</b> %4$s months (%5$s years)<br/>
+• <b>Total Interest:</b> %6$s<br/>
+• <b>Total Paid:</b> %7$s<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+Paying <b>%3$s</b> monthly on your <b>%1$s</b> balance at <b>%2$s%%</b> APR will take <b>%4$s</b> months. You\'ll pay <b>%6$s</b> in interest, bringing your total to <b>%7$s</b>.<br/><br/>
+
+<b>✅ Tips to Pay Off Faster:</b><br/>
+• Pay more than the minimum whenever possible<br/>
+• Consider a balance transfer to a 0%% APR card<br/>
+• Use the debt avalanche method (highest APR first)<br/>
+• Stop using the card while paying it off<br/>
+• Even <b>%8$s</b> extra monthly saves <b>%9$s</b> in interest!
+    ]]></string>
+
+    <!-- Tax Calculator -->
+    <string name="tax_calculator">Tax Calculator</string>
+    <string name="estimated_tax">Estimated Tax</string>
+    <string name="tax_title">What is Tax Calculation?</string>
+    <string name="annual_income">Annual Income</string>
+    <string name="filing_status">Filing Status</string>
+    <string name="deductions">Deductions</string>
+    <string name="tax_withheld">Tax Withheld</string>
+    <string name="tax_description_html"><![CDATA[
+A tax calculator helps you estimate your income tax liability based on your income, filing status, and deductions. This helps you plan your finances and avoid surprises at tax time.<br/><br/>
+
+<b>How it works:</b> Enter your annual income, filing status (Single, Married, etc.), and deductions. The calculator estimates your tax liability using standard tax brackets and shows your effective tax rate.<br/><br/>
+
+<b>For example</b>, if you earn <b>%1$s75,000</b> annually as a single filer with <b>%1$s12,000</b> in deductions, your taxable income is <b>%1$s63,000</b>, resulting in approximately <b>%1$s9,500</b> in federal taxes.
+    ]]></string>
+    <string name="tax_explain_html"><![CDATA[
+📋 Your tax estimate:<br/><br/>
+
+<b>💰 Tax Details:</b><br/>
+• <b>Annual Income:</b> %1$s<br/>
+• <b>Filing Status:</b> %2$s<br/>
+• <b>Deductions:</b> %3$s<br/>
+• <b>Taxable Income:</b> %4$s<br/>
+• <b>Estimated Tax:</b> %5$s<br/>
+• <b>Tax Withheld:</b> %6$s<br/>
+• <b>Refund/Owed:</b> %7$s<br/>
+• <b>Effective Tax Rate:</b> %8$s%%<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+With <b>%1$s</b> income and <b>%3$s</b> deductions, your taxable income is <b>%4$s</b>. Your estimated tax is <b>%5$s</b>, giving you an effective tax rate of <b>%8$s%%</b>. You\'ve already had <b>%6$s</b> withheld, so you\'ll %9$s <b>%7$s</b>.<br/><br/>
+
+<b>✅ Tax Tips:</b><br/>
+• Maximize deductions and credits when possible<br/>
+• Consider contributing to retirement accounts to reduce taxable income<br/>
+• Adjust withholding if you consistently owe or get large refunds<br/>
+• Consult a tax professional for complex situations<br/>
+• Keep records of all deductions and expenses
+    ]]></string>
+    <string name="nav_home">Home</string>
+    <string name="nav_calculators">Calculators</string>
+    <string name="nav_planner">Planner</string>
+    <string name="nav_settings">Settings</string>
+    <string name="dashboard_title">Finance Tools</string>
+    <string name="dashboard_subtitle">Calculators • Planner • Goals</string>
+    <string name="this_month_plan">This Month Plan</string>
+    <string name="spent_vs_budget">Spent vs Budget</string>
+    <string name="spent_vs_budget_value">%1$s / %2$s</string>
+    <string name="savings_target_value">Savings target: %1$s</string>
+    <string name="bills_due_value">Bills due: %1$d</string>
+    <string name="bills_cleared">👍 Bills cleared</string>
+    <string name="plan_period_options">Plan period options</string>
+    <string name="plan_period_today">Today</string>
+    <string name="plan_period_yesterday">Yesterday</string>
+    <string name="plan_period_last_7_days">Last 7 Days</string>
+    <string name="plan_period_this_month">This Month</string>
+    <string name="today_plan">Today Plan</string>
+    <string name="yesterday_plan">Yesterday Plan</string>
+    <string name="last_7_days_plan">Last 7 Days Plan</string>
+    <string name="open_planner">Open Planner</string>
+    <string name="add_goal">Add Goal</string>
+    <string name="featured_calculators">Featured Calculators</string>
+    <string name="browse_categories">Browse Categories</string>
+    <string name="monthly_planner">Planner</string>
+    <string name="create_new_goal">Create New Goal</string>
+    <string name="planner_reminder_status_default">Reminder: ON - 8:00 PM</string>
+    <string name="planner_income">Income</string>
+    <string name="planner_planned">Target</string>
+    <string name="planner_spent">Spent</string>
+    <string name="planner_saved">Savings</string>
+    <string name="planner_sample_income">$5,000</string>
+    <string name="planner_sample_planned">$2,500</string>
+    <string name="planner_sample_spent">$1,200</string>
+    <string name="planner_sample_saved">$800</string>
+    <string name="planner_tab_budget">Summary</string>
+    <string name="planner_tab_history">History</string>
+    <string name="planner_tab_bills">Bills</string>
+    <string name="planner_tab_goals">Goals</string>
+    <string name="planner_tab_net_worth">Net Worth</string>
+    <string name="planner_net_worth">Net Worth</string>
+    <string name="planner_budget_headline_default">Budget overview</string>
+    <string name="planner_budget_allocation_title">Target Allocation</string>
+    <string name="planner_budget_month_insight_title">Month Insight</string>
+    <string name="planner_budget_trend_title">7-Day Spend Trend</string>
+    <string name="planner_budget_based_on_transactions">Based on your transactions.</string>
+    <string name="planner_top_expenses">Top Expenses</string>
+    <string name="planner_top_expenses_empty">No expense entries for this month yet.</string>
+    <string name="planner_spent_label">Spent:</string>
+    <string name="planner_quick_add_expense">+ Expense</string>
+    <string name="planner_quick_add_income">+ Income</string>
+    <string name="planner_quick_add_saving">+ Saving</string>
+    <string name="planner_other_expense">Other</string>
+    <string name="planner_expense_placeholder">No expense</string>
+    <string name="planner_streak_default">Streak: 0 days - Start saving today!</string>
+    <string name="planner_saved_today_no">Saved today: No</string>
+    <string name="planner_sample_goal_one">New Laptop</string>
+    <string name="planner_sample_goal_one_progress">$400 / $1,200</string>
+    <string name="planner_sample_goal_two">Vacation Fund</string>
+    <string name="planner_sample_goal_two_progress">$1,000 / $3,000</string>
+    <string name="planner_add_money">Add Money</string>
+    <string name="planner_add_transaction">Add Transaction</string>
+    <string name="planner_add_bill">Add Bill</string>
+    <string name="planner_edit_bill">Edit Bill</string>
+    <string name="planner_edit_goal">Edit Goal</string>
+    <string name="planner_mark_paid">Mark Paid</string>
+    <string name="planner_paid">Paid</string>
+    <string name="planner_bill_due_label">Due: %1$s</string>
+    <string name="planner_bill_repeat_label">Repeat: %1$s</string>
+    <string name="planner_bill_repeat_none">None</string>
+    <string name="planner_bill_repeat_weekly">Weekly</string>
+    <string name="planner_bill_repeat_monthly">Monthly</string>
+    <string name="planner_bill_filter_unpaid">Unpaid</string>
+    <string name="planner_bill_filter_paid">Paid</string>
+    <string name="planner_bill_filter_due_soon">Due Soon</string>
+    <string name="planner_bills_empty">No bills yet. Add one to track due payments.</string>
+    <string name="planner_bill_mark_paid_message">Mark %1$s as paid? This will add an expense transaction.</string>
+    <string name="planner_bill_delete_message">Delete %1$s?</string>
+    <string name="planner_recent_transactions">Recent Transactions</string>
+    <string name="planner_filter_all">All</string>
+    <string name="planner_filter_income">Income</string>
+    <string name="planner_filter_expense">Expense</string>
+    <string name="planner_filter_saving">Saving</string>
+    <string name="planner_goals_empty">No goals yet. Create one to start tracking.</string>
+    <string name="planner_transactions_empty">No transactions yet.</string>
+    <string name="planner_reminder_saved">Reminder schedule saved</string>
+    <string name="planner_exact_alarm_delayed">Exact alarm not allowed. Reminder may be delayed.</string>
+    <string name="planner_notification_permission_required">Notification permission is required for reminders</string>
+    <string name="planner_hint_goal_title">Goal title</string>
+    <string name="planner_hint_target_amount">Target amount</string>
+    <string name="planner_hint_goal_description">Notes (optional)</string>
+    <string name="planner_goal_target_date_optional">Target date (optional)</string>
+    <string name="planner_goal_target_date_selected">Target date: %1$s</string>
+    <string name="planner_create_goal">Create Goal</string>
+    <string name="planner_create_new_goal">Create a new goal</string>
+    <string name="planner_create">Create</string>
+    <string name="planner_hint_amount">Amount</string>
+    <string name="planner_date_format">Date: %1$s</string>
+    <string name="planner_select_target_date">Select target date</string>
+    <string name="planner_add_money_to_goal">Add Money to %1$s</string>
+    <string name="planner_add">Add</string>
+    <string name="planner_add_expense">Add Expense</string>
+    <string name="planner_add_income">Add Income</string>
+    <string name="planner_add_saving">Add Saving</string>
+    <string name="planner_goal_contribution_note">Goal contribution: %1$s</string>
+    <string name="planner_goal_left_amount">%1$s left</string>
+    <string name="planner_goal_saved_progress">%1$s / %2$s saved</string>
+    <string name="planner_hint_category">Category</string>
+    <string name="planner_hint_note">Note (required for expense/saving)</string>
+    <string name="planner_hint_bill_title">Bill title</string>
+    <string name="planner_hint_bill_amount">Bill amount</string>
+    <string name="planner_bill_due_date">Due date: %1$s</string>
+    <string name="planner_due_date_label">Due date</string>
+    <string name="planner_bill_due_date_inline">Due %1$s</string>
+    <string name="planner_pay_from">Pay from</string>
+    <string name="planner_bill_payment_note_default">%1$s payment</string>
+    <string name="planner_bill_recurring_next_due">Repeats %1$s, next due: %2$s</string>
+    <string name="planner_bill_mark_paid_done">%1$s marked as paid</string>
+    <string name="planner_add_bill_title">Add Bill</string>
+    <string name="planner_edit_goal_title">Edit Goal</string>
+    <string name="planner_edit_bill_title">Edit Bill</string>
+    <string name="planner_bill_repeat_hint">Repeat schedule</string>
+    <string name="planner_goal_none">No goal</string>
+    <string name="planner_source_calculator">calculator</string>
+    <string name="planner_prefilled_from">Prefilled from %1$s</string>
+    <string name="planner_delete_goal">Delete Goal</string>
+    <string name="planner_delete_goal_message">Delete %1$s?</string>
+    <string name="planner_delete">Delete</string>
+    <string name="planner_delete_goal_keep_transactions">Delete goal only (keep transactions)</string>
+    <string name="planner_delete_goal_with_transactions">Delete goal and linked transactions</string>
+    <string name="planner_delete_goal_reassign_transactions">Reassign linked transactions to another goal</string>
+    <string name="planner_delete_goal_options_message">This goal has %1$d linked transaction(s). Choose an action.</string>
+    <string name="planner_reassign_requires_goal">Create another goal first to reassign transactions.</string>
+    <string name="planner_reassign_transactions">Reassign Transactions</string>
+    <string name="planner_reassign">Reassign</string>
+    <string name="planner_delete_transaction">Delete Transaction</string>
+    <string name="planner_delete_transaction_message">Delete this transaction?</string>
+    <string name="planner_goal_days_left">%1$d days left</string>
+    <string name="planner_goal_days_overdue">%1$d days overdue</string>
+    <string name="planner_goal_due_today">Due today</string>
+    <string name="planner_goal_daily_suggestion">Save about %1$s per day to reach this goal.</string>
+    <string name="planner_last_7_days">Last 7 days</string>
+    <string name="planner_goals_sub_all">All Goals</string>
+    <string name="planner_goals_sub_streak">Streak</string>
+    <string name="planner_goals_sub_missed">Missed Days</string>
+    <string name="planner_goals_sub_calendar">History</string>
+    <string name="planner_goals_sub_tips">Tips</string>
+    <string name="planner_goal_detail_title">Goal Details</string>
+    <string name="planner_goal_detail_progress">%1$s / %2$s</string>
+    <string name="planner_goal_detail_target_date">Target date: %1$s</string>
+    <string name="planner_goal_detail_no_target_date">Target date: Not set</string>
+    <string name="planner_goal_detail_created_at">Created: %1$s</string>
+    <string name="planner_goal_detail_linked_savings">Linked savings: %1$d</string>
+    <string name="planner_goal_activity_title">Goal Activity</string>
+    <string name="planner_goal_activity_empty">No transactions linked to this goal yet.</string>
+    <string name="planner_bill_detail_title">Bill Details</string>
+    <string name="planner_bill_detail_unpaid">Unpaid</string>
+    <string name="planner_bill_detail_created_at">Created: %1$s</string>
+    <string name="planner_bill_activity_title">Bill Activity</string>
+    <string name="planner_bill_activity_empty">No payment transaction for this bill yet.</string>
+    <string name="planner_daily_reminder_settings">Daily reminder settings</string>
+    <string name="planner_enable_daily_reminders">Enable daily reminders</string>
+    <string name="planner_weekday_time">Weekday: %1$s</string>
+    <string name="planner_weekend_time">Weekend: %1$s</string>
+    <string name="planner_reminder">Reminder</string>
+    <string name="planner_save">Save</string>
+    <string name="planner_reminder_disabled">Reminder disabled</string>
+    <string name="planner_reminder_off">Reminder: OFF</string>
+    <string name="planner_reminder_on_weekday_weekend">Reminder: ON - Weekday %1$s / Weekend %2$s</string>
+    <string name="planner_reminder_on_skipped_today">%1$s | Reminder likely skipped today</string>
+    <string name="planner_streak_message_start">Start saving today!</string>
+    <string name="planner_streak_message_one">You saved today. Keep it going!</string>
+    <string name="planner_streak_message_continue_today">You saved yesterday. Add today to continue.</string>
+    <string name="planner_streak_message_week">Great start. Keep your streak alive!</string>
+    <string name="planner_streak_message_fire">You are on fire!</string>
+    <string name="planner_streak_message_consistent">Incredible consistency!</string>
+    <string name="planner_streak_format">Streak: %1$d days - %2$s</string>
+    <string name="planner_saved_today_yes">Saved today: Yes</string>
+    <string name="planner_notification_title">Finance360</string>
+    <string name="planner_notification_channel_name_default">Planner Reminders</string>
+    <string name="planner_notification_channel_name_high">Planner Urgent Reminders</string>
+    <string name="planner_notification_channel_description">Daily reminders to keep your saving streak.</string>
+    <string name="planner_action_add_saving">Add Saving</string>
+    <string name="planner_action_save_now">Save Now</string>
+    <string name="planner_action_start_saving">Start Saving</string>
+    <string name="planner_action_add_to_goal">Add to %1$s</string>
+    <string name="planner_action_view_goal">View Goal</string>
+    <string name="planner_action_view_planner">View Planner</string>
+    <string name="planner_action_remind_later">Remind Later</string>
+    <string name="planner_notification_default_saving_note">Saving reminder contribution</string>
+    <string name="planner_notification_streak_note">Streak protection saving</string>
+    <string name="planner_notification_comeback_note">Comeback saving</string>
+    <string name="planner_notification_daily_note">Daily saving nudge</string>
+    <string name="planner_reminder_start">Start your saving journey today!</string>
+    <string name="planner_reminder_keep_streak">Keep your %1$d day streak alive!</string>
+    <string name="planner_reminder_generic">Did you save today?</string>
+    <string name="planner_reminder_streak_protection">🔥 Don’t break your streak! You’re on a %1$d-day streak. Add even %2$s to keep it alive.</string>
+    <string name="planner_reminder_daily_nudge">💰 Did you save today? Small steps matter. Even %1$s counts.</string>
+    <string name="planner_reminder_daily_nudge_goal">💰 Did you save today? Your goals move faster with small steps. Even %1$s counts.</string>
+    <string name="planner_reminder_comeback">👋 Ready to restart? Your goals are waiting. Let’s save something small today.</string>
+    <string name="planner_reminder_goal_context">%1$s goal: %2$s left, %3$d day(s) remaining.</string>
+    <string name="planner_reminder_bill_due_today">Friendly reminder: %1$s is due today. You have this.</string>
+    <string name="planner_reminder_bill_due_tomorrow">Friendly reminder: %1$s is due tomorrow. You can get ahead today.</string>
+    <string name="planner_reminder_bill_overdue">Friendly reminder: %1$s is %2$d day(s) overdue. Let’s clear it step by step.</string>
+    <string name="reminder_center_title">Reminder Center</string>
+    <string name="reminder_section_saving">Saving Reminders</string>
+    <string name="reminder_section_saving_desc">Get daily habit nudges and streak protection at your chosen time.</string>
+    <string name="reminder_time_label">Reminder Time</string>
+    <string name="reminder_weekday_time_label">Weekday Time</string>
+    <string name="reminder_weekend_time_label">Weekend Time</string>
+    <string name="reminder_section_goal">Goal Reminders</string>
+    <string name="reminder_section_goal_desc">Stay motivated with deadline-aware reminders for active goals.</string>
+    <string name="reminder_section_bills">Bills Due</string>
+    <string name="reminder_section_bills_desc">Get friendly reminders for bills due today and tomorrow.</string>
+    <string name="search_hint">Search calculators, goals, bills, transactions</string>
+    <string name="search_scope_all">All</string>
+    <string name="search_scope_calculators">Calculators</string>
+    <string name="search_scope_planner">Planner</string>
+    <string name="search_quick_actions">Quick Actions</string>
+    <string name="search_recent_calculators">Recent Calculators</string>
+    <string name="search_section_calculators">Calculators</string>
+    <string name="search_section_goals">Goals</string>
+    <string name="search_section_bills">Bills</string>
+    <string name="search_section_transactions">Transactions</string>
+    <string name="search_action_add_saving">Add Saving</string>
+    <string name="search_action_open_planner">Open Planner</string>
+    <string name="search_action_create_goal">Create Goal</string>
+    <string name="search_action_add_saving_subtitle">Start a saving entry quickly</string>
+    <string name="search_action_open_planner_subtitle">Jump to planner dashboard</string>
+    <string name="search_action_create_goal_subtitle">Open goals tab to create a goal</string>
+    <string name="search_no_results">No results found</string>
+    <string name="settings_title">App Settings</string>
+    <string name="settings_subtitle">Preferences and app options</string>
+    <string name="action_change_country">Change Country</string>
+    <string name="settings_select_country_subtitle">Select your country</string>
+    <string name="action_change_currency">Change Currency</string>
+    <string name="action_share_app">Share App</string>
+    <string name="action_rate_app">Rate This App</string>
+    <string name="action_privacy_policy">Privacy Policy</string>
+    <string name="action_terms">Terms of Service</string>
+    <string name="action_about">About</string>
+    <string name="about_us_title">About Us</string>
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="terms_conditions_title">Terms &amp; Conditions</string>
+    <string name="about_us_body_html"><![CDATA[
+<b>Finance360</b> is built to make personal finance planning simple, clear, and practical.<br/><br/>
+Our app combines financial calculators, a planner, and goal tracking so users can make informed decisions and stay consistent with their money habits.<br/><br/>
+<b>What we focus on:</b><br/>
+• Useful calculators with local context<br/>
+• Country-aware formatting and terminology<br/>
+• Goal-based planning and reminders<br/>
+• Fast offline-first experience<br/><br/>
+If you have feedback, we continuously improve based on user needs.
+]]></string>
+    <string name="privacy_policy_body_html"><![CDATA[
+This Privacy Policy explains how Finance360 handles your information.<br/><br/>
+<b>1. Data Storage</b><br/>
+Most planner and calculator data is stored locally on your device.<br/><br/>
+<b>2. Personal Information</b><br/>
+We do not require account signup for core usage. We do not intentionally collect sensitive personal financial account credentials.<br/><br/>
+<b>3. Ads &amp; Analytics</b><br/>
+The app may use advertising or analytics SDKs that can process limited device-level data according to their own policies.<br/><br/>
+<b>4. Permissions</b><br/>
+Permissions (for example notifications) are used only for related app features such as reminders.<br/><br/>
+<b>5. Contact</b><br/>
+For policy questions, contact the app publisher through the store listing.
+]]></string>
+    <string name="terms_conditions_body_html"><![CDATA[
+By using Finance360, you agree to these terms.<br/><br/>
+<b>1. Informational Use</b><br/>
+Calculator and planner outputs are informational only and not legal, tax, or financial advice.<br/><br/>
+<b>2. User Responsibility</b><br/>
+You are responsible for verifying figures and decisions before acting on them.<br/><br/>
+<b>3. No Warranty</b><br/>
+The app is provided "as is" without guarantees of uninterrupted availability or absolute accuracy.<br/><br/>
+<b>4. Limitation of Liability</b><br/>
+The publisher is not liable for losses resulting from use of app outputs.<br/><br/>
+<b>5. Changes</b><br/>
+These terms may be updated in future app versions.
+]]></string>
+    <string name="country_changed_format">Country changed to %1$s (%2$s)</string>
+    <string name="calc_sub_mortgage">Monthly mortgage and total interest</string>
+    <string name="calc_sub_auto_loan">Car loan monthly payments</string>
+    <string name="calc_sub_amortization">Month-by-month repayment schedule</string>
+    <string name="calc_sub_loan_comparison">Compare two loans side by side</string>
+    <string name="calc_sub_interest_only">Interest-only versus full repayment</string>
+    <string name="calc_sub_loan_affordability">How much loan you can afford</string>
+    <string name="calc_sub_car_lease">Estimate lease cost</string>
+    <string name="calc_sub_refinance">Refinance savings estimate</string>
+    <string name="calc_sub_simple_interest">Principal multiplied by rate and time</string>
+    <string name="calc_sub_compound_interest">Growth with compounding</string>
+    <string name="calc_sub_retirement">Plan long-term retirement or pension savings</string>
+    <string name="calc_sub_emergency_fund">Target emergency savings</string>
+    <string name="calc_sub_debt_payoff">Plan debt repayment</string>
+    <string name="calc_sub_credit_card_payoff">Credit card debt timeline</string>
+    <string name="calc_sub_budget">Income versus spending plan</string>
+    <string name="calc_sub_tax">Estimated tax and refund</string>
+    <string name="calc_sub_present_value">Future money in today value</string>
+    <string name="calc_sub_npv">Project profitability</string>
+    <string name="calc_sub_roi">Return on investment</string>
+    <string name="calc_sub_net_worth">Assets minus liabilities</string>
+    <string name="calc_sub_rental_yield">Property income yield</string>
+    <string name="calc_sub_bond_yield">Bond return estimate</string>
+    <string name="calculator_list_title">All Calculators</string>
+    <string name="calculator_list_subtitle">Tap any calculator to open it.</string>
+    <string name="ad_badge">Ad</string>
+    <string name="ad_cta_default">Learn more</string>
+</resources>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8sdp">
+
+        <!-- Row 1: IRAs + 401(k)s -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- IRAs -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/iras"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency20"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etIras"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 401(k)s -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ks"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency21"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etKs"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 2: Keogh + Pension -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Keogh -->
+            <LinearLayout
+                android:id="@+id/linearCouponrate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/keogh"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency22"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etKeogh"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Pension -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pension"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency23"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etPension"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 3: Other (Full Width - 5 inputs = odd, last one full) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Other -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency24"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etRetirementOther"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

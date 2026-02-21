@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:background="@color/calc_primary_teal"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/year"
+            style="@style/headerStatistics" />
+
+        <TextView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/principal"
+            style="@style/headerStatistics" />
+
+        <TextView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/interest"
+            style="@style/headerStatistics" />
+
+        <TextView
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/total_paid"
+            style="@style/headerStatistics" />
+
+        <TextView
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/balance"
+            style="@style/headerStatistics" />
+    </LinearLayout>
+
+    <View
+        android:background="@color/colorGray"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp" />
+</LinearLayout>

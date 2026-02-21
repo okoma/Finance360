@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8sdp">
+
+        <!-- Row 1: Cash + Savings Account -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Cash -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cash"
+                    android:drawableStart="@drawable/money_recive"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency1"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etCash"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Savings Account -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/saving"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency2"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etSavingsAccount"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 2: Checking Account + Life Insurance -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Checking Account -->
+            <LinearLayout
+                android:id="@+id/linearCouponrate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checking"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency3"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etCheckingAccount"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Life Insurance -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/life"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency4"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etLifeInsurance"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 3: Other (Full Width - 5 inputs = odd, last one full) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Other -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency36"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etLiquidOther"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

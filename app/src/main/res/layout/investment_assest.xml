@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8sdp">
+
+        <!-- Row 1: Real Estate + Term Deposit -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Real Estate -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/realestate"
+                    android:drawableStart="@drawable/car"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency29"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etRealEstate"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Term Deposit -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/termdeposit"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency30"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etDeposit"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 2: Stocks + Bonds -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Stocks -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stock"
+                    android:drawableStart="@drawable/trend_up"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency31"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etStocks"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Bonds -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bonds"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency32"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etBonds"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 3: Mutual Funds + Business -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Mutual Funds -->
+            <LinearLayout
+                android:id="@+id/linearCouponrate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mutual"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency33"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etMutualFunds"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Business -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_4sdp">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/business"
+                    android:drawableStart="@drawable/interest_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency34"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etBusiness"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 4: Other (Full Width - 7 inputs = odd, last one full) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_8sdp">
+
+            <!-- Other -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/CalcTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:drawableStart="@drawable/dollar_circle"
+                    android:drawablePadding="5dp"
+                    android:paddingBottom="2dp"
+                    android:gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_calc_edittext">
+
+                    <TextView
+                        android:id="@+id/NetWorthCurrency35"
+                        style="@style/CalcCurrencyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/dollar" />
+
+                    <EditText
+                        android:id="@+id/etInvestmentOther"
+                        style="@style/CalcEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:maxLength="7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

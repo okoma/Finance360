@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/llMain"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtMonth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="JAN 2019"
+            android:singleLine="true"
+            android:layout_weight="1"
+            style="@style/header" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtPrincipal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="$100"
+            android:singleLine="true"
+            android:layout_weight="1"
+            style="@style/header" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtInterest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="$15.5"
+            android:singleLine="true"
+            android:layout_weight="1"
+            style="@style/header" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtBalance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="$13984.5"
+            android:singleLine="true"
+            android:layout_weight="1"
+            style="@style/header" />
+    </LinearLayout>
+
+    <View
+        android:background="@color/colorGray"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp" />
+</LinearLayout>

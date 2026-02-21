@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_plan_today"
+        android:title="@string/plan_period_today" />
+    <item
+        android:id="@+id/action_plan_yesterday"
+        android:title="@string/plan_period_yesterday" />
+    <item
+        android:id="@+id/action_plan_last_7_days"
+        android:title="@string/plan_period_last_7_days" />
+    <item
+        android:id="@+id/action_plan_month"
+        android:title="@string/plan_period_this_month" />
+</menu>

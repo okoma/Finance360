@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
+    android:orientation="vertical"
+>
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Liquid Assets Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/liquidAssests"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Header -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/liquid"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/lTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/drops"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <ImageView
+                            android:id="@+id/drops"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_down_black"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@android:color/white" />
+                    </RelativeLayout>
+
+                    <!-- Expandable Content -->
+                    <LinearLayout
+                        android:id="@+id/linearLiquid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:padding="@dimen/_8sdp">
+
+                        <include layout="@layout/liquid_assest" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Investment Assets Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/investmentAssests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/invest"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/totalInvest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/drop1"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <ImageView
+                            android:id="@+id/drop1"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_down_black"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@android:color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearInvestment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:padding="@dimen/_8sdp">
+
+                        <include layout="@layout/investment_assest" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Retirement Assets Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/retirementAssests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/retire"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/totalRetire"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/drop2"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <ImageView
+                            android:id="@+id/drop2"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_down_black"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@android:color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearRetirement"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:padding="@dimen/_8sdp">
+
+                        <include layout="@layout/retirement_assest" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Personal Assets Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/personalAssests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/personal"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/totalPersonalAssest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/drop3"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <ImageView
+                            android:id="@+id/drop3"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_down_black"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@android:color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearPersonal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:padding="@dimen/_8sdp">
+
+                        <include layout="@layout/personal_assest" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Short Term Liabilities Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/shortTerm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/shortterm"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/totalShortTermLiabilities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/drop4"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <ImageView
+                            android:id="@+id/drop4"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_down_black"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@android:color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearShortTerm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:padding="@dimen/_8sdp">
+
+                        <include layout="@layout/short_term" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Long Term Liabilities Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/longTerm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/longterm"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/totalLongTermLiabilities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/drop5"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <ImageView
+                            android:id="@+id/drop5"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_down_black"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@android:color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLongTerm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:padding="@dimen/_8sdp">
+
+                        <include layout="@layout/long_term" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Result Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/llResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/calc_card_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="12dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/result"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <!-- Net Worth (Centered, Larger) -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/bg_calc_result"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/netwrth"
+                                android:textColor="@color/calc_text_secondary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/txtNetWorth"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/calc_text_primary"
+                                android:textSize="20sp"
+                                android:fontFamily="sans-serif-medium" />
+                        </LinearLayout>
+
+                        <!-- Total Assets + Total Liabilities Row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2"
+                            android:gravity="center_horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/bg_calc_result"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/totalassest"
+                                    android:textColor="@color/calc_text_secondary"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/txtTotalAssest"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/calc_text_primary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/bg_calc_result"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/totalliabilities"
+                                    android:textColor="@color/calc_text_secondary"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/txtTotalLiabilities"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/calc_text_primary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Pie Charts -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/graphlayot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/assets"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/_8sdp" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/piechartAssets"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp"
+                        android:layout_marginBottom="@dimen/_16sdp" />
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/liabilities"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/_8sdp" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/piechartLiabilities"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Explanation Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/networthExplanationCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/calc_card_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                android:visibility="gone"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explanation"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/business_person"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="2dp"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/networthExplanation"
+                        style="@style/CalcTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Description Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/networth_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/knowledge"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="2dp"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/networthText"
+                        style="@style/CalcTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:id="@+id/llButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_8sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingRight="@dimen/_8sdp">
+
+        <Button
+            android:id="@+id/btnShare"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/share_result"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnAddToPlanner"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/add_to_planner"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnCalculate"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/calculate" />
+    </LinearLayout>
+</LinearLayout>

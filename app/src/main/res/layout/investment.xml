@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- Simple Interest Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linSimple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/simple_interest"
+                            android:contentDescription="Simple Interest Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/simple_interest_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Calculate interest earned using simple formula"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Net Worth Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linNetWorth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/net_worth"
+                            android:contentDescription="Net Worth Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/net_worth_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Analyze assets and liabilities for net worth"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Rental Yield Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linRentalYield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/rental_yield"
+                            android:contentDescription="Rental Yield Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rental_yield_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Estimate ROI from rental properties"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Present Value Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linPresentValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/present_value"
+                            android:contentDescription="Present Value Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/present_value_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Find today's worth of future money"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- NPV Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linNpv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/npv"
+                            android:contentDescription="NPV Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/npv_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Evaluate net value of project cash flows"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- ROI Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linRoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/return_on_investment"
+                            android:contentDescription="ROI Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/roi_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Calculate return on investment percentage"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Compound Interest Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linCompound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/compound_interest"
+                            android:contentDescription="Compound Interest Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/compound_interest_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Calculate investment growth over time"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Bond Yield Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linBondYield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/bond_yield"
+                            android:contentDescription="Bond Yield Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bond_yield_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Assess return from bond investments"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Retirement Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linRetirement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/business_person"
+                            android:contentDescription="Retirement Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/retirement_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Plan your retirement savings strategy"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Emergency Fund Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linEmergencyFund"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/money_recive"
+                            android:contentDescription="Emergency Fund Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/emergency_fund_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Calculate your emergency savings goal"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Debt Payoff Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linDebtPayoff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/money_send"
+                            android:contentDescription="Debt Payoff Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/debt_payoff_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Create a plan to pay off your debts"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Budget Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/dollar_circle"
+                            android:contentDescription="Budget Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/budget_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Track income and expenses effectively"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Credit Card Payoff Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linCreditCardPayoff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/interest_circle"
+                            android:contentDescription="Credit Card Payoff Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/credit_card_payoff_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Plan to eliminate credit card debt"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Tax Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linTax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_percentage"
+                            android:contentDescription="Tax Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tax_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Estimate your tax liability"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+</LinearLayout>

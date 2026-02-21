@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- Mortgage Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linMortgage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Icon Background -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/mortgage"
+                            android:contentDescription="Mortgage Icon" />
+                    </FrameLayout>
+
+                    <!-- Content -->
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mortgage_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Calculate monthly mortgage payments"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Auto Loan Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linAutoLoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/auto_loan"
+                            android:contentDescription="Auto Loan Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/auto_loan_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Estimate auto loan payments easily"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Amortization Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linAmortization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/amortization"
+                            android:contentDescription="Amortization Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/amortization_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Visualize loan payoff over time"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Loan Comparison Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linLoanComparison"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/loan_comparison"
+                            android:contentDescription="Comparison Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/loan_comparison_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Compare two loans side by side"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Interest Only Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linInterestOnly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/interest_only"
+                            android:contentDescription="Interest Only Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/interest_only_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Understand interest-only impacts"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Refinance Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linRefinance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/refinance"
+                            android:contentDescription="Refinance Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/refinance_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Evaluate refinancing savings"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Loan Affordability Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linLoanAffordability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/loan_affordability"
+                            android:contentDescription="Affordability Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/loan_affordability_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Calculate affordable loan amount"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    <!-- Car Lease Calculator - full card -->
+    <LinearLayout
+        android:id="@+id/linCarLease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/gradient_light">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/car_lease"
+                            android:contentDescription="Car Lease Icon" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/car_lease_calculator"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Estimate monthly lease payments"
+                            android:textColor="@color/calc_desc"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:minHeight="40dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+</LinearLayout>

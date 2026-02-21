@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
+>
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llButton"
+        android:layout_below="@+id/toolBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Input Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <!-- Row 1: Annual Income -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                        <TextView
+                            style="@style/CalcTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/annual_income"
+                            android:drawableStart="@drawable/money_recive"
+                            android:drawablePadding="5dp"
+                            android:paddingBottom="2dp"
+                            android:gravity="center_vertical" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bg_calc_edittext">
+
+                            <TextView
+                                android:id="@+id/txtCurrencySymbolAnnualIncome"
+                                style="@style/CalcCurrencyText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="8dp"
+                                android:text="@string/dollar" />
+
+                            <EditText
+                                android:id="@+id/etAnnualIncome"
+                                style="@style/CalcEditText"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Row 2: Filing Status + Deductions -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_8sdp">
+
+                        <!-- Filing Status -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="@dimen/_4sdp">
+
+                            <TextView
+                                style="@style/CalcTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/filing_status"
+                                android:drawableStart="@drawable/business_person"
+                                android:drawablePadding="5dp"
+                                android:paddingBottom="2dp"
+                                android:gravity="center_vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_calc_edittext">
+
+                                <Spinner
+                                    android:id="@+id/spFilingStatus"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="48dp"
+                                    android:padding="@dimen/_4sdp"
+                                    android:popupBackground="@color/calc_card_white" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Deductions -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_4sdp">
+
+                            <TextView
+                                style="@style/CalcTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deductions"
+                                android:drawableStart="@drawable/money_send"
+                                android:drawablePadding="5dp"
+                                android:paddingBottom="2dp"
+                                android:gravity="center_vertical" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_calc_edittext">
+
+                                <TextView
+                                    android:id="@+id/txtCurrencySymbolDeductions"
+                                    style="@style/CalcCurrencyText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingHorizontal="8dp"
+                                    android:text="@string/dollar" />
+
+                                <EditText
+                                    android:id="@+id/etDeductions"
+                                    style="@style/CalcEditText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Row 3: Tax Withheld -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/CalcTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tax_withheld"
+                            android:drawableStart="@drawable/money_recive"
+                            android:drawablePadding="5dp"
+                            android:paddingBottom="2dp"
+                            android:gravity="center_vertical" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bg_calc_edittext">
+
+                            <TextView
+                                android:id="@+id/txtCurrencySymbolTaxWithheld"
+                                style="@style/CalcCurrencyText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:gravity="center_vertical"
+                                android:paddingHorizontal="8dp"
+                                android:text="@string/dollar" />
+
+                            <EditText
+                                android:id="@+id/etTaxWithheld"
+                                style="@style/CalcEditText"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Result Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/llResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/calc_card_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_header"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="12dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/result"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/bg_calc_result"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Taxable Income"
+                                    android:textColor="@color/calc_text_secondary"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/txtTaxableIncome"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/calc_text_primary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/bg_calc_result"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Estimated Tax"
+                                    android:textColor="@color/calc_text_secondary"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/txtEstimatedTax"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/calc_text_primary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/bg_calc_result"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Refund/Owed"
+                                    android:textColor="@color/calc_text_secondary"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/txtRefundOwed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/calc_text_primary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="4dp"
+                                android:background="@drawable/bg_calc_result"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Effective Tax Rate"
+                                    android:textColor="@color/calc_text_secondary"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/txtEffectiveTaxRate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/calc_text_primary"
+                                    android:textSize="18sp"
+                                    android:fontFamily="sans-serif-medium" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Explanation Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/taxExplanationCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/calc_card_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                android:visibility="gone"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explanation"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/business_person"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="2dp"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/taxExplanation"
+                        style="@style/CalcTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Description Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/calc_card_white"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/CalcTextTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tax_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/knowledge"
+                        android:drawablePadding="5dp"
+                        android:paddingBottom="2dp"
+                        android:gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/taxText"
+                        style="@style/CalcTextDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/llButton"
+        android:background="@color/colorWhite"
+        android:paddingLeft="@dimen/_8sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingRight="@dimen/_8sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/banner1">
+
+        <Button
+            android:id="@+id/btnShare"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/share_result"
+            android:visibility="gone" />
+
+                <Button
+            android:id="@+id/btnAddToPlanner"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/add_to_planner"
+            android:visibility="gone" />
+
+<Button
+            android:id="@+id/btnCalculate"
+            style="@style/CalcButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_calc_button"
+            android:text="@string/calculate" />
+    </LinearLayout>
+
+    <!-- Banner -->
+    <RelativeLayout
+        android:id="@+id/banner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center" />
+
+    </RelativeLayout>
+</RelativeLayout>

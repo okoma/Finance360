@@ -1,0 +1,165 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorWhite</item>
+        <item name="colorPrimaryDark">@color/colorWhite</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/colorWhite</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <style name="CustomBottomSheetDialogTheme2" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle1</item>
+    </style>
+    <style name="CustomBottomSheetStyle1" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="behavior_peekHeight">@dimen/_600sdp</item>
+    </style>
+
+    <style name="PlannerMaterial3BottomSheetDialog" parent="@style/Theme.Material3.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/PlannerMaterial3BottomSheetStyle</item>
+    </style>
+
+    <style name="PlannerMaterial3BottomSheetStyle" parent="@style/Widget.Material3.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+    <style name="amount" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorDark</item>
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+    <style name="button" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="editTax" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorDarkGray</item>
+        <item name="android:background">@null</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="header" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorDark</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="headerStatistics" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="labelText" parent="@style/AppTheme">
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/colorDark</item>
+        <item name="android:background">@drawable/bg_text_view</item>
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+    <style name="layoutEditText" parent="@style/AppTheme">
+        <item name="android:background">@drawable/bg_edit_text</item>
+    </style>
+    <style name="radioText" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/radio_selector</item>
+        <item name="android:button">@null</item>
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+    <style name="result" parent="@style/AppTheme">
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="resultLayoutMain" parent="@style/AppTheme">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+    <style name="resultText" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorCyan</item>
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+    <style name="resultTextView" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorDark</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="spinerText" parent="@style/AppTheme">
+        <item name="android:textColor">@color/calc_primary_teal</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="spinner" parent="@style/AppTheme">
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+    <style name="textView" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorDark</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+    <style name="title" parent="@style/AppTheme">
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/semi_bold</item>
+    </style>
+    <style name="titleText" parent="@style/AppTheme">
+        <item name="android:textColor">@color/colorDark</item>
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+    <style name="toolbar" parent="@style/AppTheme">
+        <item name="android:textColorSecondary">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/semi_bold</item>
+    </style>
+
+    <!-- Base Text Style -->
+    <style name="CalcTextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/calc_text_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="CalcTextTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/calc_text_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="CalcTextDesc">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/calc_desc</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Currency Symbol Text -->
+    <style name="CalcCurrencyText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/calc_text_secondary</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- EditText Style -->
+    <style name="CalcEditText">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/calc_text_primary</item>
+        <item name="android:inputType">numberDecimal</item>
+    </style>
+
+    <!-- Card View Style -->
+    <style name="CalcCardView">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:background">@color/calc_card_white</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="CalcButton">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+</resources>

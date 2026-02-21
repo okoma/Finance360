@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tag_edge_to_edge_initial_padding" type="id" />
+    <item name="calculatorNativeAd300x250Container" type="id" />
+</resources>
