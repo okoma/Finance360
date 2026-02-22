@@ -10,7 +10,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.i2medier.financialpro.R
 import com.i2medier.financialpro.planner.data.local.GoalEntity
+import com.i2medier.financialpro.planner.domain.daysBetweenUtc
+import com.i2medier.financialpro.planner.domain.toUtcMidnight
 import com.i2medier.financialpro.util.CurrencyManager
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 data class GoalProgressItem(
     val goal: GoalEntity,
@@ -32,7 +37,10 @@ class GoalProgressAdapter(
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tvGoalTitle)
         private val description: TextView = itemView.findViewById(R.id.tvGoalDescription)
+        private val dueDate: TextView = itemView.findViewById(R.id.tvGoalCreatedAt)
         private val progressText: TextView = itemView.findViewById(R.id.tvGoalProgress)
+        private val daysLeft: TextView = itemView.findViewById(R.id.tvGoalDaysLeft)
+        private val dailySuggestion: TextView = itemView.findViewById(R.id.tvGoalDailySuggestion)
         private val progressBar: ProgressBar = itemView.findViewById(R.id.progressGoal)
         private val btnAdd: TextView = itemView.findViewById(R.id.btnAddMoney)
 
@@ -41,16 +49,75 @@ class GoalProgressAdapter(
             val saved = item.savedAmount.coerceAtLeast(0.0)
             val ratio = if (target <= 0.0) 0.0 else (saved / target).coerceIn(0.0, 1.0)
             title.text = item.goal.title
-            description.text = item.goal.description.orEmpty()
+            val note = item.goal.description?.trim().orEmpty()
+            description.text = note
+            description.visibility = if (note.isBlank()) View.GONE else View.VISIBLE
+            bindDueDate(item.goal)
+            bindDeadlineInsights(item.goal, saved, target)
             progressText.text = "Saved: ${CurrencyManager.format(itemView.context, saved)} / ${CurrencyManager.format(itemView.context, target)}"
             progressBar.progress = (ratio * 100).toInt()
             itemView.setOnClickListener { onGoalClicked(item.goal) }
             btnAdd.setOnClickListener { onAddMoneyClicked(item.goal) }
+        }
+
+        private fun bindDueDate(goal: GoalEntity) {
+            val targetDate = goal.targetDate
+            if (targetDate == null) {
+                dueDate.visibility = View.GONE
+                return
+            }
+            dueDate.visibility = View.VISIBLE
+            dueDate.text = DUE_DATE_FORMAT.format(Date(targetDate))
+        }
+
+        private fun bindDeadlineInsights(goal: GoalEntity, savedAmount: Double, targetAmount: Double) {
+            val targetDate = goal.targetDate
+            if (targetDate == null) {
+                daysLeft.visibility = View.GONE
+                dailySuggestion.visibility = View.GONE
+                return
+            }
+
+            val todayUtc = System.currentTimeMillis().toUtcMidnight()
+            val targetUtc = targetDate.toUtcMidnight()
+            val remaining = (targetAmount - savedAmount).coerceAtLeast(0.0)
+            val totalDaysLeft = daysBetweenUtc(todayUtc, targetUtc)
+
+            when {
+                totalDaysLeft < 0 -> {
+                    daysLeft.text = itemView.context.getString(R.string.planner_goal_days_overdue, -totalDaysLeft)
+                    daysLeft.visibility = View.VISIBLE
+                    dailySuggestion.visibility = View.GONE
+                }
+                totalDaysLeft == 0 -> {
+                    daysLeft.text = itemView.context.getString(R.string.planner_goal_due_today)
+                    daysLeft.visibility = View.VISIBLE
+                    dailySuggestion.visibility = View.GONE
+                }
+                else -> {
+                    daysLeft.text = itemView.context.getString(R.string.planner_goal_days_left, totalDaysLeft)
+                    daysLeft.visibility = View.VISIBLE
+                    if (remaining > 0.0) {
+                        val suggestedDaily = remaining / totalDaysLeft.toDouble()
+                        dailySuggestion.text = itemView.context.getString(
+                            R.string.planner_goal_daily_suggestion,
+                            CurrencyManager.format(itemView.context, suggestedDaily)
+                        )
+                        dailySuggestion.visibility = View.VISIBLE
+                    } else {
+                        dailySuggestion.visibility = View.GONE
+                    }
+                }
+            }
         }
     }
 
     private object Diff : DiffUtil.ItemCallback<GoalProgressItem>() {
         override fun areItemsTheSame(oldItem: GoalProgressItem, newItem: GoalProgressItem): Boolean = oldItem.goal.id == newItem.goal.id
         override fun areContentsTheSame(oldItem: GoalProgressItem, newItem: GoalProgressItem): Boolean = oldItem == newItem
+    }
+
+    private companion object {
+        val DUE_DATE_FORMAT = SimpleDateFormat("dd MMM", Locale.getDefault())
     }
 }
