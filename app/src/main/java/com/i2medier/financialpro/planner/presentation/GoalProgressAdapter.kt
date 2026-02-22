@@ -1,13 +1,16 @@
 package com.i2medier.financialpro.planner.presentation
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.i2medier.financialpro.AdAdmob
 import com.i2medier.financialpro.R
 import com.i2medier.financialpro.planner.data.local.GoalEntity
 import com.i2medier.financialpro.planner.domain.daysBetweenUtc
@@ -24,17 +27,52 @@ data class GoalProgressItem(
 
 class GoalProgressAdapter(
     private val onGoalClicked: (GoalEntity) -> Unit,
-    private val onAddMoneyClicked: (GoalEntity) -> Unit
-) : ListAdapter<GoalProgressItem, GoalProgressAdapter.Holder>(Diff) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_goal_progress, parent, false)
-        return Holder(view)
+    private val onAddMoneyClicked: (GoalEntity) -> Unit,
+    private val activity: Activity
+) : ListAdapter<GoalProgressAdapter.Item, RecyclerView.ViewHolder>(Diff) {
+
+    sealed class Item {
+        data class Goal(val item: GoalProgressItem) : Item()
+        data class Ad(val id: String) : Item()
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) = holder.bind(getItem(position))
+    private companion object {
+        private const val VIEW_TYPE_GOAL = 0
+        private const val VIEW_TYPE_AD = 1
+        val DUE_DATE_FORMAT = SimpleDateFormat("dd MMM", Locale.getDefault())
+    }
 
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    override fun getItemViewType(position: Int): Int {
+        return when (getItem(position)) {
+            is Item.Goal -> VIEW_TYPE_GOAL
+            is Item.Ad -> VIEW_TYPE_AD
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            VIEW_TYPE_GOAL -> {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_goal_progress, parent, false)
+                GoalHolder(view)
+            }
+            VIEW_TYPE_AD -> {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_native_ad_inline, parent, false)
+                AdHolder(view)
+            }
+            else -> throw IllegalArgumentException("Unknown view type: $viewType")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (val item = getItem(position)) {
+            is Item.Goal -> (holder as GoalHolder).bind(item.item)
+            is Item.Ad -> (holder as AdHolder).bind()
+        }
+    }
+
+    inner class GoalHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tvGoalTitle)
         private val description: TextView = itemView.findViewById(R.id.tvGoalDescription)
         private val dueDate: TextView = itemView.findViewById(R.id.tvGoalCreatedAt)
@@ -112,12 +150,25 @@ class GoalProgressAdapter(
         }
     }
 
-    private object Diff : DiffUtil.ItemCallback<GoalProgressItem>() {
-        override fun areItemsTheSame(oldItem: GoalProgressItem, newItem: GoalProgressItem): Boolean = oldItem.goal.id == newItem.goal.id
-        override fun areContentsTheSame(oldItem: GoalProgressItem, newItem: GoalProgressItem): Boolean = oldItem == newItem
+    inner class AdHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val adContainer: FrameLayout = itemView.findViewById(R.id.adContainer)
+
+        fun bind() {
+            AdAdmob(activity).NativeAd(adContainer, activity)
+        }
     }
 
-    private companion object {
-        val DUE_DATE_FORMAT = SimpleDateFormat("dd MMM", Locale.getDefault())
+    private object Diff : DiffUtil.ItemCallback<Item>() {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return when {
+                oldItem is Item.Goal && newItem is Item.Goal -> oldItem.item.goal.id == newItem.item.goal.id
+                oldItem is Item.Ad && newItem is Item.Ad -> oldItem.id == newItem.id
+                else -> false
+            }
+        }
+
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem == newItem
+        }
     }
 }

@@ -8,4 +8,25 @@
     <string name="include_employer_match">Include Employer Pension Match</string>
     <string name="employer_match_description">Include employer pension and RRSP-style matching contributions.</string>
     <string name="calc_sub_retirement">Plan retirement income</string>
+    
+    <!-- Mortgage Calculator -->
+    <string name="mortgage_calculator">Mortgage Calculator</string>
+    <string name="property_tax">Property Tax</string>
+    <string name="pmi">CMHC Mortgage Insurance</string>
+    <string name="property_tax_description">Estimate annual municipal property tax</string>
+    <string name="pmi_description">CMHC insurance required when down payment is less than 20%%</string>
+    
+    <!-- Tax Calculator -->
+    <string name="tax_calculator">Income Tax Calculator</string>
+    <string name="deductions">Tax Deductions &amp; Credits</string>
+    <string name="filing_status">Filing Status</string>
+    <string name="tax_withheld">Tax Withheld (Federal + Provincial)</string>
+    
+    <!-- Budget Calculator -->
+    <string name="budget_calculator">Budget Calculator</string>
+    <string name="utilities">Utilities (Hydro, Gas, Water)</string>
+    <string name="transportation">Transportation</string>
+    
+    <!-- Car Lease -->
+    <string name="car_lease_calculator">Vehicle Lease Calculator</string>
 </resources>

@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import android.content.res.ColorStateList
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.i2medier.financialpro.R
@@ -113,20 +114,20 @@ class NetWorthOverviewActivity : AppCompatActivity() {
         val floatingChangeIcon = findViewById<ImageView>(R.id.ivFloatingChangeIcon)
         if (change >= 0.0) {
             changeIcon.setImageResource(R.drawable.nw_ic_trending_up)
-            changeIcon.setColorFilter(Color.parseColor("#10B981"))
+            changeIcon.imageTintList = ColorStateList.valueOf(Color.parseColor("#10B981"))
             changeText.text = "Up ${formatMoney(change)} this month"
             floatingChangeAmount.text = "+${formatMoney(change)}"
             floatingChangeAmount.setTextColor(Color.parseColor("#10B981"))
             floatingChangeIcon.setImageResource(R.drawable.nw_ic_trending_up)
-            floatingChangeIcon.setColorFilter(Color.parseColor("#10B981"))
+            floatingChangeIcon.imageTintList = ColorStateList.valueOf(Color.parseColor("#10B981"))
         } else {
             changeIcon.setImageResource(R.drawable.nw_ic_trending_down)
-            changeIcon.setColorFilter(Color.parseColor("#EF4444"))
+            changeIcon.imageTintList = ColorStateList.valueOf(Color.parseColor("#EF4444"))
             changeText.text = "Down ${formatMoney(kotlin.math.abs(change))} this month"
             floatingChangeAmount.text = "-${formatMoney(kotlin.math.abs(change))}"
             floatingChangeAmount.setTextColor(Color.parseColor("#EF4444"))
             floatingChangeIcon.setImageResource(R.drawable.nw_ic_trending_down)
-            floatingChangeIcon.setColorFilter(Color.parseColor("#EF4444"))
+            floatingChangeIcon.imageTintList = ColorStateList.valueOf(Color.parseColor("#EF4444"))
         }
         val comparisonLabel = findViewById<TextView>(R.id.tvComparisonLabel)
         val comparisonAmount = findViewById<TextView>(R.id.tvComparisonAmount)

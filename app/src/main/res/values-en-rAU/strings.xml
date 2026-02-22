@@ -8,4 +8,25 @@
     <string name="include_employer_match">Include Super Guarantee Contributions</string>
     <string name="employer_match_description">Include employer super contributions for a more realistic projection.</string>
     <string name="calc_sub_retirement">Plan superannuation growth</string>
+    
+    <!-- Mortgage Calculator -->
+    <string name="mortgage_calculator">Home Loan Calculator</string>
+    <string name="property_tax">Council Rates</string>
+    <string name="pmi">Lenders Mortgage Insurance (LMI)</string>
+    <string name="property_tax_description">Estimate annual council rates divided monthly</string>
+    <string name="pmi_description">LMI required when deposit is less than 20%%</string>
+    
+    <!-- Tax Calculator -->
+    <string name="tax_calculator">Income Tax Calculator</string>
+    <string name="deductions">Tax Deductions</string>
+    <string name="filing_status">Residency Status</string>
+    <string name="tax_withheld">PAYG Withheld</string>
+    
+    <!-- Budget Calculator -->
+    <string name="budget_calculator">Budget Calculator</string>
+    <string name="utilities">Utilities (Electricity, Gas, Water)</string>
+    <string name="transportation">Transport (Petrol, Public Transport)</string>
+    
+    <!-- Car Lease -->
+    <string name="car_lease_calculator">Car Finance Calculator</string>
 </resources>

@@ -8,4 +8,25 @@
     <string name="include_employer_match">Include Employer Pension Contribution</string>
     <string name="employer_match_description">Include employer pension contributions in your retirement projection.</string>
     <string name="calc_sub_retirement">Plan pension savings</string>
+    
+    <!-- Mortgage Calculator -->
+    <string name="mortgage_calculator">Home Loan Calculator</string>
+    <string name="property_tax">Property Tax / Ground Rent</string>
+    <string name="pmi">Mortgage Insurance</string>
+    <string name="property_tax_description">Annual land use charge or ground rent</string>
+    <string name="pmi_description">Mortgage protection insurance (if required)</string>
+    
+    <!-- Tax Calculator -->
+    <string name="tax_calculator">Income Tax Calculator</string>
+    <string name="deductions">Tax Reliefs &amp; Allowances</string>
+    <string name="filing_status">Tax Status</string>
+    <string name="tax_withheld">PAYE Deducted</string>
+    
+    <!-- Budget Calculator -->
+    <string name="budget_calculator">Budget Calculator</string>
+    <string name="utilities">Utilities (Light, Water, Gas)</string>
+    <string name="transportation">Transport (Fuel, Okada, Bus)</string>
+    
+    <!-- Car Lease -->
+    <string name="car_lease_calculator">Car Finance Calculator</string>
 </resources>

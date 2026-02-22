@@ -196,18 +196,12 @@ class PlannerFragment : Fragment() {
         PlannerReminderManager.ensureReminderScheduledSmart(requireContext().applicationContext, null)
         reminderStatusView = view.findViewById(R.id.tvReminderStatus)
         updateReminderStatus()
-        AdAdmob(requireActivity()).NativeAd(
-            view.findViewById(R.id.nativeAdPlannerGoals),
-            requireActivity()
-        )
+        // Load history ad immediately as it's visible on first tab
         AdAdmob(requireActivity()).NativeAd(
             view.findViewById(R.id.nativeAdPlannerHistory),
             requireActivity()
         )
-        AdAdmob(requireActivity()).NativeAd(
-            view.findViewById(R.id.nativeAdPlannerBills),
-            requireActivity()
-        )
+        // Goals and Bills ads will be loaded lazily when tabs are first opened
 
         plannerViewModel = ViewModelProvider(
             this,
@@ -401,7 +395,8 @@ class PlannerFragment : Fragment() {
 
         val goalAdapter = GoalProgressAdapter(
             onGoalClicked = { goal -> openGoalDetail(goal.id) },
-            onAddMoneyClicked = { goal -> showAddMoneyDialog(goal) }
+            onAddMoneyClicked = { goal -> showAddMoneyDialog(goal) },
+            activity = requireActivity()
         )
         rvGoals.layoutManager = LinearLayoutManager(requireContext())
         rvGoals.adapter = goalAdapter
@@ -411,7 +406,18 @@ class PlannerFragment : Fragment() {
             val items = currentGoals.map { goal ->
                 GoalProgressItem(goal = goal, savedAmount = currentGoalProgress[goal.id] ?: 0.0)
             }
-            goalAdapter.submitList(items)
+            
+            // Insert ads every 4 items
+            val listWithAds = mutableListOf<GoalProgressAdapter.Item>()
+            items.forEachIndexed { index, item ->
+                listWithAds.add(GoalProgressAdapter.Item.Goal(item))
+                // Insert ad after every 4 items
+                if ((index + 1) % 4 == 0 && index < items.size - 1) {
+                    listWithAds.add(GoalProgressAdapter.Item.Ad("goal-ad-${index / 4}"))
+                }
+            }
+            
+            goalAdapter.submitList(listWithAds)
             val hasGoals = items.isNotEmpty()
             btnCreateGoal.visibility = if (hasGoals) View.VISIBLE else View.GONE
             rvGoals.visibility = if (hasGoals) View.VISIBLE else View.GONE
@@ -429,7 +435,8 @@ class PlannerFragment : Fragment() {
             onBillClicked = { bill -> openBillDetail(bill.id) },
             onMarkPaid = { bill -> confirmMarkBillPaid(bill) },
             onEdit = { bill -> showAddBillDialog(existingBill = bill) },
-            onDelete = { bill -> confirmDeleteBill(bill) }
+            onDelete = { bill -> confirmDeleteBill(bill) },
+            activity = requireActivity()
         )
         rvBills.layoutManager = LinearLayoutManager(requireContext())
         rvBills.adapter = billAdapter
@@ -500,7 +507,18 @@ class PlannerFragment : Fragment() {
                     !it.isPaid && it.dueDate >= todayUtc && it.dueDate < dueSoonEnd
                 }
             }
-            billAdapter.submitList(filtered)
+            
+            // Insert ads every 4 items
+            val listWithAds = mutableListOf<BillAdapter.Item>()
+            filtered.forEachIndexed { index, bill ->
+                listWithAds.add(BillAdapter.Item.Bill(bill))
+                // Insert ad after every 4 items
+                if ((index + 1) % 4 == 0 && index < filtered.size - 1) {
+                    listWithAds.add(BillAdapter.Item.Ad("bill-ad-${index / 4}"))
+                }
+            }
+            
+            billAdapter.submitList(listWithAds)
             billsEmptyView.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
             updateBillFilterChipStyles()
         }
@@ -698,7 +716,7 @@ class PlannerFragment : Fragment() {
                 val delta = currentValue - previousValue
                 if (kotlin.math.abs(delta) < 0.01) {
                     arrowView.setImageResource(R.drawable.ic_minus)
-                    arrowView.setColorFilter(Color.parseColor("#64748B"))
+                    arrowView.imageTintList = ColorStateList.valueOf(Color.parseColor("#64748B"))
                     valueView.text = "Same"
                     valueView.setTextColor(Color.parseColor("#64748B"))
                     return
@@ -707,7 +725,7 @@ class PlannerFragment : Fragment() {
                 arrowView.setImageResource(if (wentUp) R.drawable.ic_arrow_up else R.drawable.ic_arrow_down)
                 val good = if (positiveMeansGood) wentUp else !wentUp
                 val color = Color.parseColor(if (good) "#10B981" else "#EF4444")
-                arrowView.setColorFilter(color)
+                arrowView.imageTintList = ColorStateList.valueOf(color)
                 valueView.setTextColor(color)
                 valueView.text = formatCurrency(kotlin.math.abs(delta))
             }
@@ -756,52 +774,48 @@ class PlannerFragment : Fragment() {
                     topExpenseProgress[index].progress = pct.coerceIn(0, 100)
                     val shareOfIncome = if (income > 0.0) (item.value / income).toFloat() else 0f
                     val isHighCategory = shareOfIncome >= TOP_EXPENSE_HIGH_THRESHOLD
+                    
+                    // Match donut chart colors to top expense cards for consistency
+                    val categoryColor = BudgetDonutChartView.UI_DONUT_COLORS.getOrNull(index)
+                        ?: BudgetDonutChartView.UI_DONUT_SPENT_COLOR
+                    
                     topExpenseNames[index].setTextColor(
                         Color.parseColor(if (isHighCategory) "#2E7D32" else "#1E293B")
                     )
-                    topExpenseAmounts[index].setTextColor(
-                        Color.parseColor(if (isHighCategory) "#2E7D32" else "#FF9800")
-                    )
-                    topExpenseProgress[index].progressTintList = ColorStateList.valueOf(
-                        Color.parseColor(if (isHighCategory) "#4DB6AC" else "#1976D2")
-                    )
+                    topExpenseAmounts[index].setTextColor(categoryColor)
+                    topExpenseProgress[index].progressTintList = ColorStateList.valueOf(categoryColor)
                 }
             }
 
+            // Build donut chart with category breakdown (matching skills design)
             val donutSegments = mutableListOf<BudgetDonutChartView.ChartSegment>()
+            
             if (income > 0.0) {
-                val spentPct = ((spent / income) * 100.0).coerceAtLeast(0.0).toFloat()
-                val savingPct = ((saved / income) * 100.0).coerceAtLeast(0.0).toFloat()
-                val remainingPct = (100f - spentPct - savingPct).coerceAtLeast(0f)
-                if (spentPct > 0f) {
-                    donutSegments += BudgetDonutChartView.ChartSegment(
-                        percentage = spentPct,
-                        color = BudgetDonutChartView.UI_DONUT_SPENT_COLOR
-                    )
-                }
-                if (savingPct > 0f) {
-                    donutSegments += BudgetDonutChartView.ChartSegment(
-                        percentage = savingPct,
-                        color = BudgetDonutChartView.UI_DONUT_SAVING_COLOR
-                    )
-                }
-                if (remainingPct > 0f) {
-                    donutSegments += BudgetDonutChartView.ChartSegment(
-                        percentage = remainingPct,
-                        color = BudgetDonutChartView.UI_DONUT_REMAINING_COLOR
-                    )
-                }
-            } else {
-                val total = spent + saved
-                if (total > 0.0) {
-                    val spentPct = ((spent / total) * 100.0).coerceAtLeast(0.0).toFloat()
-                    val savingPct = ((saved / total) * 100.0).coerceAtLeast(0.0).toFloat()
-                    if (spentPct > 0f) {
+                // Group expenses by category for breakdown
+                val categoryExpenses = monthTransactions
+                    .filter { it.type == TransactionType.EXPENSE && it.amount > 0.0 }
+                    .groupBy { normalizeExpenseCategoryKey(it.category, it.note) }
+                    .mapValues { (_, items) -> items.sumOf { it.amount } }
+                    .entries
+                    .sortedByDescending { it.value }
+                
+                // Add top expense categories as segments (like skills: Rent, Food, Transport, etc.)
+                categoryExpenses.take(4).forEachIndexed { index, (category, amount) ->
+                    val pct = ((amount / income) * 100.0).toFloat()
+                    if (pct > 0f) {
+                        val color = BudgetDonutChartView.UI_DONUT_COLORS.getOrElse(index) { 
+                            BudgetDonutChartView.UI_DONUT_SPENT_COLOR 
+                        }
                         donutSegments += BudgetDonutChartView.ChartSegment(
-                            percentage = spentPct,
-                            color = BudgetDonutChartView.UI_DONUT_SPENT_COLOR
+                            percentage = pct,
+                            color = color
                         )
                     }
+                }
+                
+                // Add savings segment
+                if (saved > 0.0) {
+                    val savingPct = ((saved / income) * 100.0).toFloat()
                     if (savingPct > 0f) {
                         donutSegments += BudgetDonutChartView.ChartSegment(
                             percentage = savingPct,
@@ -809,7 +823,41 @@ class PlannerFragment : Fragment() {
                         )
                     }
                 }
+                
+                // Add remaining/unspent segment (matching skills design)
+                val totalUsedPct = donutSegments.sumOf { it.percentage.toDouble() }.toFloat()
+                if (totalUsedPct < 100f) {
+                    donutSegments += BudgetDonutChartView.ChartSegment(
+                        percentage = 100f - totalUsedPct,
+                        color = BudgetDonutChartView.UI_DONUT_REMAINING_COLOR
+                    )
+                }
+            } else {
+                // Fallback: when no income, show expense categories as proportion of total spending
+                val categoryExpenses = monthTransactions
+                    .filter { it.type == TransactionType.EXPENSE && it.amount > 0.0 }
+                    .groupBy { normalizeExpenseCategoryKey(it.category, it.note) }
+                    .mapValues { (_, items) -> items.sumOf { it.amount } }
+                    .entries
+                    .sortedByDescending { it.value }
+                
+                val totalSpent = categoryExpenses.sumOf { it.value }
+                if (totalSpent > 0.0) {
+                    categoryExpenses.take(4).forEachIndexed { index, (category, amount) ->
+                        val pct = ((amount / totalSpent) * 100.0).toFloat()
+                        if (pct > 0f) {
+                            val color = BudgetDonutChartView.UI_DONUT_COLORS.getOrElse(index) { 
+                                BudgetDonutChartView.UI_DONUT_SPENT_COLOR 
+                            }
+                            donutSegments += BudgetDonutChartView.ChartSegment(
+                                percentage = pct,
+                                color = color
+                            )
+                        }
+                    }
+                }
             }
+            
             budgetDonutChart.setData(donutSegments)
         }
 
@@ -933,6 +981,7 @@ class PlannerFragment : Fragment() {
             panelHistory.visibility = if (selected == PlannerTopTab.HISTORY) View.VISIBLE else View.GONE
             panelBills.visibility = if (selected == PlannerTopTab.BILLS) View.VISIBLE else View.GONE
             panelNetWorth.visibility = if (selected == PlannerTopTab.NET_WORTH) View.VISIBLE else View.GONE
+            
             layoutGoalsSubTabs.visibility = View.GONE
             val tabs = listOf(
                 tabSummary to PlannerTopTab.SUMMARY,
@@ -1714,6 +1763,7 @@ class PlannerFragment : Fragment() {
                 TransactionCategoryOption("shopping", "Shopping", "🛍️"),
                 TransactionCategoryOption("health", "Healthcare", "💊"),
                 TransactionCategoryOption("bills", "Bills", "🧾"),
+                TransactionCategoryOption("entertainment", "Entertainment", "🎬"),
                 TransactionCategoryOption(CalculatorRegistry.CATEGORY_ALL, "Other Expense", "🏷️")
             )
             TransactionType.INCOME -> listOf(
@@ -2256,6 +2306,7 @@ class PlannerFragment : Fragment() {
             "shop" in lower || "mall" in lower || "buy" in lower -> "shopping"
             "health" in lower || "clinic" in lower || "hospital" in lower || "drug" in lower || "medicine" in lower -> "health"
             "bill" in lower || "subscription" in lower -> "bills"
+            "entertainment" in lower || "movie" in lower || "cinema" in lower || "game" in lower || "concert" in lower || "netflix" in lower || "spotify" in lower -> "entertainment"
             else -> CalculatorRegistry.CATEGORY_ALL
         }
     }
@@ -2269,6 +2320,7 @@ class PlannerFragment : Fragment() {
             "shopping" -> "Shopping"
             "health" -> "Healthcare"
             "bills" -> "Bills"
+            "entertainment" -> "Entertainment"
             else -> getString(R.string.planner_other_expense)
         }
     }
@@ -2278,6 +2330,7 @@ class PlannerFragment : Fragment() {
             "housing" -> R.drawable.budget_ui_ic_home
             "food" -> R.drawable.budget_ui_ic_restaurant
             "transport" -> R.drawable.budget_ui_ic_directions_car
+            "entertainment" -> R.drawable.budget_ui_ic_wallet
             else -> R.drawable.budget_ui_ic_wallet
         }
     }

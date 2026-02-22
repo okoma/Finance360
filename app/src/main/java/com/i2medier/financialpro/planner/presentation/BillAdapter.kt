@@ -1,12 +1,15 @@
 package com.i2medier.financialpro.planner.presentation
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.i2medier.financialpro.AdAdmob
 import com.i2medier.financialpro.R
 import com.i2medier.financialpro.planner.data.local.BillEntity
 import com.i2medier.financialpro.util.CurrencyManager
@@ -18,17 +21,52 @@ class BillAdapter(
     private val onBillClicked: (BillEntity) -> Unit,
     private val onMarkPaid: (BillEntity) -> Unit,
     private val onEdit: (BillEntity) -> Unit,
-    private val onDelete: (BillEntity) -> Unit
-) : ListAdapter<BillEntity, BillAdapter.Holder>(Diff) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_bill, parent, false)
-        return Holder(view)
+    private val onDelete: (BillEntity) -> Unit,
+    private val activity: Activity
+) : ListAdapter<BillAdapter.Item, RecyclerView.ViewHolder>(Diff) {
+
+    sealed class Item {
+        data class Bill(val entity: BillEntity) : Item()
+        data class Ad(val id: String) : Item()
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) = holder.bind(getItem(position))
+    private companion object {
+        private const val VIEW_TYPE_BILL = 0
+        private const val VIEW_TYPE_AD = 1
+        val DATE_FORMAT = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+    }
 
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    override fun getItemViewType(position: Int): Int {
+        return when (getItem(position)) {
+            is Item.Bill -> VIEW_TYPE_BILL
+            is Item.Ad -> VIEW_TYPE_AD
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            VIEW_TYPE_BILL -> {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_bill, parent, false)
+                BillHolder(view)
+            }
+            VIEW_TYPE_AD -> {
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_native_ad_inline, parent, false)
+                AdHolder(view)
+            }
+            else -> throw IllegalArgumentException("Unknown view type: $viewType")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (val item = getItem(position)) {
+            is Item.Bill -> (holder as BillHolder).bind(item.entity)
+            is Item.Ad -> (holder as AdHolder).bind()
+        }
+    }
+
+    inner class BillHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tvBillTitle)
         private val amount: TextView = itemView.findViewById(R.id.tvBillAmount)
         private val dueDate: TextView = itemView.findViewById(R.id.tvBillDueDate)
@@ -50,12 +88,25 @@ class BillAdapter(
         }
     }
 
-    private object Diff : DiffUtil.ItemCallback<BillEntity>() {
-        override fun areItemsTheSame(oldItem: BillEntity, newItem: BillEntity): Boolean = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: BillEntity, newItem: BillEntity): Boolean = oldItem == newItem
+    inner class AdHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val adContainer: FrameLayout = itemView.findViewById(R.id.adContainer)
+
+        fun bind() {
+            AdAdmob(activity).NativeAd(adContainer, activity)
+        }
     }
 
-    private companion object {
-        val DATE_FORMAT = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+    private object Diff : DiffUtil.ItemCallback<Item>() {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return when {
+                oldItem is Item.Bill && newItem is Item.Bill -> oldItem.entity.id == newItem.entity.id
+                oldItem is Item.Ad && newItem is Item.Ad -> oldItem.id == newItem.id
+                else -> false
+            }
+        }
+
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem == newItem
+        }
     }
 }

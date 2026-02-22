@@ -8,4 +8,24 @@
     <string name="include_employer_match">Include Workplace Pension Match</string>
     <string name="employer_match_description">Include employer pension contributions in your projected pension pot.</string>
     <string name="calc_sub_retirement">Plan long-term pension savings</string>
+    
+    <!-- Mortgage Calculator -->
+    <string name="mortgage_calculator">Mortgage Calculator</string>
+    <string name="property_tax">Council Tax</string>
+    <string name="pmi">Buildings Insurance</string>
+    <string name="property_tax_description">Estimate monthly council tax (varies by band)</string>
+    <string name="pmi_description">Buildings and contents insurance (usually required by lender)</string>
+    
+    <!-- Tax Calculator -->
+    <string name="tax_calculator">Income Tax Calculator</string>
+    <string name="deductions">Personal Allowance &amp; Deductions</string>
+    <string name="filing_status">Tax Code</string>
+    
+    <!-- Budget Calculator -->
+    <string name="budget_calculator">Budget Planner</string>
+    <string name="utilities">Utilities (Gas, Electric, Water)</string>
+    <string name="transportation">Transport (Rail, Bus, Petrol)</string>
+    
+    <!-- Car Lease -->
+    <string name="car_lease_calculator">Vehicle Finance Calculator</string>
 </resources>

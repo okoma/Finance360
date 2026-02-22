@@ -21,6 +21,7 @@ import com.i2medier.financialpro.AdAdmob
 import com.i2medier.financialpro.R
 import com.i2medier.financialpro.planner.data.local.TransactionType
 import com.i2medier.financialpro.planner.integration.PlannerCalculatorBridge
+import com.i2medier.financialpro.ui.widgets.BudgetDonutChartView
 import com.i2medier.financialpro.util.AppConstant
 import com.i2medier.financialpro.util.CurrencyManager
 import com.i2medier.financialpro.util.ShareUtil
@@ -47,6 +48,15 @@ class BudgetCalculatorActivity : AppCompatActivity() {
     private lateinit var currencySymbol: String
     private lateinit var budgetExplanationCard: CardView
     private lateinit var budgetExplanation: TextView
+    private lateinit var budgetVisualizationCard: CardView
+    private lateinit var budgetBreakdownChart: BudgetDonutChartView
+    private lateinit var txtHousingPercent: TextView
+    private lateinit var txtUtilitiesPercent: TextView
+    private lateinit var txtFoodPercent: TextView
+    private lateinit var txtTransportPercent: TextView
+    private lateinit var txtEntertainmentPercent: TextView
+    private lateinit var txtOtherPercent: TextView
+    private lateinit var txtRemainingPercent: TextView
     private var mMyDialog: AlertDialog? = null
     private var latestRemainingBalance: Double = 0.0
 
@@ -100,6 +110,15 @@ class BudgetCalculatorActivity : AppCompatActivity() {
 
         budgetExplanationCard = findViewById(R.id.budgetExplanationCard)
         budgetExplanation = findViewById(R.id.budgetExplanation)
+        budgetVisualizationCard = findViewById(R.id.budgetVisualizationCard)
+        budgetBreakdownChart = findViewById(R.id.budgetBreakdownChart)
+        txtHousingPercent = findViewById(R.id.txtHousingPercent)
+        txtUtilitiesPercent = findViewById(R.id.txtUtilitiesPercent)
+        txtFoodPercent = findViewById(R.id.txtFoodPercent)
+        txtTransportPercent = findViewById(R.id.txtTransportPercent)
+        txtEntertainmentPercent = findViewById(R.id.txtEntertainmentPercent)
+        txtOtherPercent = findViewById(R.id.txtOtherPercent)
+        txtRemainingPercent = findViewById(R.id.txtRemainingPercent)
 
         clickListeners()
     }
@@ -147,6 +166,17 @@ class BudgetCalculatorActivity : AppCompatActivity() {
             val transportationPercent = (transportation / monthlyIncome) * 100
             val entertainmentPercent = (entertainment / monthlyIncome) * 100
             val otherPercent = (otherExpenses / monthlyIncome) * 100
+
+            // Update donut chart with budget breakdown - all categories shown separately
+            updateBudgetVisualization(
+                housingPercent,
+                utilitiesPercent,
+                foodPercent,
+                transportationPercent,
+                entertainmentPercent,
+                otherPercent,
+                savingsRate.coerceAtLeast(0.0)
+            )
 
             val explanation = getString(
                 R.string.budget_explain_html,
@@ -240,6 +270,62 @@ class BudgetCalculatorActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun updateBudgetVisualization(
+        housingPercent: Double,
+        utilitiesPercent: Double,
+        foodPercent: Double,
+        transportPercent: Double,
+        entertainmentPercent: Double,
+        otherPercent: Double,
+        remainingPercent: Double
+    ) {
+        // Show visualization card
+        budgetVisualizationCard.visibility = View.VISIBLE
+
+        // Update legend percentages
+        txtHousingPercent.text = "${Utils.decimalFormat.format(housingPercent)}%"
+        txtUtilitiesPercent.text = "${Utils.decimalFormat.format(utilitiesPercent)}%"
+        txtFoodPercent.text = "${Utils.decimalFormat.format(foodPercent)}%"
+        txtTransportPercent.text = "${Utils.decimalFormat.format(transportPercent)}%"
+        txtEntertainmentPercent.text = "${Utils.decimalFormat.format(entertainmentPercent)}%"
+        txtOtherPercent.text = "${Utils.decimalFormat.format(otherPercent)}%"
+        txtRemainingPercent.text = "${Utils.decimalFormat.format(remainingPercent)}%"
+
+        // Prepare data for donut chart - all expense categories shown separately
+        val segments = listOf(
+            BudgetDonutChartView.ChartSegment(
+                percentage = housingPercent.toFloat(),
+                color = 0xFF4DB6AC.toInt() // Teal - Housing
+            ),
+            BudgetDonutChartView.ChartSegment(
+                percentage = utilitiesPercent.toFloat(),
+                color = 0xFF26A69A.toInt() // Dark Teal - Utilities
+            ),
+            BudgetDonutChartView.ChartSegment(
+                percentage = foodPercent.toFloat(),
+                color = 0xFF81C784.toInt() // Light Green - Food
+            ),
+            BudgetDonutChartView.ChartSegment(
+                percentage = transportPercent.toFloat(),
+                color = 0xFFFFD54F.toInt() // Yellow - Transportation
+            ),
+            BudgetDonutChartView.ChartSegment(
+                percentage = entertainmentPercent.toFloat(),
+                color = 0xFFFFB74D.toInt() // Light Orange - Entertainment
+            ),
+            BudgetDonutChartView.ChartSegment(
+                percentage = otherPercent.toFloat(),
+                color = 0xFFFF9800.toInt() // Orange - Other Expenses
+            ),
+            BudgetDonutChartView.ChartSegment(
+                percentage = remainingPercent.toFloat(),
+                color = 0xFFFF8A65.toInt() // Red/Salmon - Remaining/Savings
+            )
+        )
+
+        budgetBreakdownChart.setData(segments)
     }
 
     private fun showAlert() {

@@ -21,25 +21,26 @@ class BudgetDonutChartView @JvmOverloads constructor(
     companion object {
         val UI_DONUT_SPENT_COLOR: Int = Color.parseColor("#FF9800")
         val UI_DONUT_SAVING_COLOR: Int = Color.parseColor("#4DB6AC")
+        // Category colors matching skills design
         val UI_DONUT_COLORS: List<Int> = listOf(
-            Color.parseColor("#4DB6AC"),
-            Color.parseColor("#81C784"),
-            Color.parseColor("#FFD54F"),
-            Color.parseColor("#FFB74D")
+            Color.parseColor("#4DB6AC"),  // Teal - Primary category (e.g., Rent/Housing)
+            Color.parseColor("#81C784"),  // Light Green - Secondary category (e.g., Food)
+            Color.parseColor("#FFD54F"),  // Yellow - Tertiary category (e.g., Transport)
+            Color.parseColor("#FFB74D")   // Light Orange - Other categories
         )
-        val UI_DONUT_REMAINING_COLOR: Int = Color.parseColor("#FF8A65")
+        val UI_DONUT_REMAINING_COLOR: Int = Color.parseColor("#FF8A65")  // Orange/Red - Remaining/Unspent
         private val UI_PROGRESS_COLOR: Int = Color.parseColor("#42A5F5")
         private val UI_IDLE_SEGMENTS: List<ChartSegment> = listOf(
-            ChartSegment(34.29f, UI_DONUT_COLORS[0]),
-            ChartSegment(12.86f, UI_DONUT_COLORS[1]),
-            ChartSegment(5.71f, UI_DONUT_COLORS[2]),
-            ChartSegment(7.14f, UI_DONUT_COLORS[3]),
-            ChartSegment(40f, UI_DONUT_REMAINING_COLOR)
+            ChartSegment(34.29f, UI_DONUT_COLORS[0]),   // Demo: Housing
+            ChartSegment(12.86f, UI_DONUT_COLORS[1]),   // Demo: Food
+            ChartSegment(5.71f, UI_DONUT_COLORS[2]),    // Demo: Transport
+            ChartSegment(7.14f, UI_DONUT_COLORS[3]),    // Demo: Others
+            ChartSegment(40f, UI_DONUT_REMAINING_COLOR) // Demo: Remaining
         )
     }
 
-    private val strokeWidthPx = 28f
-    private val insetPx = 24f
+    private val strokeWidthPx = 40f  // Increased for better visibility
+    private val insetPx = 20f
 
     private val bgPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.parseColor("#E2E8F0")
