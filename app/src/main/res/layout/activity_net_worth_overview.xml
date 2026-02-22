@@ -4,24 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_app_gradient"
->
+    android:background="@drawable/bg_app_gradient">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:paddingTop="4dp"
-    android:paddingBottom="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/stickyNetWorthHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
-        android:paddingBottom="120dp">
+        android:paddingTop="4dp">
 
-        <!-- Toolbar -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -54,7 +51,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Month Selector Card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/monthSelectorCard"
             android:layout_width="0dp"
@@ -106,18 +102,36 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Subtitle -->
         <TextView
             android:id="@+id/tvSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
             android:text="Assets minus Debts"
             android:textColor="#64748B"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/monthSelectorCard" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingTop="2dp"
+        android:paddingBottom="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="120dp">
 
         <include
             android:id="@+id/comparisonCard"
@@ -125,11 +139,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Net Worth Card -->
         <androidx.cardview.widget.CardView
@@ -747,7 +761,9 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    </ScrollView>
+
+    </LinearLayout>
 
     <!-- Sticky footer message -->
     <androidx.cardview.widget.CardView

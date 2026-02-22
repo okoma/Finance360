@@ -212,7 +212,6 @@ class PlannerFragment : Fragment() {
             (activity as? MainActivity)?.selectTab(R.id.nav_home)
         }
 
-        val incomeAmount = view.findViewById<TextView>(R.id.tvIncomeAmount)
         val plannedAmount = view.findViewById<TextView>(R.id.tvPlannedAmount)
         val spentAmount = view.findViewById<TextView>(R.id.tvSpentAmount)
         val savingsAmount = view.findViewById<TextView>(R.id.tvSavingsAmount)
@@ -1091,7 +1090,6 @@ class PlannerFragment : Fragment() {
                 launch {
                     plannerViewModel.monthlyStats.collect { stats ->
                         latestMonthlyStats = stats
-                        incomeAmount.text = formatCurrency(stats.totalIncome)
                         spentAmount.text = formatCurrency(stats.totalExpense)
                         savingsAmount.text = formatCurrency(stats.totalSaved)
                         updateBudgetSummary()
