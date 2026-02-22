@@ -25,7 +25,7 @@ import androidx.room.PrimaryKey
             entity = AccountEntity::class,
             parentColumns = ["id"],
             childColumns = ["account_id"],
-            onDelete = ForeignKey.NO_ACTION
+            onDelete = ForeignKey.CASCADE
         )
     ],
     indices = [

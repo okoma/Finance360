@@ -723,7 +723,7 @@ class PlannerFragment : Fragment() {
             budgetMeterRight.text = formatCurrency(spent)
             budgetSavedAmount.text = formatCurrency(remaining.coerceAtLeast(0.0))
             budgetMainProgress.progress = if (income > 0.0) {
-                ((saved / income).coerceIn(0.0, 1.0) * 100.0).roundToInt()
+                ((spent / income).coerceIn(0.0, 1.0) * 100.0).roundToInt()
             } else {
                 0
             }
@@ -1113,6 +1113,14 @@ class PlannerFragment : Fragment() {
         super.onSaveInstanceState(outState)
         outState.putString(STATE_SELECTED_FILTER, selectedTransactionFilter.name)
         outState.putString(STATE_SELECTED_BILL_FILTER, selectedBillFilter.name)
+    }
+
+    override fun onDestroyView() {
+        // Clean up dialogs to prevent memory leaks
+        pendingBillInsertDialog?.dismiss()
+        pendingBillInsertDialog = null
+        
+        super.onDestroyView()
     }
 
     private fun showCreateGoalDialog(existingGoal: GoalEntity? = null) {

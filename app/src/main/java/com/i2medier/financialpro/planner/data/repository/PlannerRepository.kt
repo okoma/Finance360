@@ -69,23 +69,48 @@ class PlannerRepository(
     }
 
     suspend fun addGoal(goal: GoalEntity) {
-        goalDao.insert(goal)
+        try {
+            goalDao.insert(goal)
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error adding goal", e)
+            throw e
+        }
     }
 
     suspend fun updateGoal(goal: GoalEntity) {
-        goalDao.update(goal)
+        try {
+            goalDao.update(goal)
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error updating goal", e)
+            throw e
+        }
     }
 
     suspend fun deleteGoal(goal: GoalEntity) {
-        goalDao.delete(goal)
+        try {
+            goalDao.delete(goal)
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error deleting goal", e)
+            throw e
+        }
     }
 
     suspend fun addTransaction(transaction: TransactionEntity) {
-        transactionDao.insert(transaction)
+        try {
+            transactionDao.insert(transaction)
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error adding transaction", e)
+            throw e
+        }
     }
 
     suspend fun deleteTransaction(transaction: TransactionEntity) {
-        transactionDao.delete(transaction)
+        try {
+            transactionDao.delete(transaction)
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error deleting transaction", e)
+            throw e
+        }
     }
 
     suspend fun deleteTransactionsByGoal(goalId: Long) {
@@ -97,31 +122,77 @@ class PlannerRepository(
     }
 
     suspend fun addBill(bill: BillEntity) {
-        billDao.insert(bill)
+        try {
+            billDao.insert(bill)
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error adding bill", e)
+            throw e
+        }
     }
 
     suspend fun updateBill(bill: BillEntity) {
-        billDao.update(bill)
+        try {
+            billDao.update(bill)
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error updating bill", e)
+            throw e
+        }
     }
 
     suspend fun deleteBill(bill: BillEntity) {
-        billDao.delete(bill)
+        try {
+            billDao.delete(bill)
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error deleting bill", e)
+            throw e
+        }
     }
 
     suspend fun setBillPaidAndCreateExpense(bill: BillEntity, paidAtMillis: Long) {
-        if (!bill.isPaid) {
-            billDao.update(bill.copy(isPaid = true))
-        }
-        transactionDao.insert(
-            TransactionEntity(
-                amount = bill.amount,
-                type = TransactionType.EXPENSE,
-                date = paidAtMillis.toUtcMidnight(),
-                billId = bill.id,
-                note = "Bill payment: ${bill.title}",
-                category = bill.category
+        try {
+            if (!bill.isPaid) {
+                billDao.update(bill.copy(isPaid = true))
+                
+                // Create next recurring bill if repeat is set
+                bill.repeat?.let { repeatType ->
+                    val nextDueDate = calculateNextDueDate(bill.dueDate, repeatType)
+                    billDao.insert(
+                        bill.copy(
+                            id = 0L,
+                            dueDate = nextDueDate,
+                            isPaid = false,
+                            createdAt = System.currentTimeMillis().toUtcMidnight()
+                        )
+                    )
+                }
+            }
+            transactionDao.insert(
+                TransactionEntity(
+                    amount = bill.amount,
+                    type = TransactionType.EXPENSE,
+                    date = paidAtMillis.toUtcMidnight(),
+                    billId = bill.id,
+                    note = "Bill payment: ${bill.title}",
+                    category = bill.category
+                )
             )
-        )
+        } catch (e: Exception) {
+            android.util.Log.e("PlannerRepository", "Error marking bill paid", e)
+            throw e
+        }
+    }
+    
+    private fun calculateNextDueDate(currentDueDate: Long, repeatType: String): Long {
+        val calendar = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("UTC"))
+        calendar.timeInMillis = currentDueDate
+        
+        when (repeatType.uppercase()) {
+            "WEEKLY" -> calendar.add(java.util.Calendar.DAY_OF_YEAR, 7)
+            "MONTHLY" -> calendar.add(java.util.Calendar.MONTH, 1)
+            else -> calendar.add(java.util.Calendar.MONTH, 1) // Default to monthly
+        }
+        
+        return calendar.timeInMillis
     }
 
     suspend fun updateSavingStreakForNow() {

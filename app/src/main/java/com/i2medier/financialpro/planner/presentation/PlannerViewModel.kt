@@ -63,16 +63,20 @@ class PlannerViewModel(
         if (!validation.isValid) return validation.error
 
         viewModelScope.launch {
-            repository.addGoal(
-                GoalEntity(
-                    title = title.trim(),
-                    description = normalizedDescription,
-                    targetAmount = targetAmount ?: 0.0,
-                    targetDate = targetDate,
-                    category = GoalCategoryUi.normalize(category),
-                    createdAt = System.currentTimeMillis().toUtcMidnight()
+            try {
+                repository.addGoal(
+                    GoalEntity(
+                        title = title.trim(),
+                        description = normalizedDescription,
+                        targetAmount = targetAmount ?: 0.0,
+                        targetDate = targetDate,
+                        category = GoalCategoryUi.normalize(category),
+                        createdAt = System.currentTimeMillis().toUtcMidnight()
+                    )
                 )
-            )
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error adding goal", e)
+            }
         }
         return null
     }
@@ -90,34 +94,52 @@ class PlannerViewModel(
         if (!validation.isValid) return validation.error
 
         viewModelScope.launch {
-            repository.updateGoal(
-                goal.copy(
-                    title = title.trim(),
-                    description = normalizedDescription,
-                    targetAmount = targetAmount ?: 0.0,
-                    targetDate = targetDate,
-                    category = GoalCategoryUi.normalize(category)
+            try {
+                repository.updateGoal(
+                    goal.copy(
+                        title = title.trim(),
+                        description = normalizedDescription,
+                        targetAmount = targetAmount ?: 0.0,
+                        targetDate = targetDate,
+                        category = GoalCategoryUi.normalize(category)
+                    )
                 )
-            )
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error updating goal", e)
+            }
         }
         return null
     }
 
     fun deleteGoal(goal: GoalEntity) {
-        viewModelScope.launch { repository.deleteGoal(goal) }
+        viewModelScope.launch {
+            try {
+                repository.deleteGoal(goal)
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error deleting goal", e)
+            }
+        }
     }
 
     fun deleteGoalAndTransactions(goal: GoalEntity) {
         viewModelScope.launch {
-            repository.deleteTransactionsByGoal(goal.id)
-            repository.deleteGoal(goal)
+            try {
+                repository.deleteTransactionsByGoal(goal.id)
+                repository.deleteGoal(goal)
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error deleting goal and transactions", e)
+            }
         }
     }
 
     fun reassignGoalAndDelete(oldGoal: GoalEntity, newGoal: GoalEntity) {
         viewModelScope.launch {
-            repository.reassignTransactionsToGoal(oldGoal.id, newGoal.id)
-            repository.deleteGoal(oldGoal)
+            try {
+                repository.reassignTransactionsToGoal(oldGoal.id, newGoal.id)
+                repository.deleteGoal(oldGoal)
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error reassigning goal", e)
+            }
         }
     }
 
@@ -133,30 +155,41 @@ class PlannerViewModel(
         if (!validation.isValid) return validation.error
 
         viewModelScope.launch {
-            repository.addTransaction(
-                TransactionEntity(
-                    amount = amount ?: 0.0,
-                    type = type,
-                    date = dateMillis.toUtcMidnight(),
-                    goalId = goalId,
-                    accountId = when (type) {
-                        TransactionType.SAVING -> AccountEntity.DEFAULT_SAVINGS_ID
-                        TransactionType.INCOME -> AccountEntity.DEFAULT_CASH_ID
-                        TransactionType.EXPENSE -> AccountEntity.DEFAULT_CASH_ID
-                    },
-                    note = note,
-                    category = category
+            try {
+                repository.addTransaction(
+                    TransactionEntity(
+                        amount = amount ?: 0.0,
+                        type = type,
+                        date = dateMillis.toUtcMidnight(),
+                        goalId = goalId,
+                        accountId = when (type) {
+                            TransactionType.SAVING -> AccountEntity.DEFAULT_SAVINGS_ID
+                            TransactionType.INCOME -> AccountEntity.DEFAULT_CASH_ID
+                            TransactionType.EXPENSE -> AccountEntity.DEFAULT_CASH_ID
+                        },
+                        note = note,
+                        category = category
+                    )
                 )
-            )
-            if (type == TransactionType.SAVING) {
-                repository.refreshSavingStreakFromTransactions()
+                // Update streak AFTER transaction is saved to avoid race condition
+                if (type == TransactionType.SAVING) {
+                    repository.refreshSavingStreakFromTransactions()
+                }
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error adding transaction", e)
             }
         }
         return null
     }
 
     fun deleteTransaction(transaction: TransactionEntity) {
-        viewModelScope.launch { repository.deleteTransaction(transaction) }
+        viewModelScope.launch {
+            try {
+                repository.deleteTransaction(transaction)
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error deleting transaction", e)
+            }
+        }
     }
 
     fun addBill(
@@ -172,16 +205,20 @@ class PlannerViewModel(
 
         val normalizedRepeat = BillRepeat.normalize(repeat)
         viewModelScope.launch {
-            repository.addBill(
-                BillEntity(
-                    title = title.trim(),
-                    amount = amount,
-                    dueDate = dueDateMillis.toUtcMidnight(),
-                    repeat = normalizedRepeat,
-                    category = BillCategoryUi.normalize(category),
-                    createdAt = System.currentTimeMillis().toUtcMidnight()
+            try {
+                repository.addBill(
+                    BillEntity(
+                        title = title.trim(),
+                        amount = amount,
+                        dueDate = dueDateMillis.toUtcMidnight(),
+                        repeat = normalizedRepeat,
+                        category = BillCategoryUi.normalize(category),
+                        createdAt = System.currentTimeMillis().toUtcMidnight()
+                    )
                 )
-            )
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error adding bill", e)
+            }
         }
         return null
     }
@@ -199,25 +236,41 @@ class PlannerViewModel(
         if (amount == null || amount <= 0.0) return "Bill amount must be greater than 0."
 
         viewModelScope.launch {
-            repository.updateBill(
-                bill.copy(
-                    title = title.trim(),
-                    amount = amount,
-                    dueDate = dueDateMillis.toUtcMidnight(),
-                    repeat = BillRepeat.normalize(repeat),
-                    category = BillCategoryUi.normalize(category)
+            try {
+                repository.updateBill(
+                    bill.copy(
+                        title = title.trim(),
+                        amount = amount,
+                        dueDate = dueDateMillis.toUtcMidnight(),
+                        repeat = BillRepeat.normalize(repeat),
+                        category = BillCategoryUi.normalize(category)
+                    )
                 )
-            )
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error updating bill", e)
+            }
         }
         return null
     }
 
     fun markBillPaid(bill: BillEntity, paidAtMillis: Long = System.currentTimeMillis()) {
-        viewModelScope.launch { repository.setBillPaidAndCreateExpense(bill, paidAtMillis) }
+        viewModelScope.launch {
+            try {
+                repository.setBillPaidAndCreateExpense(bill, paidAtMillis)
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error marking bill paid", e)
+            }
+        }
     }
 
     fun deleteBill(bill: BillEntity) {
-        viewModelScope.launch { repository.deleteBill(bill) }
+        viewModelScope.launch {
+            try {
+                repository.deleteBill(bill)
+            } catch (e: Exception) {
+                android.util.Log.e("PlannerViewModel", "Error deleting bill", e)
+            }
+        }
     }
 
     class Factory(private val application: Application) : ViewModelProvider.Factory {
