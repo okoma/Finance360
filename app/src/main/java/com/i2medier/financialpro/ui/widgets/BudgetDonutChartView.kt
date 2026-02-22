@@ -19,6 +19,8 @@ class BudgetDonutChartView @JvmOverloads constructor(
     data class ChartSegment(val percentage: Float, val color: Int)
 
     companion object {
+        val UI_DONUT_SPENT_COLOR: Int = Color.parseColor("#FF9800")
+        val UI_DONUT_SAVING_COLOR: Int = Color.parseColor("#4DB6AC")
         val UI_DONUT_COLORS: List<Int> = listOf(
             Color.parseColor("#4DB6AC"),
             Color.parseColor("#81C784"),

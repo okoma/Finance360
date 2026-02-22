@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.content.pm.PackageManager
 import android.os.Build
@@ -129,6 +130,7 @@ class PlannerFragment : Fragment() {
         private const val STATE_SELECTED_FILTER = "planner_selected_filter"
         private const val STATE_SELECTED_BILL_FILTER = "planner_selected_bill_filter"
         private const val DAY_IN_MILLIS = 24L * 60L * 60L * 1000L
+        private const val TOP_EXPENSE_HIGH_THRESHOLD = 0.30f
     }
 
     private lateinit var plannerViewModel: PlannerViewModel
@@ -727,16 +729,16 @@ class PlannerFragment : Fragment() {
             }
             budgetTotalSpentInline.text = formatCurrency(spent)
 
-            val groupedExpenseAll = monthTransactions
+            val groupedExpense = monthTransactions
                 .asSequence()
                 .filter { it.type == TransactionType.EXPENSE && it.amount > 0.0 }
                 .groupBy { tx ->
-                    deriveTopExpenseLabelFromNote(tx.note)
+                    normalizeExpenseCategoryKey(tx.category, tx.note)
                 }
                 .mapValues { (_, items) -> items.sumOf { it.amount } }
                 .entries
                 .sortedByDescending { it.value }
-            val groupedExpense = groupedExpenseAll.take(3)
+                .take(3)
 
             val topBase = groupedExpense.firstOrNull()?.value ?: 0.0
             topExpensesEmpty.visibility = if (groupedExpense.isEmpty()) View.VISIBLE else View.GONE
@@ -746,28 +748,43 @@ class PlannerFragment : Fragment() {
                     topExpenseCards[index].visibility = View.GONE
                 } else {
                     topExpenseCards[index].visibility = View.VISIBLE
-                    topExpenseNames[index].text = item.key
-                    topExpenseIcons[index].setImageResource(expenseIconForLabel(item.key))
+                    val categoryKey = item.key
+                    topExpenseNames[index].text = expenseCategoryLabel(categoryKey)
+                    topExpenseIcons[index].setImageResource(expenseIconForCategory(categoryKey))
                     topExpenseAmounts[index].text = formatCurrency(item.value)
                     val pct = if (topBase > 0.0) ((item.value / topBase) * 100.0).roundToInt() else 0
                     topExpenseProgress[index].progress = pct.coerceIn(0, 100)
+                    val shareOfIncome = if (income > 0.0) (item.value / income).toFloat() else 0f
+                    val isHighCategory = shareOfIncome >= TOP_EXPENSE_HIGH_THRESHOLD
+                    topExpenseNames[index].setTextColor(
+                        Color.parseColor(if (isHighCategory) "#2E7D32" else "#1E293B")
+                    )
+                    topExpenseAmounts[index].setTextColor(
+                        Color.parseColor(if (isHighCategory) "#2E7D32" else "#FF9800")
+                    )
+                    topExpenseProgress[index].progressTintList = ColorStateList.valueOf(
+                        Color.parseColor(if (isHighCategory) "#4DB6AC" else "#1976D2")
+                    )
                 }
             }
 
             val donutSegments = mutableListOf<BudgetDonutChartView.ChartSegment>()
             if (income > 0.0) {
-                var consumedPct = 0f
-                groupedExpenseAll.take(4).forEachIndexed { index, item ->
-                    val pct = ((item.value / income) * 100.0).coerceAtLeast(0.0).toFloat()
-                    if (pct > 0f) {
-                        consumedPct += pct
-                        donutSegments += BudgetDonutChartView.ChartSegment(
-                            percentage = pct,
-                            color = BudgetDonutChartView.UI_DONUT_COLORS[index % BudgetDonutChartView.UI_DONUT_COLORS.size]
-                        )
-                    }
+                val spentPct = ((spent / income) * 100.0).coerceAtLeast(0.0).toFloat()
+                val savingPct = ((saved / income) * 100.0).coerceAtLeast(0.0).toFloat()
+                val remainingPct = (100f - spentPct - savingPct).coerceAtLeast(0f)
+                if (spentPct > 0f) {
+                    donutSegments += BudgetDonutChartView.ChartSegment(
+                        percentage = spentPct,
+                        color = BudgetDonutChartView.UI_DONUT_SPENT_COLOR
+                    )
                 }
-                val remainingPct = (100f - consumedPct).coerceAtLeast(0f)
+                if (savingPct > 0f) {
+                    donutSegments += BudgetDonutChartView.ChartSegment(
+                        percentage = savingPct,
+                        color = BudgetDonutChartView.UI_DONUT_SAVING_COLOR
+                    )
+                }
                 if (remainingPct > 0f) {
                     donutSegments += BudgetDonutChartView.ChartSegment(
                         percentage = remainingPct,
@@ -775,14 +792,20 @@ class PlannerFragment : Fragment() {
                     )
                 }
             } else {
-                val total = groupedExpenseAll.sumOf { it.value }
+                val total = spent + saved
                 if (total > 0.0) {
-                    groupedExpenseAll.take(4).forEachIndexed { index, item ->
-                        val pct = ((item.value / total) * 100.0).coerceAtLeast(0.0).toFloat()
-                        if (pct <= 0f) return@forEachIndexed
+                    val spentPct = ((spent / total) * 100.0).coerceAtLeast(0.0).toFloat()
+                    val savingPct = ((saved / total) * 100.0).coerceAtLeast(0.0).toFloat()
+                    if (spentPct > 0f) {
                         donutSegments += BudgetDonutChartView.ChartSegment(
-                            percentage = pct,
-                            color = BudgetDonutChartView.UI_DONUT_COLORS[index % BudgetDonutChartView.UI_DONUT_COLORS.size]
+                            percentage = spentPct,
+                            color = BudgetDonutChartView.UI_DONUT_SPENT_COLOR
+                        )
+                    }
+                    if (savingPct > 0f) {
+                        donutSegments += BudgetDonutChartView.ChartSegment(
+                            percentage = savingPct,
+                            color = BudgetDonutChartView.UI_DONUT_SAVING_COLOR
                         )
                     }
                 }
@@ -2207,24 +2230,46 @@ class PlannerFragment : Fragment() {
         return label.take(1).uppercase(Locale.getDefault())
     }
 
-    private fun deriveTopExpenseLabelFromNote(note: String?): String {
+    private fun normalizeExpenseCategoryKey(category: String?, note: String?): String {
+        val key = category?.trim().orEmpty().lowercase(Locale.getDefault())
+        if (key.isNotBlank() && key != CalculatorRegistry.CATEGORY_ALL) return key
+        return deriveTopExpenseCategoryFromNote(note)
+    }
+
+    private fun deriveTopExpenseCategoryFromNote(note: String?): String {
         val raw = note?.trim().orEmpty()
-        if (raw.isBlank()) return getString(R.string.planner_other_expense)
+        if (raw.isBlank()) return CalculatorRegistry.CATEGORY_ALL
         val lower = raw.lowercase(Locale.getDefault())
         return when {
-            "rent" in lower || "house" in lower || "mortgage" in lower -> "Rent"
-            "food" in lower || "grocery" in lower || "groceries" in lower || "lunch" in lower || "dinner" in lower || "breakfast" in lower || "restaurant" in lower -> "Food"
-            "transport" in lower || "uber" in lower || "taxi" in lower || "bus" in lower || "fuel" in lower || "gas" in lower || "fare" in lower -> "Transport"
-            else -> raw.replaceFirstChar { it.titlecase(Locale.getDefault()) }
+            "rent" in lower || "house" in lower || "mortgage" in lower -> "housing"
+            "food" in lower || "grocery" in lower || "groceries" in lower || "lunch" in lower || "dinner" in lower || "breakfast" in lower || "restaurant" in lower -> "food"
+            "transport" in lower || "uber" in lower || "taxi" in lower || "bus" in lower || "fuel" in lower || "gas" in lower || "fare" in lower -> "transport"
+            "utility" in lower || "electric" in lower || "water" in lower || "internet" in lower || "light" in lower -> "utilities"
+            "shop" in lower || "mall" in lower || "buy" in lower -> "shopping"
+            "health" in lower || "clinic" in lower || "hospital" in lower || "drug" in lower || "medicine" in lower -> "health"
+            "bill" in lower || "subscription" in lower -> "bills"
+            else -> CalculatorRegistry.CATEGORY_ALL
         }
     }
 
-    private fun expenseIconForLabel(label: String): Int {
-        val lower = label.lowercase(Locale.getDefault())
-        return when {
-            "rent" in lower || "house" in lower || "mortgage" in lower -> R.drawable.budget_ui_ic_home
-            "food" in lower || "grocery" in lower || "restaurant" in lower -> R.drawable.budget_ui_ic_restaurant
-            "transport" in lower || "uber" in lower || "taxi" in lower || "bus" in lower || "fuel" in lower || "gas" in lower -> R.drawable.budget_ui_ic_directions_car
+    private fun expenseCategoryLabel(categoryKey: String): String {
+        return when (categoryKey.lowercase(Locale.getDefault())) {
+            "housing" -> "Housing"
+            "food" -> "Food"
+            "transport" -> "Transport"
+            "utilities" -> "Utilities"
+            "shopping" -> "Shopping"
+            "health" -> "Healthcare"
+            "bills" -> "Bills"
+            else -> getString(R.string.planner_other_expense)
+        }
+    }
+
+    private fun expenseIconForCategory(categoryKey: String): Int {
+        return when (categoryKey.lowercase(Locale.getDefault())) {
+            "housing" -> R.drawable.budget_ui_ic_home
+            "food" -> R.drawable.budget_ui_ic_restaurant
+            "transport" -> R.drawable.budget_ui_ic_directions_car
             else -> R.drawable.budget_ui_ic_wallet
         }
     }
