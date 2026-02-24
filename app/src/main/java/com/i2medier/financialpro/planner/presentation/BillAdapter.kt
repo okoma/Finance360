@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,8 @@ import com.i2medier.financialpro.R
 import com.i2medier.financialpro.planner.data.local.BillRepeat
 import com.i2medier.financialpro.planner.data.local.BillEntity
 import com.i2medier.financialpro.planner.domain.BillCategoryUi
+import com.i2medier.financialpro.planner.domain.daysBetweenUtc
+import com.i2medier.financialpro.planner.domain.toUtcMidnight
 import com.i2medier.financialpro.util.CurrencyManager
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -70,14 +73,12 @@ class BillAdapter(
 
     inner class BillHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tvBillTitle)
+        private val dueNotice: TextView = itemView.findViewById(R.id.tvBillDueNotice)
         private val amount: TextView = itemView.findViewById(R.id.tvBillAmount)
         private val dueDate: TextView = itemView.findViewById(R.id.tvBillDueDate)
         private val repeat: TextView = itemView.findViewById(R.id.tvBillRepeat)
         private val createdAt: TextView = itemView.findViewById(R.id.tvBillCreatedAt)
-        private val status: TextView = itemView.findViewById(R.id.tvBillStatus)
         private val btnMarkPaid: TextView = itemView.findViewById(R.id.btnMarkPaid)
-        private val btnEdit: View = itemView.findViewById(R.id.btnEditBill)
-        private val btnDelete: View = itemView.findViewById(R.id.btnDeleteBill)
 
         fun bind(bill: BillEntity) {
             title.text = "${BillCategoryUi.emojiFor(bill.category)} ${bill.title}"
@@ -96,16 +97,49 @@ class BillAdapter(
                 R.string.planner_bill_detail_created_at,
                 DATE_FORMAT.format(Date(bill.createdAt))
             )
-            status.text = if (bill.isPaid) {
+            bindDueNotice(bill)
+            btnMarkPaid.visibility = View.VISIBLE
+            btnMarkPaid.isEnabled = !bill.isPaid
+            btnMarkPaid.alpha = if (bill.isPaid) 0.55f else 1f
+            btnMarkPaid.text = if (bill.isPaid) {
                 itemView.context.getString(R.string.planner_paid)
             } else {
-                itemView.context.getString(R.string.planner_bill_detail_unpaid)
+                itemView.context.getString(R.string.planner_mark_paid)
             }
-            btnMarkPaid.visibility = if (bill.isPaid) View.GONE else View.VISIBLE
-            btnMarkPaid.setOnClickListener { onMarkPaid(bill) }
-            btnEdit.setOnClickListener { onEdit(bill) }
-            btnDelete.setOnClickListener { onDelete(bill) }
+            btnMarkPaid.setOnClickListener {
+                if (!bill.isPaid) onMarkPaid(bill)
+            }
             itemView.setOnClickListener { onBillClicked(bill) }
+        }
+
+        private fun bindDueNotice(bill: BillEntity) {
+            if (bill.isPaid) {
+                dueNotice.text = itemView.context.getString(R.string.planner_paid)
+                dueNotice.setTextColor(ContextCompat.getColor(itemView.context, android.R.color.holo_green_dark))
+                dueNotice.setBackgroundResource(R.drawable.bg_modal_btn_secondary)
+                return
+            }
+            val daysToDue = daysBetweenUtc(
+                System.currentTimeMillis().toUtcMidnight(),
+                bill.dueDate.toUtcMidnight()
+            )
+            when {
+                daysToDue < 0 -> {
+                    dueNotice.text = itemView.context.getString(R.string.planner_bill_due_overdue)
+                    dueNotice.setTextColor(ContextCompat.getColor(itemView.context, android.R.color.holo_red_dark))
+                    dueNotice.setBackgroundResource(R.drawable.bg_goal_delete_outline)
+                }
+                daysToDue <= 3 -> {
+                    dueNotice.text = itemView.context.getString(R.string.planner_bill_due_soon_badge)
+                    dueNotice.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorWarningDark))
+                    dueNotice.setBackgroundResource(R.drawable.bg_bill_due_soon_outline)
+                }
+                else -> {
+                    dueNotice.text = itemView.context.getString(R.string.planner_goal_days_left, daysToDue)
+                    dueNotice.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorDark))
+                    dueNotice.setBackgroundResource(R.drawable.bg_modal_btn_secondary)
+                }
+            }
         }
     }
 

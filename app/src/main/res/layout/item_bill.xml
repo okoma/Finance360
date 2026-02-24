@@ -31,16 +31,16 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/btnDeleteBill"
+                android:id="@+id/tvBillDueNotice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_goal_delete_outline"
+                android:background="@drawable/bg_modal_btn_secondary"
                 android:gravity="center"
                 android:minWidth="60dp"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
-                android:text="@string/planner_delete"
-                android:textColor="#D32F2F"
+                android:text="@string/planner_bill_filter_due_soon"
+                android:textColor="#334155"
                 android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -98,29 +98,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btnMarkPaid"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
                     android:background="@drawable/bg_button"
                     android:text="@string/planner_mark_paid"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btnEditBill"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_modal_btn_secondary"
-                    android:text="@string/planner_edit_bill"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorDark"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>

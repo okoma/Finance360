@@ -208,6 +208,7 @@ class BillDetailActivity : AppCompatActivity() {
             alpha = if (bill.isPaid) 0.55f else 1f
             text = if (bill.isPaid) getString(R.string.planner_paid) else getString(R.string.planner_mark_paid)
         }
+        findViewById<Button>(R.id.btnEditBill).visibility = if (bill.isPaid) View.GONE else View.VISIBLE
     }
 
     private fun submitBillTimeline() {

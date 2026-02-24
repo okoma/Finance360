@@ -1009,6 +1009,8 @@ With <b>%1$s</b> income and <b>%3$s</b> deductions, your taxable income is <b>%4
     <string name="planner_bill_repeat_none">None</string>
     <string name="planner_bill_repeat_weekly">Weekly</string>
     <string name="planner_bill_repeat_monthly">Monthly</string>
+    <string name="planner_bill_due_soon_badge">Due soon</string>
+    <string name="planner_bill_due_overdue">Overdue</string>
     <string name="planner_bill_filter_unpaid">Unpaid</string>
     <string name="planner_bill_filter_paid">Paid</string>
     <string name="planner_bill_filter_due_soon">Due Soon</string>
