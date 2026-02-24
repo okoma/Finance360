@@ -8,14 +8,14 @@ data class GoalCategoryOption(
 
 object GoalCategoryUi {
     private val categories = listOf(
-        GoalCategoryOption("emergency", "Emergency", "E"),
-        GoalCategoryOption("home", "Home", "H"),
-        GoalCategoryOption("tech", "Tech", "T"),
-        GoalCategoryOption("travel", "Travel", "T"),
-        GoalCategoryOption("education", "Education", "E"),
-        GoalCategoryOption("health", "Health", "H"),
-        GoalCategoryOption("business", "Business", "B"),
-        GoalCategoryOption("other", "Other", "O")
+        GoalCategoryOption("emergency", "Emergency", "🛟"),
+        GoalCategoryOption("home", "Home", "🏠"),
+        GoalCategoryOption("tech", "Tech", "💻"),
+        GoalCategoryOption("travel", "Travel", "✈️"),
+        GoalCategoryOption("education", "Education", "🎓"),
+        GoalCategoryOption("health", "Health", "🏥"),
+        GoalCategoryOption("business", "Business", "💼"),
+        GoalCategoryOption("other", "Other", "⭐")
     )
 
     fun options(): List<GoalCategoryOption> = categories
@@ -27,7 +27,7 @@ object GoalCategoryUi {
 
     fun emojiFor(value: String?): String {
         val key = normalize(value)
-        return categories.firstOrNull { it.key == key }?.emoji ?: "O"
+        return categories.firstOrNull { it.key == key }?.emoji ?: "⭐"
     }
 
     fun labelFor(value: String?): String {

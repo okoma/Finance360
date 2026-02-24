@@ -34,15 +34,20 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnReminderSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_planner_networth_header_button"
+                android:elevation="3dp"
+                android:translationZ="1dp"
+                android:minHeight="34dp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
                 android:text="@string/planner_tab_net_worth"
-                android:textColor="@color/colorDark"
+                android:textAllCaps="false"
+                android:textColor="@color/nav_blue"
                 android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -275,6 +280,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -283,6 +290,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_stat_income"
                             android:gravity="center"
+                            app:cardElevation="2dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -310,6 +318,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_stat_spent"
                             android:gravity="center"
+                            app:cardElevation="2dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -337,6 +346,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_stat_savings"
                             android:gravity="center"
+                            app:cardElevation="2dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -363,6 +373,8 @@
                         layout="@layout/card_budget_comparison"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:layout_marginTop="10dp" />
 
                     <androidx.cardview.widget.CardView
@@ -519,10 +531,19 @@
                         android:id="@+id/tvTopExpensesEmpty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="@string/planner_top_expenses_empty"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:paddingTop="32dp"
+                        android:paddingBottom="32dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="💡 Track your expenses to see which categories you spend the most on"
                         android:textColor="#5E6B76"
                         android:textSize="13sp"
+                        android:gravity="center"
+                        android:background="@drawable/empty_state_bg"
+                        android:lineSpacingExtra="2dp"
                         android:visibility="gone" />
 
                     <androidx.cardview.widget.CardView
@@ -700,6 +721,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginEnd="7dp"
                         android:layout_marginBottom="2dp"
                         android:orientation="horizontal">
 
@@ -710,7 +733,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_btn_budget_expense"
                             android:drawableStart="@drawable/budget_ui_ic_add_circle"
-                            android:drawablePadding="6dp"
+                            android:drawablePadding="2dp"
                             android:text="@string/planner_quick_add_expense"
                             android:textAllCaps="false"
                             android:textColor="@color/colorWhite"
@@ -724,7 +747,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_btn_budget_income"
                             android:drawableStart="@drawable/budget_ui_ic_add_circle"
-                            android:drawablePadding="6dp"
+                            android:drawablePadding="2dp"
                             android:text="@string/planner_quick_add_income"
                             android:textAllCaps="false"
                             android:textColor="@color/colorWhite"
@@ -738,7 +761,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_btn_budget_saving"
                             android:drawableStart="@drawable/budget_ui_ic_savings"
-                            android:drawablePadding="6dp"
+                            android:drawablePadding="2dp"
                             android:text="@string/planner_quick_add_saving"
                             android:textAllCaps="false"
                             android:textColor="@color/colorWhite"

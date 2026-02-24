@@ -8,15 +8,15 @@ data class BillCategoryOption(
 
 object BillCategoryUi {
     private val categories = listOf(
-        BillCategoryOption("housing", "Housing", "H"),
-        BillCategoryOption("utilities", "Utilities", "U"),
-        BillCategoryOption("internet_phone", "Internet & Phone", "I"),
-        BillCategoryOption("transport", "Transport", "T"),
-        BillCategoryOption("credit_loans", "Credit / Loans", "C"),
-        BillCategoryOption("subscriptions", "Subscriptions", "S"),
-        BillCategoryOption("health", "Health", "H"),
-        BillCategoryOption("education", "Education", "E"),
-        BillCategoryOption("other", "Other", "O")
+        BillCategoryOption("housing", "Housing", "\uD83C\uDFE0"),
+        BillCategoryOption("utilities", "Utilities", "\u26A1"),
+        BillCategoryOption("internet_phone", "Internet & Phone", "\uD83D\uDCF6"),
+        BillCategoryOption("transport", "Transport", "\uD83D\uDE97"),
+        BillCategoryOption("credit_loans", "Credit / Loans", "\uD83D\uDCB3"),
+        BillCategoryOption("subscriptions", "Subscriptions", "\uD83D\uDD14"),
+        BillCategoryOption("health", "Health", "\uD83C\uDFE5"),
+        BillCategoryOption("education", "Education", "\uD83D\uDCDA"),
+        BillCategoryOption("other", "Other", "\uD83D\uDED2")
     )
 
     fun options(): List<BillCategoryOption> = categories
@@ -29,7 +29,7 @@ object BillCategoryUi {
 
     fun emojiFor(value: String?): String {
         val key = normalize(value)
-        return categories.firstOrNull { it.key == key }?.emoji ?: "O"
+        return categories.firstOrNull { it.key == key }?.emoji ?: "\uD83D\uDED2"
     }
 
     fun labelFor(value: String?): String {

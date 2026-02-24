@@ -69,6 +69,7 @@
         android:id="@+id/rvCategoryChips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:paddingHorizontal="6dp"
         android:paddingVertical="10dp"
         android:clipToPadding="false" />
@@ -287,8 +288,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/featured_calculators"
                 android:textColor="@color/colorDark"
-                android:textSize="16sp"
-                android:fontFamily="@font/semi_bold" />
+                android:layout_marginStart="8dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/semi_bold"
+                android:textStyle="bold"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFeatured"
@@ -305,13 +308,17 @@
                 android:layout_marginTop="12dp"
                 android:text="@string/browse_categories"
                 android:textColor="@color/colorDark"
-                android:textSize="16sp"
-                android:fontFamily="@font/semi_bold" />
+                android:layout_marginStart="8dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/semi_bold"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -350,6 +357,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="horizontal">
 
                 <TextView

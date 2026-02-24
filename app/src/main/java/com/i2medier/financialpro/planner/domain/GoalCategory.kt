@@ -17,14 +17,14 @@ object GoalCategory {
     )
 
     val options: List<Option> = listOf(
-        Option(EMERGENCY, "Emergency", "E"),
-        Option(HOME, "Home", "H"),
-        Option(TECH, "Tech", "T"),
-        Option(TRAVEL, "Travel", "T"),
-        Option(EDUCATION, "Education", "E"),
-        Option(HEALTH, "Health", "H"),
-        Option(BUSINESS, "Business", "B"),
-        Option(OTHER, "Other", "O")
+        Option(EMERGENCY, "Emergency", "🛟"),
+        Option(HOME, "Home", "🏠"),
+        Option(TECH, "Tech", "💻"),
+        Option(TRAVEL, "Travel", "✈️"),
+        Option(EDUCATION, "Education", "🎓"),
+        Option(HEALTH, "Health", "🏥"),
+        Option(BUSINESS, "Business", "💼"),
+        Option(OTHER, "Other", "⭐")
     )
 
     fun normalize(key: String?): String {
