@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.i2medier.financialpro.AdAdmob
 import com.i2medier.financialpro.R
+import com.i2medier.financialpro.planner.data.local.BillRepeat
 import com.i2medier.financialpro.planner.data.local.BillEntity
+import com.i2medier.financialpro.planner.domain.BillCategoryUi
 import com.i2medier.financialpro.util.CurrencyManager
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -70,16 +72,35 @@ class BillAdapter(
         private val title: TextView = itemView.findViewById(R.id.tvBillTitle)
         private val amount: TextView = itemView.findViewById(R.id.tvBillAmount)
         private val dueDate: TextView = itemView.findViewById(R.id.tvBillDueDate)
+        private val repeat: TextView = itemView.findViewById(R.id.tvBillRepeat)
+        private val createdAt: TextView = itemView.findViewById(R.id.tvBillCreatedAt)
         private val status: TextView = itemView.findViewById(R.id.tvBillStatus)
         private val btnMarkPaid: TextView = itemView.findViewById(R.id.btnMarkPaid)
         private val btnEdit: View = itemView.findViewById(R.id.btnEditBill)
         private val btnDelete: View = itemView.findViewById(R.id.btnDeleteBill)
 
         fun bind(bill: BillEntity) {
-            title.text = bill.title
+            title.text = "${BillCategoryUi.emojiFor(bill.category)} ${bill.title}"
             amount.text = CurrencyManager.format(itemView.context, bill.amount)
-            dueDate.text = DATE_FORMAT.format(Date(bill.dueDate))
-            status.text = if (bill.isPaid) "Paid" else "Unpaid"
+            dueDate.text = itemView.context.getString(
+                R.string.planner_bill_due_label,
+                DATE_FORMAT.format(Date(bill.dueDate))
+            )
+            val repeatLabel = when (bill.repeat) {
+                BillRepeat.WEEKLY -> itemView.context.getString(R.string.planner_bill_repeat_weekly)
+                BillRepeat.MONTHLY -> itemView.context.getString(R.string.planner_bill_repeat_monthly)
+                else -> itemView.context.getString(R.string.planner_bill_repeat_none)
+            }
+            repeat.text = itemView.context.getString(R.string.planner_bill_repeat_label, repeatLabel)
+            createdAt.text = itemView.context.getString(
+                R.string.planner_bill_detail_created_at,
+                DATE_FORMAT.format(Date(bill.createdAt))
+            )
+            status.text = if (bill.isPaid) {
+                itemView.context.getString(R.string.planner_paid)
+            } else {
+                itemView.context.getString(R.string.planner_bill_detail_unpaid)
+            }
             btnMarkPaid.visibility = if (bill.isPaid) View.GONE else View.VISIBLE
             btnMarkPaid.setOnClickListener { onMarkPaid(bill) }
             btnEdit.setOnClickListener { onEdit(bill) }

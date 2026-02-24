@@ -14,6 +14,7 @@ import com.i2medier.financialpro.AdAdmob
 import com.i2medier.financialpro.R
 import com.i2medier.financialpro.planner.data.local.GoalEntity
 import com.i2medier.financialpro.planner.domain.daysBetweenUtc
+import com.i2medier.financialpro.planner.domain.GoalCategoryUi
 import com.i2medier.financialpro.planner.domain.toUtcMidnight
 import com.i2medier.financialpro.util.CurrencyManager
 import java.text.SimpleDateFormat
@@ -39,7 +40,7 @@ class GoalProgressAdapter(
     private companion object {
         private const val VIEW_TYPE_GOAL = 0
         private const val VIEW_TYPE_AD = 1
-        val DUE_DATE_FORMAT = SimpleDateFormat("dd MMM", Locale.getDefault())
+        val CREATED_DATE_FORMAT = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -75,7 +76,7 @@ class GoalProgressAdapter(
     inner class GoalHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tvGoalTitle)
         private val description: TextView = itemView.findViewById(R.id.tvGoalDescription)
-        private val dueDate: TextView = itemView.findViewById(R.id.tvGoalCreatedAt)
+        private val createdAt: TextView = itemView.findViewById(R.id.tvGoalCreatedAt)
         private val progressText: TextView = itemView.findViewById(R.id.tvGoalProgress)
         private val daysLeft: TextView = itemView.findViewById(R.id.tvGoalDaysLeft)
         private val dailySuggestion: TextView = itemView.findViewById(R.id.tvGoalDailySuggestion)
@@ -86,11 +87,11 @@ class GoalProgressAdapter(
             val target = item.goal.targetAmount.coerceAtLeast(0.0)
             val saved = item.savedAmount.coerceAtLeast(0.0)
             val ratio = if (target <= 0.0) 0.0 else (saved / target).coerceIn(0.0, 1.0)
-            title.text = item.goal.title
+            title.text = GoalCategoryUi.titleWithIcon(item.goal.category, item.goal.title)
             val note = item.goal.description?.trim().orEmpty()
             description.text = note
             description.visibility = if (note.isBlank()) View.GONE else View.VISIBLE
-            bindDueDate(item.goal)
+            bindCreatedDate(item.goal)
             bindDeadlineInsights(item.goal, saved, target)
             progressText.text = "Saved: ${CurrencyManager.format(itemView.context, saved)} / ${CurrencyManager.format(itemView.context, target)}"
             progressBar.progress = (ratio * 100).toInt()
@@ -98,14 +99,12 @@ class GoalProgressAdapter(
             btnAdd.setOnClickListener { onAddMoneyClicked(item.goal) }
         }
 
-        private fun bindDueDate(goal: GoalEntity) {
-            val targetDate = goal.targetDate
-            if (targetDate == null) {
-                dueDate.visibility = View.GONE
-                return
-            }
-            dueDate.visibility = View.VISIBLE
-            dueDate.text = DUE_DATE_FORMAT.format(Date(targetDate))
+        private fun bindCreatedDate(goal: GoalEntity) {
+            createdAt.visibility = View.VISIBLE
+            createdAt.text = itemView.context.getString(
+                R.string.planner_goal_detail_created_at,
+                CREATED_DATE_FORMAT.format(Date(goal.createdAt))
+            )
         }
 
         private fun bindDeadlineInsights(goal: GoalEntity, savedAmount: Double, targetAmount: Double) {

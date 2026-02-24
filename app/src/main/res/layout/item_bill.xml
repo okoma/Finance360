@@ -76,6 +76,14 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tvBillCreatedAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="#64748B"
+                android:textSize="12sp" />
+
+            <TextView
                 android:id="@+id/tvBillStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
