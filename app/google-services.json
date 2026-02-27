@@ -7,7 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:212782923687:android:b81cc4b81093e410248082",
+        "mobilesdk_app_id": "",
         "android_client_info": {
           "package_name": "com.i2medier.financialpro"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCe0xWRArHNRizufYPKm6798YltG7Y3kyk"
+          "current_key": ""
         }
       ],
       "services": {
