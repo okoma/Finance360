@@ -62,6 +62,7 @@ import com.i2medier.financialpro.planner.presentation.TransactionHistoryAdapter
 import com.i2medier.financialpro.planner.reminder.PlannerReminderConstants
 import com.i2medier.financialpro.planner.reminder.PlannerReminderManager
 import com.i2medier.financialpro.ui.widgets.BudgetDonutChartView
+import com.i2medier.financialpro.util.AnalyticsTracker
 import com.i2medier.financialpro.util.CurrencyManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -979,15 +980,19 @@ class PlannerFragment : Fragment() {
         }
 
         tabSummary.setOnClickListener {
+            AnalyticsTracker.logPlannerTabSelected(requireContext(), "summary")
             setTopTab(PlannerTopTab.SUMMARY)
         }
         tabHistory.setOnClickListener {
+            AnalyticsTracker.logPlannerTabSelected(requireContext(), "history")
             setTopTab(PlannerTopTab.HISTORY)
         }
         tabGoals.setOnClickListener {
+            AnalyticsTracker.logPlannerTabSelected(requireContext(), "goals")
             setTopTab(PlannerTopTab.GOALS)
         }
         tabAdd.setOnClickListener {
+            AnalyticsTracker.logPlannerTabSelected(requireContext(), "bills")
             setTopTab(PlannerTopTab.BILLS)
         }
         view.findViewById<View>(R.id.btnReminderSettings).setOnClickListener {
@@ -1012,15 +1017,19 @@ class PlannerFragment : Fragment() {
         PlannerIntegrationContract.clearRequestedTab(activity?.intent)
 
         btnCreateGoal.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "open_goal_sheet", "planner")
             showCreateGoalDialog()
         }
         btnCreateGoalEmpty.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "open_goal_sheet", "planner_empty")
             showCreateGoalDialog()
         }
         btnAddTransaction.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "open_transaction_sheet", "planner")
             showAddTransactionDialog()
         }
         btnAddBill.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "open_bill_sheet", "planner")
             showAddBillDialog()
         }
         budgetPrevMonth.setOnClickListener {
@@ -1032,6 +1041,7 @@ class PlannerFragment : Fragment() {
             updateBudgetSummary()
         }
         btnQuickAddExpense.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "quick_add_expense", "planner")
             showAddTransactionDialog(
                 prefill = PlannerAddRequest(
                     amount = 0.0,
@@ -1041,6 +1051,7 @@ class PlannerFragment : Fragment() {
             )
         }
         btnQuickAddIncome.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "quick_add_income", "planner")
             showAddTransactionDialog(
                 prefill = PlannerAddRequest(
                     amount = 0.0,
@@ -1050,6 +1061,7 @@ class PlannerFragment : Fragment() {
             )
         }
         btnQuickAddSaving.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "quick_add_saving", "planner")
             showAddTransactionDialog(
                 prefill = PlannerAddRequest(
                     amount = 0.0,
@@ -1246,6 +1258,7 @@ class PlannerFragment : Fragment() {
             if (error != null) {
                 toast(error)
             } else {
+                AnalyticsTracker.logPlannerGoalSaved(requireContext(), "planner_sheet", existingGoal != null)
                 dialog.dismiss()
             }
         }
@@ -1351,6 +1364,12 @@ class PlannerFragment : Fragment() {
             if (error != null) {
                 toast(error)
             } else {
+                AnalyticsTracker.logPlannerTransactionSaved(
+                    requireContext(),
+                    TransactionType.SAVING.name,
+                    CalculatorRegistry.CATEGORY_ALL,
+                    "goal_contribution"
+                )
                 dialog.dismiss()
             }
         }
@@ -1467,6 +1486,12 @@ class PlannerFragment : Fragment() {
             if (error != null) {
                 toast(error)
             } else {
+                AnalyticsTracker.logPlannerTransactionSaved(
+                    requireContext(),
+                    selectedType.name,
+                    selectedCategory.key,
+                    if (prefill != null) "calculator_prefill" else "manual"
+                )
                 dialog.dismiss()
             }
         }
@@ -1593,6 +1618,7 @@ class PlannerFragment : Fragment() {
             if (error != null) {
                 toast(error)
             } else {
+                AnalyticsTracker.logPlannerBillSaved(requireContext(), existingBill != null)
                 if (existingBill == null) {
                     pendingBillInsertCountBefore = allBills.size
                     pendingBillInsertDialog = dialog
@@ -1621,6 +1647,7 @@ class PlannerFragment : Fragment() {
 
     private fun openPrefilledCalculatorRequest(request: PlannerAddRequest) {
         val source = request.title?.takeIf { it.isNotBlank() } ?: getString(R.string.planner_source_calculator)
+        AnalyticsTracker.logPlannerAction(requireContext(), "consume_calculator_prefill", request.calculatorCategory)
         toast(getString(R.string.planner_prefilled_from, source))
         showAddTransactionDialog(prefill = request)
     }

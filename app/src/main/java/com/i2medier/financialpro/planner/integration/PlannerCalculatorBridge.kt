@@ -22,6 +22,7 @@ import com.i2medier.financialpro.planner.data.local.TransactionEntity
 import com.i2medier.financialpro.planner.data.repository.PlannerRepository
 import com.i2medier.financialpro.planner.domain.toUtcMidnight
 import com.i2medier.financialpro.ui.CalculatorRegistry
+import com.i2medier.financialpro.util.AnalyticsTracker
 import com.i2medier.financialpro.util.CurrencyManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,7 +48,17 @@ object PlannerCalculatorBridge {
         title: String,
         note: String
     ) {
+        AnalyticsTracker.logCalculatorAddToPlanner(
+            context,
+            context.javaClass.simpleName,
+            "tap"
+        )
         if (amount <= 0.0) {
+            AnalyticsTracker.logCalculatorAddToPlanner(
+                context,
+                context.javaClass.simpleName,
+                "invalid_amount"
+            )
             Toast.makeText(context, "No valid amount to add", Toast.LENGTH_SHORT).show()
             return
         }
@@ -81,6 +92,11 @@ object PlannerCalculatorBridge {
         )
 
         val intent = PlannerIntegrationContract.createOpenPlannerIntent(context, request)
+        AnalyticsTracker.logCalculatorAddToPlanner(
+            context,
+            context.javaClass.simpleName,
+            "redirect_to_planner"
+        )
         if (context !is android.app.Activity) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
@@ -240,9 +256,25 @@ object PlannerCalculatorBridge {
                         }
                     }
                 }.onSuccess {
+                    AnalyticsTracker.logPlannerTransactionSaved(
+                        activity,
+                        selectedType.name,
+                        selectedCategory.key,
+                        "calculator_inline_sheet"
+                    )
+                    AnalyticsTracker.logCalculatorAddToPlanner(
+                        activity,
+                        activity.javaClass.simpleName,
+                        "success"
+                    )
                     Toast.makeText(activity, "Added to Planner", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }.onFailure {
+                    AnalyticsTracker.logCalculatorAddToPlanner(
+                        activity,
+                        activity.javaClass.simpleName,
+                        "failed"
+                    )
                     Toast.makeText(activity, "Failed to add transaction", Toast.LENGTH_SHORT).show()
                 }
             }

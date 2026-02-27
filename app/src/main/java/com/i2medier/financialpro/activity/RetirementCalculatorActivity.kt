@@ -125,6 +125,7 @@ class RetirementCalculatorActivity : AppCompatActivity() {
 
     private fun clickListeners() {
         btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
             if (calculate()) {
                 AppConstant.hideKeyboard(this)
                 AppConstant.visibleResult(llResult)
@@ -283,15 +284,6 @@ class RetirementCalculatorActivity : AppCompatActivity() {
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-                return
-            }
-            ShareUtil.print(this, rootLayout, getString(R.string.retirement_calculator))
-            return
-        }
         ShareUtil.print(this, rootLayout, getString(R.string.retirement_calculator))
     }
 

@@ -12,7 +12,7 @@
     <!-- Mortgage Calculator -->
     <string name="mortgage_calculator">Mortgage Calculator</string>
     <string name="property_tax">Property Tax</string>
-    <string name="pmi">PMI (Private Mortgage Insurance)</string>
+    <string name="pmi">PMI</string>
     <string name="property_tax_description">Annual property tax divided into monthly payments</string>
     <string name="pmi_description">Required when down payment is less than 20%%</string>
     

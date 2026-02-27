@@ -1,11 +1,15 @@
 package com.i2medier.financialpro.activity
 
 import android.app.TimePickerDialog
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.ContextCompat
 import com.i2medier.financialpro.R
 import com.i2medier.financialpro.planner.reminder.PlannerReminderConstants
 import com.i2medier.financialpro.planner.reminder.PlannerReminderManager
@@ -14,6 +18,15 @@ import java.util.Calendar
 import java.util.Locale
 
 class ReminderCenterActivity : AppCompatActivity() {
+    private var pendingSaveStateAction: (() -> Unit)? = null
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            pendingSaveStateAction?.invoke()
+        }
+        pendingSaveStateAction = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,13 +70,28 @@ class ReminderCenterActivity : AppCompatActivity() {
 
             val anyEnabled = savingEnabled || goalEnabled || billsEnabled
             if (anyEnabled) {
-                PlannerReminderManager.updateReminderSchedule(
-                    context = this,
-                    weekdayHour = weekdayHour,
-                    weekdayMinute = weekdayMinute,
-                    weekendHour = weekendHour,
-                    weekendMinute = weekendMinute
-                )
+                val scheduleAction: () -> Unit = {
+                    PlannerReminderManager.updateReminderSchedule(
+                        context = this,
+                        weekdayHour = weekdayHour,
+                        weekdayMinute = weekdayMinute,
+                        weekendHour = weekendHour,
+                        weekendMinute = weekendMinute
+                    )
+                    Unit
+                }
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    val granted = ContextCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.POST_NOTIFICATIONS
+                    ) == PackageManager.PERMISSION_GRANTED
+                    if (!granted) {
+                        pendingSaveStateAction = scheduleAction
+                        notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        return
+                    }
+                }
+                scheduleAction()
             } else {
                 PlannerReminderManager.disableReminder(this)
             }
@@ -127,6 +155,11 @@ class ReminderCenterActivity : AppCompatActivity() {
                 weekendMinute,
                 false
             ).show()
+        }
+
+        // Ensure existing reminder preferences are reflected in actual alarm state
+        if (savingEnabled || goalEnabled || billsEnabled) {
+            PlannerReminderManager.ensureReminderScheduledSmart(this, null)
         }
     }
 }

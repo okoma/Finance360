@@ -235,6 +235,7 @@ class NetWorthCalculatorActivity : AppCompatActivity() {
             .forEach { it.addTextChangedListener(watcher) }
 
         btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
             calculate()
             AppConstant.hideKeyboard(this)
             AppConstant.visibleResult(llResult)
@@ -335,21 +336,33 @@ class NetWorthCalculatorActivity : AppCompatActivity() {
         val totalLongTerm = sum(longTermInputs)
 
         lTotal.text = CurrencyManager.format(this, totalCash)
-        totalInvest.text = Utils.decimalFormat.format(totalInvestment)
-        totalRetire.text = Utils.decimalFormat.format(totalRetirement)
-        totalPersonalAsset.text = Utils.decimalFormat.format(totalPersonal)
+        totalInvest.text = CurrencyManager.format(this, totalInvestment)
+        totalRetire.text = CurrencyManager.format(this, totalRetirement)
+        totalPersonalAsset.text = CurrencyManager.format(this, totalPersonal)
         totalShortTermLiabilities.text = CurrencyManager.format(this, totalShortTerm)
         totalLongTermLiabilities.text = CurrencyManager.format(this, totalLongTerm)
         txtTotalAsset.text = CurrencyManager.format(this, totalCash + totalInvestment + totalRetirement + totalPersonal)
     }
 
     private fun setupVisibilityToggles() {
+        setSectionExpanded(linearLiquid, drop, expanded = true)
+        setSectionExpanded(linearInvestment, drop1, expanded = true)
+        setSectionExpanded(linearRetirement, drop2, expanded = true)
+        setSectionExpanded(linearPersonal, drop3, expanded = true)
+        setSectionExpanded(linearShortTerm, drop4, expanded = true)
+        setSectionExpanded(linearLongTerm, drop5, expanded = true)
+
         toggleSection(liquidAssets, linearLiquid, drop)
         toggleSection(investmentAssets, linearInvestment, drop1)
         toggleSection(retirementAssets, linearRetirement, drop2)
         toggleSection(personalAssets, linearPersonal, drop3)
         toggleSection(shortTerm, linearShortTerm, drop4)
         toggleSection(longTerm, linearLongTerm, drop5)
+    }
+
+    private fun setSectionExpanded(content: LinearLayout, arrow: ImageView, expanded: Boolean) {
+        content.visibility = if (expanded) View.VISIBLE else View.GONE
+        arrow.setImageResource(if (expanded) R.drawable.ic_up_black else R.drawable.ic_down_black)
     }
 
     private fun toggleSection(card: CardView, content: LinearLayout, arrow: ImageView) {
@@ -381,19 +394,21 @@ class NetWorthCalculatorActivity : AppCompatActivity() {
     }
 
     private fun sum(inputs: List<EditText>): Double {
-        return inputs.sumOf { input -> input.text.toString().toDoubleOrNull() ?: 0.0 }
+        return inputs.sumOf { input ->
+            parseNumericInput(input.text?.toString().orEmpty()) ?: 0.0
+        }
+    }
+
+    private fun parseNumericInput(raw: String): Double? {
+        if (raw.isBlank()) return null
+        val normalized = raw
+            .replace(currencySymbol, "")
+            .replace(",", "")
+            .trim()
+        return normalized.toDoubleOrNull()
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-                return
-            }
-            ShareUtil.print(this, rootLayout, getString(R.string.net_worth_calculator))
-            return
-        }
         ShareUtil.print(this, rootLayout, getString(R.string.net_worth_calculator))
     }
 

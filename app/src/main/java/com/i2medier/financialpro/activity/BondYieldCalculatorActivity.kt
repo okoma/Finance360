@@ -120,7 +120,10 @@ class BondYieldCalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelec
         bondYieldExplanationCard = findViewById(R.id.bondYieldExplanationCard)
         bondYieldExplanation = findViewById(R.id.bondYieldExplanation)
 
-        btnCalculate.setOnClickListener { calculate() }
+        btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
+            calculate()
+        }
         btnShare.setOnClickListener { checkPermission() }
         findViewById<Button>(R.id.btnAddToPlanner).setOnClickListener { addResultToPlanner() }
     }
@@ -256,15 +259,6 @@ class BondYieldCalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelec
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!com.i2medier.financialpro.util.Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-                return
-            }
-            ShareUtil.print(this, rootLayout, getString(R.string.bond_yield_calculator))
-            return
-        }
         ShareUtil.print(this, rootLayout, getString(R.string.bond_yield_calculator))
     }
 

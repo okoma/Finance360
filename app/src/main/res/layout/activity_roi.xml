@@ -301,35 +301,45 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/banner1">
 
-        <Button
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+<Button
             android:id="@+id/btnShare"
             style="@style/CalcButton"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/bg_calc_button"
             android:text="@string/share_result"
-            android:visibility="gone" />
-
-                <Button
+            android:visibility="visible" />
+<Button
             android:id="@+id/btnAddToPlanner"
             style="@style/CalcButton"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="4dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/bg_calc_button"
             android:text="@string/add_to_planner"
             android:visibility="gone" />
+            </LinearLayout>
+        </HorizontalScrollView>
 
 <Button
             android:id="@+id/btnCalculate"
             style="@style/CalcButton"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/bg_calc_button"
             android:text="@string/calculate" />
     </LinearLayout>

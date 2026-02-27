@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.graphics.Color
 import android.os.Build
 import android.widget.FrameLayout
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -17,6 +18,7 @@ import com.i2medier.financialpro.ui.CalculatorsFragment
 import com.i2medier.financialpro.ui.HomeFragment
 import com.i2medier.financialpro.ui.PlannerFragment
 import com.i2medier.financialpro.ui.SettingsFragment
+import com.i2medier.financialpro.util.AnalyticsTracker
 import com.i2medier.financialpro.util.CountrySettingsManager
 
 class MainActivity : AppCompatActivity() {
@@ -65,22 +67,26 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
+                    AnalyticsTracker.logNavigationTab(this, "home")
                     openFragment(HomeFragment())
                     true
                 }
 
                 R.id.nav_calculators -> {
+                    AnalyticsTracker.logNavigationTab(this, "calculators")
                     openFragment(CalculatorsFragment.newInstance(pendingCalculatorCategory))
                     pendingCalculatorCategory = com.i2medier.financialpro.ui.CalculatorRegistry.CATEGORY_ALL
                     true
                 }
 
                 R.id.nav_planner -> {
+                    AnalyticsTracker.logNavigationTab(this, "planner")
                     openFragment(PlannerFragment())
                     true
                 }
 
                 R.id.nav_settings -> {
+                    AnalyticsTracker.logNavigationTab(this, "settings")
                     openFragment(SettingsFragment())
                     true
                 }
@@ -94,12 +100,34 @@ class MainActivity : AppCompatActivity() {
                 bottomNavigationView.selectedItemId = R.id.nav_home
             }
         }
+
+        setupBackPressHandler()
     }
 
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
         handlePlannerLaunchIntent(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Ensure navigation state is valid after resuming from external apps
+        if (bottomNavigationView.selectedItemId == 0) {
+            bottomNavigationView.selectedItemId = R.id.nav_home
+        }
+    }
+
+    private fun setupBackPressHandler() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (supportFragmentManager.backStackEntryCount > 0) {
+                    supportFragmentManager.popBackStack()
+                } else {
+                    finish()
+                }
+            }
+        })
     }
 
     fun selectTab(tabId: Int) {

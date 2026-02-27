@@ -149,6 +149,7 @@ class AutoLoanActivity : AppCompatActivity() {
 
     private fun clickListeners() {
         btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
             if (setValue()) {
                 AppConstant.hideKeyboard(this)
                 AppConstant.visibleResult(llResult)
@@ -250,16 +251,7 @@ class AutoLoanActivity : AppCompatActivity() {
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-            } else {
-                ShareUtil.print(this, rootLayout, getString(R.string.auto_loan_calculator))
-            }
-        } else {
-            ShareUtil.print(this, rootLayout, getString(R.string.auto_loan_calculator))
-        }
+        ShareUtil.print(this, rootLayout, getString(R.string.auto_loan_calculator))
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

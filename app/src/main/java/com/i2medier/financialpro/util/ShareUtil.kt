@@ -37,12 +37,11 @@ object ShareUtil {
             scrollView.getChildAt(0).width
         )
         try {
-            val file = File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-                    .absolutePath + "/Financial Calculator"
-            )
+            val picturesDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+                ?: context.filesDir
+            val file = File(picturesDir, "Financial Calculator")
             if (!file.exists()) {
-                file.mkdir()
+                file.mkdirs()
             }
             val ts = (System.currentTimeMillis() / 1000).toString()
             val str2 = "${str}_${ts}.jpg"

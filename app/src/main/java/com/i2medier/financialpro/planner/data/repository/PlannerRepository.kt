@@ -203,6 +203,15 @@ class PlannerRepository(
         updateSavingStreak(System.currentTimeMillis())
     }
 
+    suspend fun reconcileSavingStreakForNow() {
+        val today = System.currentTimeMillis().toUtcMidnight()
+        val current = streakDao.get() ?: return
+        val dayDiff = ((today - current.lastSaveDate) / DAY_IN_MILLIS).toInt()
+        if (dayDiff > 1 && current.currentStreak != 0) {
+            streakDao.upsert(current.copy(currentStreak = 0))
+        }
+    }
+
     private suspend fun updateSavingStreak(nowMillis: Long) {
         val today = nowMillis.toUtcMidnight()
         val current = streakDao.get()

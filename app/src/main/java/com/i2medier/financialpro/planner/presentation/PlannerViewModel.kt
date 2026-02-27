@@ -29,6 +29,15 @@ class PlannerViewModel(
     application: Application,
     private val repository: PlannerRepository
 ) : AndroidViewModel(application) {
+    init {
+        viewModelScope.launch {
+            runCatching {
+                repository.reconcileSavingStreakForNow()
+            }.onFailure {
+                android.util.Log.e("PlannerViewModel", "Error reconciling streak", it)
+            }
+        }
+    }
 
     val transactions: StateFlow<List<TransactionEntity>> = repository.observeTransactions()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())

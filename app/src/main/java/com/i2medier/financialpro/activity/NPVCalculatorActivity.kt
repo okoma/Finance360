@@ -108,7 +108,10 @@ class NPVCalculatorActivity : AppCompatActivity(), RemoveEditText {
             doubleArrayList.add("")
             adapter.notifyDataSetChanged()
         }
-        btnCalculate.setOnClickListener { calculate() }
+        btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
+            calculate()
+        }
         btnShare.setOnClickListener { checkPermission() }
         findViewById<Button>(R.id.btnAddToPlanner).setOnClickListener { addResultToPlanner() }
     }
@@ -195,15 +198,6 @@ class NPVCalculatorActivity : AppCompatActivity(), RemoveEditText {
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!com.i2medier.financialpro.util.Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-                return
-            }
-            ShareUtil.print(this, rootLayout, getString(R.string.net_present_value_calculator))
-            return
-        }
         ShareUtil.print(this, rootLayout, getString(R.string.net_present_value_calculator))
     }
 

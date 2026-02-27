@@ -30,6 +30,12 @@ object PlannerReminderManager {
     }
 
     fun ensureReminderScheduledSmart(context: Context, streak: StreakEntity? = null): Boolean {
+        val prefs = context.getSharedPreferences(
+            PlannerReminderConstants.PREFS_NAME,
+            Context.MODE_PRIVATE
+        )
+        if (!isReminderEngineEnabled(prefs)) return true
+
         val reminderTime = PlannerReminderPolicy.resolveReminderTime(context, streak)
         return PlannerReminderScheduler(context).scheduleReminder(reminderTime.hour, reminderTime.minute)
     }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.i2medier.financialpro.R
 import com.i2medier.financialpro.adapter.home.CalculatorListAdapter
 import com.i2medier.financialpro.ui.search.RecentCalculatorStore
+import com.i2medier.financialpro.util.AnalyticsTracker
 
 class CalculatorsFragment : Fragment() {
 
@@ -41,6 +42,11 @@ class CalculatorsFragment : Fragment() {
         recyclerView.adapter = CalculatorListAdapter(
             CalculatorRegistry.byCategory(requireContext(), categoryId)
         ) { item ->
+            AnalyticsTracker.logCalculatorOpened(
+                requireContext(),
+                item.activityClass.simpleName,
+                "calculator_tab"
+            )
             RecentCalculatorStore.record(requireContext(), item.activityClass.name)
             startActivity(Intent(requireContext(), item.activityClass))
         }

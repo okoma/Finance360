@@ -100,7 +100,10 @@ class PresentValueCalculatorActivity : AppCompatActivity() {
         presentValueExplanationCard = findViewById(R.id.presentValueExplanationCard)
         presentValueExplanation = findViewById(R.id.presentValueExplanation)
 
-        btnCalculate.setOnClickListener { calculate() }
+        btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
+            calculate()
+        }
         btnShare.setOnClickListener { checkPermission() }
         findViewById<Button>(R.id.btnAddToPlanner).setOnClickListener { addResultToPlanner() }
     }
@@ -189,15 +192,6 @@ class PresentValueCalculatorActivity : AppCompatActivity() {
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-                return
-            }
-            ShareUtil.print(this, rootLayout, getString(R.string.present_value_calculator))
-            return
-        }
         ShareUtil.print(this, rootLayout, getString(R.string.present_value_calculator))
     }
 

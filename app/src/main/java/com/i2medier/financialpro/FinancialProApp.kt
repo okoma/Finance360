@@ -11,6 +11,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.i2medier.financialpro.planner.reminder.PlannerReminderManager
+import com.i2medier.financialpro.util.AnalyticsTracker
 
 class FinancialProApp : Application(), Application.ActivityLifecycleCallbacks {
     private data class InitialPadding(
@@ -22,6 +25,17 @@ class FinancialProApp : Application(), Application.ActivityLifecycleCallbacks {
 
     override fun onCreate() {
         super.onCreate()
+        runCatching {
+            FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
+            FirebaseCrashlytics.getInstance().setCustomKey("app_id", packageName)
+        }.onFailure {
+            AnalyticsTracker.recordNonFatal("crashlytics_init", "init_failed", it)
+        }
+        runCatching {
+            PlannerReminderManager.ensureReminderScheduledSmart(applicationContext, null)
+        }.onFailure {
+            AnalyticsTracker.recordNonFatal("reminder_init", "schedule_failed", it)
+        }
         registerActivityLifecycleCallbacks(this)
     }
 

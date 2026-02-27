@@ -23,6 +23,7 @@ import com.i2medier.financialpro.planner.integration.PlannerAddRequest
 import com.i2medier.financialpro.planner.integration.PlannerIntegrationContract
 import com.i2medier.financialpro.ui.CalculatorRegistry
 import com.i2medier.financialpro.ui.search.RecentCalculatorStore
+import com.i2medier.financialpro.util.AnalyticsTracker
 import com.i2medier.financialpro.util.CurrencyManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -74,6 +75,7 @@ class SearchActivity : AppCompatActivity() {
         adapter = SearchAdapter(
             onActionClicked = { handleAction(it) },
             onCalculatorClicked = { item ->
+                AnalyticsTracker.logCalculatorOpened(this, item.activityClass.simpleName, "search")
                 RecentCalculatorStore.record(this, item.activityClass.name)
                 startActivity(Intent(this, item.activityClass))
             },
@@ -225,6 +227,7 @@ class SearchActivity : AppCompatActivity() {
     private fun handleAction(action: SearchRow.ActionItem) {
         when (action) {
             SearchRow.ActionItem.AddSaving -> {
+                AnalyticsTracker.logPlannerAction(this, "add_saving_quick_action", "search")
                 val intent = PlannerIntegrationContract.createOpenPlannerIntent(
                     this,
                     PlannerAddRequest(
@@ -239,10 +242,12 @@ class SearchActivity : AppCompatActivity() {
             }
 
             SearchRow.ActionItem.OpenPlanner -> {
+                AnalyticsTracker.logPlannerAction(this, "open_planner", "search")
                 startActivity(PlannerIntegrationContract.createOpenPlannerDeepLinkIntent(this))
             }
 
             SearchRow.ActionItem.CreateGoal -> {
+                AnalyticsTracker.logPlannerAction(this, "create_goal_quick_action", "search")
                 startActivity(
                     PlannerIntegrationContract.createOpenPlannerDeepLinkIntent(
                         this,

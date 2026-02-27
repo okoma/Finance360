@@ -15,6 +15,8 @@ import com.i2medier.financialpro.util.CountrySettingsManager
 class SplashActivity : AppCompatActivity() {
     private val splashTimeout = 3000L
     private lateinit var versiontxt: TextView
+    private var handler: Handler? = null
+    private var navigationRunnable: Runnable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,14 +27,43 @@ class SplashActivity : AppCompatActivity() {
         versiontxt = findViewById(R.id.versiontxt)
         versiontxt.text = getVersion(applicationContext)
 
-        Handler(Looper.getMainLooper()).postDelayed({
+        scheduleNavigation()
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        // When activity is brought to front (singleTask), navigate immediately
+        // This handles the case when clicking app ad from within the app
+        navigateToNextScreen()
+    }
+
+    private fun scheduleNavigation() {
+        handler = Handler(Looper.getMainLooper())
+        navigationRunnable = Runnable {
+            navigateToNextScreen()
+        }
+        handler?.postDelayed(navigationRunnable!!, splashTimeout)
+    }
+
+    private fun navigateToNextScreen() {
+        // Remove any pending navigation
+        navigationRunnable?.let { handler?.removeCallbacks(it) }
+        
+        if (!isFinishing) {
             if (AppPref.IsTermsAccept(this)) {
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                })
             } else {
                 startActivity(Intent(this, Disclosure::class.java))
             }
             finish()
-        }, splashTimeout)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        navigationRunnable?.let { handler?.removeCallbacks(it) }
     }
 
     companion object {

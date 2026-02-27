@@ -40,6 +40,7 @@ import com.i2medier.financialpro.planner.domain.GoalCategoryUi
 import com.i2medier.financialpro.planner.domain.toUtcMidnight
 import com.i2medier.financialpro.planner.presentation.PlannerViewModel
 import com.i2medier.financialpro.ui.search.RecentCalculatorStore
+import com.i2medier.financialpro.util.AnalyticsTracker
 import com.i2medier.financialpro.util.CurrencyManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -119,6 +120,7 @@ class HomeFragment : Fragment() {
         }
 
         val openPlannerClick = View.OnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "open_planner", "home")
             (activity as? MainActivity)?.selectTab(R.id.nav_planner)
         }
 
@@ -126,9 +128,11 @@ class HomeFragment : Fragment() {
         view.findViewById<View>(R.id.btnAddGoal).setOnClickListener { showCreateGoalBottomSheet() }
         AdAdmob(requireActivity()).NativeAd(nativeAdHome, requireActivity())
         searchIcon.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "open_search", "home")
             startActivity(Intent(requireContext(), SearchActivity::class.java))
         }
         notificationBell.setOnClickListener {
+            AnalyticsTracker.logPlannerAction(requireContext(), "open_reminders", "home")
             startActivity(Intent(requireContext(), ReminderCenterActivity::class.java))
         }
 
@@ -184,6 +188,11 @@ class HomeFragment : Fragment() {
                 launch {
                     viewModel.featuredCalculators.collect { items ->
                         rvFeatured.adapter = FeaturedCalculatorAdapter(items) { item ->
+                            AnalyticsTracker.logCalculatorOpened(
+                                requireContext(),
+                                item.activityClass.simpleName,
+                                "home_featured"
+                            )
                             RecentCalculatorStore.record(requireContext(), item.activityClass.name)
                             startActivity(Intent(requireContext(), item.activityClass))
                         }
@@ -326,6 +335,7 @@ class HomeFragment : Fragment() {
             if (error != null) {
                 Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
             } else {
+                AnalyticsTracker.logPlannerGoalSaved(requireContext(), "home", isEdit = false)
                 Toast.makeText(context, getString(R.string.planner_create_goal), Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }

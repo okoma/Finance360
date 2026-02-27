@@ -83,7 +83,10 @@ class ROIActivity : AppCompatActivity() {
         roiExplanationCard = findViewById(R.id.roiExplanationCard)
         roiExplanation = findViewById(R.id.roiExplanation)
 
-        btnCalculate.setOnClickListener { calculate() }
+        btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
+            calculate()
+        }
         btnShare.setOnClickListener { checkPermission() }
         findViewById<Button>(R.id.btnAddToPlanner).setOnClickListener { addResultToPlanner() }
     }
@@ -149,15 +152,6 @@ class ROIActivity : AppCompatActivity() {
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-                return
-            }
-            ShareUtil.print(this, rootLayout, getString(R.string.return_on_investment_calculator))
-            return
-        }
         ShareUtil.print(this, rootLayout, getString(R.string.return_on_investment_calculator))
     }
 

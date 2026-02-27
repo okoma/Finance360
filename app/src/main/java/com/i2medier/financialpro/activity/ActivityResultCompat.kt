@@ -8,14 +8,9 @@ import androidx.fragment.app.FragmentActivity
 private const val RESULT_RELAY_TAG = "result_relay_fragment"
 
 fun FragmentActivity.launchForResult(intent: Intent, @Suppress("UNUSED_PARAMETER") requestCode: Int) {
-    val fragmentManager = supportFragmentManager
-    val relay = (fragmentManager.findFragmentByTag(RESULT_RELAY_TAG) as? ActivityResultRelayFragment)
-        ?: ActivityResultRelayFragment().also {
-            fragmentManager.beginTransaction()
-                .add(it, RESULT_RELAY_TAG)
-                .commitNow()
-        }
-    relay.launch(intent)
+    // None of our call sites currently consume activity result payloads.
+    // Use direct launch to avoid fragment transaction state issues from dialog callbacks.
+    startActivity(intent)
 }
 
 private class ActivityResultRelayFragment : Fragment() {

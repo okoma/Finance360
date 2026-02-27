@@ -48,6 +48,7 @@ class SaveShareActivity : AppCompatActivity() {
             val intent = Intent().apply {
                 action = "android.intent.action.SEND"
                 type = "image/*"
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                 putExtra("android.intent.extra.SUBJECT", "")
                 putExtra("android.intent.extra.TEXT", "")
                 putExtra("android.intent.extra.STREAM", uriForFile)

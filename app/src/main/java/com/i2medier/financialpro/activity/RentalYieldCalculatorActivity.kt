@@ -127,7 +127,10 @@ class RentalYieldCalculatorActivity : AppCompatActivity(), AdapterView.OnItemSel
         rentalYieldExplanationCard = findViewById(R.id.rentalYieldExplanationCard)
         rentalYieldExplanation = findViewById(R.id.rentalYieldExplanation)
 
-        btnCalculate.setOnClickListener { calculate() }
+        btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
+            calculate()
+        }
         btnShare.setOnClickListener { checkPermission() }
         findViewById<Button>(R.id.btnAddToPlanner).setOnClickListener { addResultToPlanner() }
     }
@@ -240,15 +243,6 @@ class RentalYieldCalculatorActivity : AppCompatActivity(), AdapterView.OnItemSel
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!com.i2medier.financialpro.util.Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-                return
-            }
-            ShareUtil.print(this, rootLayout, getString(R.string.rental_yield_calculator))
-            return
-        }
         ShareUtil.print(this, rootLayout, getString(R.string.rental_yield_calculator))
     }
 

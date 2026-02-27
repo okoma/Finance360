@@ -29,11 +29,11 @@
         <activity
             android:name="com.i2medier.financialpro.activity.SplashActivity"
             android:exported="true"
+            android:launchMode="singleTask"
+            android:alwaysRetainTaskState="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -103,10 +103,20 @@
         <activity
             android:name="com.i2medier.financialpro.activity.MainActivity"
             android:exported="true"
+            android:launchMode="singleTop"
+            android:clearTaskOnLaunch="false"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.i2medier.financialpro.action.OPEN_PLANNER" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:scheme="financialpro"
+                    android:host="planner" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:scheme="financialpro"
                     android:host="planner" />

@@ -165,6 +165,7 @@ class CompoundInterestActivity : AppCompatActivity() {
         }
 
         btnCalculate.setOnClickListener {
+            com.i2medier.financialpro.util.AnalyticsTracker.logCalculatorCalculated(this, javaClass.simpleName)
             if (getInterestRate()) {
                 AppConstant.hideKeyboard(this)
                 AppConstant.visibleResult(llResult)
@@ -335,15 +336,6 @@ class CompoundInterestActivity : AppCompatActivity() {
     }
 
     private fun checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissions = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-            if (!Utils.hasPermissions(this, *permissions)) {
-                ActivityCompat.requestPermissions(this, permissions, 112)
-                return
-            }
-            ShareUtil.print(this, rootLayout, getString(R.string.compound_interest_calculator))
-            return
-        }
         ShareUtil.print(this, rootLayout, getString(R.string.compound_interest_calculator))
     }
 

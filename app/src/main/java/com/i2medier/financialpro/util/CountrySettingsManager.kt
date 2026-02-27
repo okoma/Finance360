@@ -43,7 +43,10 @@ object CountrySettingsManager {
 
     fun applySelectedLocale(context: Context) {
         val selected = getSelectedCountry(context)
-        val locale = Locale("en", selected.countryCode)
+        val locale = Locale.Builder()
+            .setLanguage("en")
+            .setRegion(selected.countryCode)
+            .build()
         Locale.setDefault(locale)
         val appLocales = LocaleListCompat.forLanguageTags(locale.toLanguageTag())
         AppCompatDelegate.setApplicationLocales(appLocales)
@@ -51,6 +54,9 @@ object CountrySettingsManager {
 
     fun getSelectedLocale(context: Context): Locale {
         val selected = getSelectedCountry(context)
-        return Locale("en", selected.countryCode)
+        return Locale.Builder()
+            .setLanguage("en")
+            .setRegion(selected.countryCode)
+            .build()
     }
 }
