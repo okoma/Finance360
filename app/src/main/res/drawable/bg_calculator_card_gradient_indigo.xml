@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bg_calculator_card_gradient_indigo.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base gradient - Indigo theme -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="135"
+                android:startColor="#1E1B4B"
+                android:centerColor="#4F46E5"
+                android:endColor="#818CF8"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Overlay gradient for depth -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="45"
+                android:startColor="#1AA5B4FC"
+                android:centerColor="#00FFFFFF"
+                android:endColor="#1A818CF8"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</layer-list>

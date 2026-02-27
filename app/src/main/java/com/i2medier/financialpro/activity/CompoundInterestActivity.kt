@@ -80,7 +80,7 @@ class CompoundInterestActivity : AppCompatActivity() {
 
         val adAdmob = AdAdmob(this)
         findViewById<RelativeLayout?>(R.id.banner)?.let { banner ->
-            adAdmob.BannerAd(banner, this)
+            adAdmob.BannerAd(banner)
         }
 
         init()

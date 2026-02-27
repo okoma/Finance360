@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bg_calculator_card_gradient_blue.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base gradient - Blue theme for calculators -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="135"
+                android:startColor="#1E293B"
+                android:centerColor="#1E40AF"
+                android:endColor="#3B82F6"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Overlay gradient for depth -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="45"
+                android:startColor="#1A60A5FA"
+                android:centerColor="#00FFFFFF"
+                android:endColor="#1A3B82F6"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</layer-list>

@@ -17,7 +17,7 @@ class Disclosure : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_disclosure)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner), this)
+        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner))
     }
 
     override fun onClick(view: View) {

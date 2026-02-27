@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
@@ -52,8 +53,9 @@ class StatisticsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_statistics)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById(R.id.banner), this)
+        adAdmob.BannerAd(findViewById(R.id.banner))
         adAdmob.FullscreenAd(this)
+        registerBackPressHandler()
 
         commonModel = CommonModel()
         interestOnly = CommonModel()
@@ -158,11 +160,19 @@ class StatisticsActivity : AppCompatActivity() {
         monthAdapter.setList(list, isMonthly)
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+    private fun resetStats() {
         Utils.Principal = com.github.mikephil.charting.utils.Utils.DOUBLE_EPSILON
         Utils.Interest = com.github.mikephil.charting.utils.Utils.DOUBLE_EPSILON
         Utils.Paid = com.github.mikephil.charting.utils.Utils.DOUBLE_EPSILON
+    }
+
+    private fun registerBackPressHandler() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                resetStats()
+                finish()
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

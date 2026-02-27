@@ -29,4 +29,92 @@
     
     <!-- Car Lease -->
     <string name="car_lease_calculator">Car Finance Calculator</string>
+    
+    <!-- Retirement Descriptions -->
+    <string name="retirement_description_html"><![CDATA[
+Pension planning helps you determine how much money you\'ll have when you retire and whether it\'s enough to support your lifestyle.<br/><br/>
+
+<b>How it works:</b> You start with your current pension savings and add regular monthly contributions. Over time, your money grows through compound interest and investment returns. The calculator shows you:<br/>
+• Total pension fund at retirement<br/>
+• Monthly income you can withdraw<br/>
+• How long your pension will last<br/><br/>
+
+<b>For example</b>, if you\'re <b>30 years old</b> with <b>%1$s500,000</b> saved, contribute <b>%1$s50,000</b> monthly, and expect a <b>7%%</b> annual return, by age <b>65</b> you\'ll have a substantial pension fund for retirement.
+    ]]></string>
+    <string name="retirement_explain_html"><![CDATA[
+🎯 Great planning! Here\'s your pension outlook:<br/><br/>
+
+<b>💰 Pension Savings:</b><br/>
+• <b>Total Pension Fund:</b> %1$s (what you\'ll have saved)<br/>
+• <b>Monthly Income Available:</b> %2$s (safe withdrawal amount)<br/>
+• <b>Years of Income:</b> %3$s (how long it will last)<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+By contributing <b>%4$s</b> monthly starting at age <b>%5$s</b>, you\'ll have <b>%1$s</b> saved by age <b>%6$s</b>. This gives you <b>%2$s</b> per month in retirement, which should last for <b>%3$s</b> years if you follow the 4%% withdrawal rule.<br/><br/>
+
+<b>✅ Next Steps:</b><br/>
+• Make sure <b>%2$s</b> monthly covers your retirement expenses<br/>
+• Consider increasing contributions if you want more income<br/>
+• Review your plan annually and adjust as needed<br/>
+• Factor in pension income and other income sources
+    ]]></string>
+    
+    <!-- Net Worth Description -->
+    <string name="networth_description_html"><![CDATA[
+Net worth is a measure of your financial health. It\'s calculated by subtracting your total liabilities (what you owe) from your total assets (what you own).<br/><br/>
+<b>Assets include:</b><br/>
+- Liquid assets (cash, savings, current accounts)<br/>
+- Investment assets (stocks, bonds, mutual funds, real estate investments)<br/>
+- Retirement assets (pension funds, retirement savings accounts)<br/>
+- Personal assets (home, car, valuables, business assets)<br/><br/>
+<b>Liabilities include:</b><br/>
+- Short-term debts (credit cards, personal loans, outstanding bills)<br/>
+- Long-term debts (mortgages, business loans, vehicle loans)<br/><br/>
+<b>For example</b>, if you have <b>%1$s50,000,000</b> in assets and <b>%1$s20,000,000</b> in liabilities, your net worth is <b>%1$s30,000,000</b>.<br/><br/>
+A positive net worth means you own more than you owe, which is a sign of financial stability. Tracking your net worth over time helps you measure your financial progress and make informed decisions about your money.
+    ]]></string>
+    
+    <!-- Mortgage Description -->
+    <string name="mortgage_description_html"><![CDATA[
+A home loan (mortgage) is used to purchase property. The property itself serves as security for the loan, meaning the lender can repossess if you fail to make repayments.<br/><br/>
+<b>How it works:</b> When you take out a mortgage, you borrow money to buy a property and repay it over a set period (usually 15-25 years) through monthly payments. Each payment includes:<br/>
+- <b>Principal:</b> The amount borrowed<br/>
+- <b>Interest:</b> The cost of borrowing<br/>
+- <b>Property Tax:</b> Annual land use charge or ground rent<br/>
+- <b>Insurance:</b> Property insurance<br/>
+- <b>Legal Fees:</b> Registration and documentation costs<br/><br/>
+<b>For example</b>, if you buy a home for <b>%1$s30,000,000</b> with a <b>%1$s6,000,000</b> deposit, you\'ll borrow <b>%1$s24,000,000</b>. At a <b>15%%</b> interest rate over <b>20 years</b>, your monthly repayment will be approximately <b>%1$s320,000</b>.
+    ]]></string>
+    
+    <!-- Tax Descriptions -->
+    <string name="tax_description_html"><![CDATA[
+A tax calculator helps you estimate your income tax liability based on your income, tax status, and reliefs. This helps you plan your finances and understand your take-home pay.<br/><br/>
+
+<b>How it works:</b> Enter your annual income, tax status, and any reliefs or allowances. The calculator estimates your tax liability using Nigerian tax bands (PAYE) and shows your effective tax rate.<br/><br/>
+
+<b>For example</b>, if you earn <b>%1$s6,000,000</b> annually with standard reliefs, your estimated income tax (PAYE) would be based on the progressive tax rates up to 24%% for higher earners.
+    ]]></string>
+    <string name="tax_explain_html"><![CDATA[
+📋 Your tax estimate:<br/><br/>
+
+<b>💰 Tax Details:</b><br/>
+• <b>Annual Income:</b> %1$s<br/>
+• <b>Tax Status:</b> %2$s<br/>
+• <b>Tax Reliefs &amp; Allowances:</b> %3$s<br/>
+• <b>Taxable Income:</b> %4$s<br/>
+• <b>Estimated Income Tax:</b> %5$s<br/>
+• <b>PAYE Deducted:</b> %6$s<br/>
+• <b>Refund/Owed:</b> %7$s<br/>
+• <b>Effective Tax Rate:</b> %8$s%%<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+With <b>%1$s</b> income and <b>%3$s</b> reliefs, your taxable income is <b>%4$s</b>. Your estimated income tax is <b>%5$s</b>, giving you an effective tax rate of <b>%8$s%%</b>. You\'ve already had <b>%6$s</b> deducted via PAYE, so you\'ll %9$s <b>%7$s</b>.<br/><br/>
+
+<b>✅ Tax Tips:</b><br/>
+• Claim all eligible tax reliefs and allowances<br/>
+• Consider pension contributions for tax relief<br/>
+• Keep proper records of income and deductions<br/>
+• File your tax returns on time to avoid penalties<br/>
+• Consult a tax adviser for complex situations
+    ]]></string>
 </resources>

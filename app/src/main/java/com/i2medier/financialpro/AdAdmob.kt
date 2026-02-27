@@ -9,39 +9,184 @@ import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
 import android.view.ViewGroup
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.MobileAds
+import android.view.ViewTreeObserver
+import android.widget.TextView
+import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import com.google.android.gms.ads.nativead.NativeAd
-import com.google.android.gms.ads.nativead.NativeAdOptions
-import com.google.android.gms.ads.nativead.NativeAdView
-import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.nativead.*
 
-class AdAdmob(activity: Activity) {
+class AdAdmob(private val activity: Activity) {
+
+    // AdMob IDs
     private val bannerAdID = "ca-app-pub-2171775430865158/3528890933"
     private val fullscreenAdID = "ca-app-pub-2171775430865158/2985099486"
-    private val nativeAdID = "ca-app-pub-3940256099942544/2247696110"
+    private val nativeAdID = "ca-app-pub-2171775430865158/8962910629"
+
     private var loadingDialog: AlertDialog? = null
 
     init {
-        MobileAds.initialize(activity) {}
+        // Initialize AdMob once
+        MobileAds.initialize(activity)
     }
 
-    fun BannerAd(adLayout: RelativeLayout, activity: Activity) {
-        // Banner ads are intentionally removed app-wide.
+    /**
+     * Banner ads are disabled app-wide.
+     * We instead attach native calculator ad.
+     */
+    fun BannerAd(adLayout: ViewGroup) {
         adLayout.removeAllViews()
         adLayout.visibility = View.GONE
-        attachCalculatorNativeAd(activity)
+        waitForExplanationCardThenAttach(activity)
     }
 
-    fun NativeAd(adLayout: FrameLayout, activity: Activity) {
+    /**
+     * Material 3 native binding (Media + Full CTA)
+     */
+    private fun bindNativeAd(adView: NativeAdView, nativeAd: NativeAd) {
+
+        val mediaView = adView.findViewById<MediaView>(R.id.ad_media)
+        val headline = adView.findViewById<TextView>(R.id.ad_headline)
+        val body = adView.findViewById<TextView>(R.id.ad_body)
+        val cta = adView.findViewById<Button>(R.id.ad_call_to_action)
+
+        mediaView?.let { adView.mediaView = it }
+
+        headline.text = nativeAd.headline
+        adView.headlineView = headline
+
+        body?.let {
+            if (nativeAd.body.isNullOrBlank()) {
+                it.visibility = View.GONE
+            } else {
+                it.text = nativeAd.body
+                it.visibility = View.VISIBLE
+            }
+            adView.bodyView = it
+        }
+
+        cta?.let {
+            if (nativeAd.callToAction.isNullOrBlank()) {
+                it.visibility = View.GONE
+            } else {
+                it.text = nativeAd.callToAction
+                it.visibility = View.VISIBLE
+            }
+            adView.callToActionView = it
+        }
+
+        adView.setNativeAd(nativeAd)
+    }
+
+    /**
+     * Inject after ExplanationCard
+     */
+    private fun attachCalculatorNativeAd(activity: Activity): Boolean {
+
+        val root = activity.findViewById<ViewGroup>(android.R.id.content) ?: return false
+        val explanationCard = findExplanationCard(root) ?: return false
+        if (explanationCard.visibility != View.VISIBLE) return false
+        val parent = explanationCard.parent as? ViewGroup ?: return false
+
+        val existing = parent.findViewById<FrameLayout>(R.id.calculatorNativeAd300x250Container)
+        if (existing != null) {
+            if (existing.childCount == 0) {
+                existing.visibility = View.VISIBLE
+                loadCalculatorNativeAd(existing, activity)
+            }
+            return true
+        }
+
+        val container = FrameLayout(activity).apply {
+            id = R.id.calculatorNativeAd300x250Container
+            visibility = View.VISIBLE
+            layoutParams = ViewGroup.MarginLayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply {
+                topMargin = 24
+                bottomMargin = 24
+            }
+        }
+
+        parent.addView(container, parent.indexOfChild(explanationCard) + 1)
+
+        loadCalculatorNativeAd(container, activity)
+        return true
+    }
+
+    private fun waitForExplanationCardThenAttach(activity: Activity) {
+        if (attachCalculatorNativeAd(activity)) return
+        val root = activity.findViewById<ViewGroup>(android.R.id.content) ?: return
+        val observer = root.viewTreeObserver ?: return
+        val listener = object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                if (attachCalculatorNativeAd(activity)) {
+                    if (root.viewTreeObserver.isAlive) {
+                        root.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    }
+                }
+            }
+        }
+        observer.addOnGlobalLayoutListener(listener)
+    }
+
+    /**
+     * Loads shimmer → native → collapse if no fill
+     */
+    private fun loadCalculatorNativeAd(adLayout: FrameLayout, activity: Activity) {
+
         adLayout.removeAllViews()
-        adLayout.visibility = View.GONE
+
+        // ---- SHIMMER PLACEHOLDER ----
+        val shimmer = activity.layoutInflater.inflate(
+            R.layout.item_native_shimmer,
+            adLayout,
+            false
+        )
+
+        adLayout.addView(shimmer)
+
+        val adLoader = AdLoader.Builder(activity, nativeAdID)
+            .forNativeAd { nativeAd ->
+
+                val adView = activity.layoutInflater.inflate(
+                    R.layout.item_native_calculator_ad_300x250,
+                    adLayout,
+                    false
+                ) as NativeAdView
+
+                bindNativeAd(adView, nativeAd)
+
+                adLayout.removeAllViews()
+                adLayout.addView(adView)
+
+                // Fade in animation
+                adView.alpha = 0f
+                adView.animate().alpha(1f).setDuration(250).start()
+            }
+            .withNativeAdOptions(NativeAdOptions.Builder().build())
+            .withAdListener(object : AdListener() {
+
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    // Collapse completely on no-fill
+                    adLayout.removeAllViews()
+                    adLayout.visibility = View.GONE
+                    Log.w("AdAdmob", "Native no-fill: ${error.message}")
+                }
+            })
+            .build()
+
+        adLoader.loadAd(AdRequest.Builder().build())
+    }
+
+    /**
+     * Backward-compatible inline native ad API used by list screens.
+     */
+    fun NativeAd(adLayout: FrameLayout, activity: Activity = this.activity) {
+        adLayout.removeAllViews()
+        adLayout.visibility = View.VISIBLE
 
         val adLoader = AdLoader.Builder(activity, nativeAdID)
             .forNativeAd { nativeAd ->
@@ -50,19 +195,17 @@ class AdAdmob(activity: Activity) {
                     adLayout,
                     false
                 ) as NativeAdView
-                bindNativeAd(adView, nativeAd)
+
+                bindInlineNativeAd(adView, nativeAd)
                 adLayout.removeAllViews()
                 adLayout.addView(adView)
-                adLayout.visibility = View.VISIBLE
             }
-            .withNativeAdOptions(
-                NativeAdOptions.Builder().build()
-            )
-            .withAdListener(object : com.google.android.gms.ads.AdListener() {
-                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+            .withNativeAdOptions(NativeAdOptions.Builder().build())
+            .withAdListener(object : AdListener() {
+                override fun onAdFailedToLoad(error: LoadAdError) {
                     adLayout.removeAllViews()
                     adLayout.visibility = View.GONE
-                    Log.w("AdAdmob", "Native ad failed: ${loadAdError.message}")
+                    Log.w("AdAdmob", "Inline native no-fill: ${error.message}")
                 }
             })
             .build()
@@ -70,150 +213,71 @@ class AdAdmob(activity: Activity) {
         adLoader.loadAd(AdRequest.Builder().build())
     }
 
-    private fun bindNativeAd(adView: NativeAdView, nativeAd: NativeAd) {
-        val iconView = adView.findViewById<ImageView?>(R.id.ad_icon)
-        val headlineView = adView.findViewById<TextView?>(R.id.ad_headline)
-        val bodyView = adView.findViewById<TextView?>(R.id.ad_body)
-        val callToAction = adView.findViewById<Button?>(R.id.ad_call_to_action)
+    private fun bindInlineNativeAd(adView: NativeAdView, nativeAd: NativeAd) {
+        val headline = adView.findViewById<TextView>(R.id.ad_headline)
+        val body = adView.findViewById<TextView>(R.id.ad_body)
+        val cta = adView.findViewById<Button>(R.id.ad_call_to_action)
+        val icon = adView.findViewById<ImageView>(R.id.ad_icon)
 
-        if (headlineView == null) {
-            Log.w("AdAdmob", "Native ad layout missing ad_headline; skip binding.")
-            return
+        headline.text = nativeAd.headline
+        adView.headlineView = headline
+
+        if (nativeAd.body.isNullOrBlank()) {
+            body.visibility = View.GONE
+        } else {
+            body.text = nativeAd.body
+            body.visibility = View.VISIBLE
         }
+        adView.bodyView = body
 
-        if (iconView != null) {
-            val icon = nativeAd.icon
-            if (icon?.drawable != null) {
-                iconView.setImageDrawable(icon.drawable)
-                iconView.visibility = View.VISIBLE
-            } else {
-                iconView.visibility = View.GONE
-            }
-            adView.iconView = iconView
+        if (nativeAd.callToAction.isNullOrBlank()) {
+            cta.visibility = View.GONE
+        } else {
+            cta.text = nativeAd.callToAction
+            cta.visibility = View.VISIBLE
         }
+        adView.callToActionView = cta
 
-        headlineView.text = nativeAd.headline
-        adView.headlineView = headlineView
-
-        if (bodyView != null) {
-            if (nativeAd.body.isNullOrBlank()) {
-                bodyView.visibility = View.GONE
-            } else {
-                bodyView.text = nativeAd.body
-                bodyView.visibility = View.VISIBLE
-            }
-            adView.bodyView = bodyView
-        }
-
-        if (callToAction != null) {
-            if (nativeAd.callToAction.isNullOrBlank()) {
-                callToAction.visibility = View.INVISIBLE
-            } else {
-                callToAction.text = nativeAd.callToAction
-                callToAction.visibility = View.VISIBLE
-            }
-            adView.callToActionView = callToAction
+        val iconDrawable = nativeAd.icon?.drawable
+        if (iconDrawable != null) {
+            icon.setImageDrawable(iconDrawable)
+            icon.visibility = View.VISIBLE
+            adView.iconView = icon
+        } else {
+            icon.visibility = View.GONE
         }
 
         adView.setNativeAd(nativeAd)
     }
 
-    private fun attachCalculatorNativeAd(activity: Activity) {
-        val root = activity.findViewById<ViewGroup>(android.R.id.content) ?: return
-        val explanationCard = findExplanationCard(root) ?: return
-        val parent = explanationCard.parent as? ViewGroup ?: return
-
-        val existingMediumContainer = parent.findViewById<FrameLayout>(R.id.calculatorNativeAd300x250Container)
-        val mediumAdContainer = existingMediumContainer ?: FrameLayout(activity).apply {
-            id = R.id.calculatorNativeAd300x250Container
-            visibility = View.GONE
-            layoutParams = createAdLayoutParams(explanationCard)
-        }
-
-        if (existingMediumContainer == null) {
-            val index = parent.indexOfChild(explanationCard)
-            parent.addView(mediumAdContainer, (index + 1).coerceAtMost(parent.childCount))
-        }
-
-        var mediumAdRequested = false
-        val refreshAdVisibility: () -> Unit = {
-            val shouldShow = explanationCard.visibility == View.VISIBLE
-            if (shouldShow) {
-                if (!mediumAdRequested) {
-                    mediumAdRequested = true
-                    loadCalculatorNativeAd(
-                        adLayout = mediumAdContainer,
-                        activity = activity,
-                        layoutRes = R.layout.item_native_calculator_ad_300x250
-                    )
-                }
-            } else {
-                mediumAdContainer.visibility = View.GONE
-            }
-        }
-
-        explanationCard.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-            refreshAdVisibility()
-        }
-        refreshAdVisibility()
-    }
-
-    private fun loadCalculatorNativeAd(adLayout: FrameLayout, activity: Activity, layoutRes: Int) {
-        adLayout.removeAllViews()
-        adLayout.visibility = View.GONE
-
-        val adLoader = AdLoader.Builder(activity, nativeAdID)
-            .forNativeAd { nativeAd ->
-                val adView = activity.layoutInflater.inflate(
-                    layoutRes,
-                    adLayout,
-                    false
-                ) as NativeAdView
-                bindNativeAd(adView, nativeAd)
-                adLayout.removeAllViews()
-                adLayout.addView(adView)
-                adLayout.visibility = View.VISIBLE
-            }
-            .withNativeAdOptions(
-                NativeAdOptions.Builder().build()
-            )
-            .withAdListener(object : com.google.android.gms.ads.AdListener() {
-                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
-                    adLayout.removeAllViews()
-                    adLayout.visibility = View.GONE
-                    Log.w("AdAdmob", "Calculator native ad failed: ${loadAdError.message}")
-                }
-            })
-            .build()
-        adLoader.loadAd(AdRequest.Builder().build())
-    }
-
-    private fun createAdLayoutParams(anchorView: View): ViewGroup.LayoutParams {
-        return ViewGroup.MarginLayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-    }
-
+    /**
+     * Finds ExplanationCard recursively
+     */
     private fun findExplanationCard(root: View): View? {
+
         if (root.id != View.NO_ID) {
-            val entry = runCatching {
+            val name = runCatching {
                 root.resources.getResourceEntryName(root.id)
             }.getOrNull()
-            if (entry != null && entry.contains("ExplanationCard", ignoreCase = true)) {
-                return root
-            }
+
+            if (name?.contains("ExplanationCard", true) == true) return root
         }
+
         if (root is ViewGroup) {
             for (i in 0 until root.childCount) {
                 val found = findExplanationCard(root.getChildAt(i))
                 if (found != null) return found
             }
         }
+
         return null
     }
 
+    /**
+     * Interstitial
+     */
     fun FullscreenAd(activity: Activity) {
+
         adPopup(activity)
 
         InterstitialAd.load(
@@ -221,12 +285,13 @@ class AdAdmob(activity: Activity) {
             fullscreenAdID,
             AdRequest.Builder().build(),
             object : InterstitialAdLoadCallback() {
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    interstitialAd.show(activity)
+
+                override fun onAdLoaded(ad: InterstitialAd) {
+                    ad.show(activity)
                     loadingDialog?.dismiss()
                 }
 
-                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                override fun onAdFailedToLoad(error: LoadAdError) {
                     loadingDialog?.dismiss()
                 }
             }
@@ -234,12 +299,15 @@ class AdAdmob(activity: Activity) {
     }
 
     private fun adPopup(context: Context) {
-        val progressBar = ProgressBar(context).apply { isIndeterminate = true }
+
+        val bar = ProgressBar(context)
+
         loadingDialog = AlertDialog.Builder(context)
             .setTitle("Loading Ad")
-            .setView(progressBar)
+            .setView(bar)
             .setCancelable(true)
             .create()
+
         loadingDialog?.show()
     }
 }

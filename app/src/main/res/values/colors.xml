@@ -49,5 +49,23 @@
     <color name="nav_blue">#1E4F99</color>
     <color name="nav_unselected">#75809A</color>
     <color name="card_border_light">#D5DDEA</color>
-    <color name="colorWarningDark">#ED6C02</color>
+    <color name="colorWarningDark">#ED6C02</color>    <!-- Material 3 semantic color tokens -->
+    <color name="m3_primary">#009688</color>
+    <color name="m3_on_primary">#FFFFFF</color>
+    <color name="m3_primary_container">#00796B</color>
+    <color name="m3_on_primary_container">#FFFFFF</color>
+    <color name="m3_secondary">#009688</color>
+    <color name="m3_on_secondary">#FFFFFF</color>
+    <color name="m3_secondary_container">#B2DFDB</color>
+    <color name="m3_on_secondary_container">#00796B</color>
+    <color name="m3_surface">#FFFFFF</color>
+    <color name="m3_on_surface">#32394d</color>
+    <color name="m3_surface_variant">#f9f9f9</color>
+    <color name="m3_outline">#CCCCCC</color>
+    <color name="m3_error">#B00020</color>
+    <color name="home_browse_loans">#E3F2FD</color>
+    <color name="home_browse_savings">#E8F5E9</color>
+    <color name="home_browse_investing">#FFF3E0</color>
+    <color name="home_browse_tax">#F3E5F5</color>
+
 </resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bg_calculator_card_gradient_orange.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base gradient - Orange/Amber theme -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="135"
+                android:startColor="#78350F"
+                android:centerColor="#EA580C"
+                android:endColor="#F59E0B"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Overlay gradient for depth -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="45"
+                android:startColor="#1AFB923C"
+                android:centerColor="#00FFFFFF"
+                android:endColor="#1AFBBF24"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</layer-list>

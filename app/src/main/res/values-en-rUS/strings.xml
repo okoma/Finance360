@@ -7,7 +7,7 @@
     <string name="estimated_social_security">Estimated Monthly Social Security</string>
     <string name="include_employer_match">Include 401(k) Employer Match</string>
     <string name="employer_match_description">Add employer matching contributions to boost your retirement savings calculation.</string>
-    <string name="calc_sub_retirement">Plan long-term retirement with Social Security and 401(k) context</string>
+    <string name="calc_sub_retirement">Plan long-term retirement with Social Security and 401(k)</string>
     
     <!-- Mortgage Calculator -->
     <string name="mortgage_calculator">Mortgage Calculator</string>
@@ -29,4 +29,92 @@
     
     <!-- Car Lease -->
     <string name="car_lease_calculator">Car Lease Calculator</string>
+    
+    <!-- Retirement Descriptions -->
+    <string name="retirement_description_html"><![CDATA[
+Retirement planning helps you determine how much money you\'ll have when you retire and whether it\'s enough to support your lifestyle.<br/><br/>
+
+<b>How it works:</b> You start with your current savings and add regular monthly contributions. Over time, your money grows through compound interest and investment returns. The calculator shows you:<br/>
+• Total amount you\'ll have at retirement<br/>
+• Monthly income you can withdraw<br/>
+• How long your savings will last<br/><br/>
+
+<b>For example</b>, if you\'re <b>30 years old</b> with <b>%1$s10,000</b> saved, contribute <b>%1$s500</b> monthly, and expect a <b>7%%</b> annual return, by age <b>65</b> you\'ll have approximately <b>%1$s1.2 million</b> for retirement.
+    ]]></string>
+    <string name="retirement_explain_html"><![CDATA[
+🎯 Great planning! Here\'s your retirement outlook:<br/><br/>
+
+<b>💰 Retirement Savings:</b><br/>
+• <b>Total at Retirement:</b> %1$s (what you\'ll have saved)<br/>
+• <b>Monthly Income Available:</b> %2$s (safe withdrawal amount)<br/>
+• <b>Years of Income:</b> %3$s (how long it will last)<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+By contributing <b>%4$s</b> monthly starting at age <b>%5$s</b>, you\'ll have <b>%1$s</b> saved by age <b>%6$s</b>. This gives you <b>%2$s</b> per month in retirement, which should last for <b>%3$s</b> years if you follow the 4%% withdrawal rule.<br/><br/>
+
+<b>✅ Next Steps:</b><br/>
+• Make sure <b>%2$s</b> monthly covers your retirement expenses<br/>
+• Consider increasing contributions if you want more income<br/>
+• Review your plan annually and adjust as needed<br/>
+• Factor in Social Security and other income sources
+    ]]></string>
+    
+    <!-- Net Worth Description -->
+    <string name="networth_description_html"><![CDATA[
+Net worth is a measure of your financial health. It\'s calculated by subtracting your total liabilities (what you owe) from your total assets (what you own).<br/><br/>
+<b>Assets include:</b><br/>
+- Liquid assets (cash, savings, checking accounts)<br/>
+- Investment assets (stocks, bonds, real estate investments)<br/>
+- Retirement assets (401(k), IRAs, pensions)<br/>
+- Personal assets (home, car, jewelry, collectibles)<br/><br/>
+<b>Liabilities include:</b><br/>
+- Short-term debts (credit cards, short-term loans, outstanding taxes)<br/>
+- Long-term debts (mortgages, student loans, auto loans)<br/><br/>
+<b>For example</b>, if you have <b>%1$s500,000</b> in assets and <b>%1$s200,000</b> in liabilities, your net worth is <b>%1$s300,000</b>.<br/><br/>
+A positive net worth means you own more than you owe, which is a sign of financial stability. Tracking your net worth over time helps you measure your financial progress and make informed decisions about your money.
+    ]]></string>
+    
+    <!-- Mortgage Description -->
+    <string name="mortgage_description_html"><![CDATA[
+A mortgage is a loan used to purchase real estate, typically a home. The property itself serves as collateral for the loan, meaning the lender can take possession if you fail to make payments.<br/><br/>
+<b>How it works:</b> When you take out a mortgage, you borrow money to buy a property and repay it over a set period (usually 15-30 years) through monthly payments. Each payment includes:<br/>
+- <b>Principal:</b> The amount borrowed<br/>
+- <b>Interest:</b> The cost of borrowing<br/>
+- <b>Property Tax:</b> Annual taxes divided into monthly payments<br/>
+- <b>Insurance:</b> Homeowners insurance<br/>
+- <b>PMI:</b> Private Mortgage Insurance (if down payment is less than 20%%)<br/><br/>
+<b>For example</b>, if you buy a home for <b>%1$s300,000</b> with a <b>%1$s60,000</b> down payment, you\'ll borrow <b>%1$s240,000</b>. At a <b>4%%</b> interest rate over <b>30 years</b>, your monthly payment (including taxes and insurance) will be approximately <b>%1$s1,500</b>.
+    ]]></string>
+    
+    <!-- Tax Descriptions -->
+    <string name="tax_description_html"><![CDATA[
+A tax calculator helps you estimate your federal income tax liability based on your income, filing status, and deductions. This helps you plan your finances and avoid surprises at tax time.<br/><br/>
+
+<b>How it works:</b> Enter your annual income, filing status (Single, Married Filing Jointly, etc.), and deductions. The calculator estimates your tax liability using federal tax brackets and shows your effective tax rate.<br/><br/>
+
+<b>For example</b>, if you earn <b>%1$s75,000</b> annually as a single filer with <b>%1$s12,950</b> in standard deductions, your taxable income is <b>%1$s62,050</b>, resulting in approximately <b>%1$s9,200</b> in federal taxes.
+    ]]></string>
+    <string name="tax_explain_html"><![CDATA[
+📋 Your tax estimate:<br/><br/>
+
+<b>💰 Tax Details:</b><br/>
+• <b>Annual Income:</b> %1$s<br/>
+• <b>Filing Status:</b> %2$s<br/>
+• <b>Deductions:</b> %3$s<br/>
+• <b>Taxable Income:</b> %4$s<br/>
+• <b>Estimated Federal Tax:</b> %5$s<br/>
+• <b>Tax Withheld:</b> %6$s<br/>
+• <b>Refund/Owed:</b> %7$s<br/>
+• <b>Effective Tax Rate:</b> %8$s%%<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+With <b>%1$s</b> income and <b>%3$s</b> deductions, your taxable income is <b>%4$s</b>. Your estimated federal tax is <b>%5$s</b>, giving you an effective tax rate of <b>%8$s%%</b>. You\'ve already had <b>%6$s</b> withheld, so you\'ll %9$s <b>%7$s</b>.<br/><br/>
+
+<b>✅ Tax Tips:</b><br/>
+• Maximize deductions and credits when possible<br/>
+• Consider contributing to 401(k) or IRA to reduce taxable income<br/>
+• Adjust W-4 withholding if you consistently owe or get large refunds<br/>
+• Consult a tax professional for complex situations<br/>
+• Keep records of all deductions and expenses
+    ]]></string>
 </resources>

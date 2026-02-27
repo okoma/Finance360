@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bg_calculator_card_gradient_cyan.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base gradient - Cyan/Aqua theme -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="135"
+                android:startColor="#164E63"
+                android:centerColor="#0891B2"
+                android:endColor="#22D3EE"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Overlay gradient for depth -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="45"
+                android:startColor="#1A67E8F9"
+                android:centerColor="#00FFFFFF"
+                android:endColor="#1A22D3EE"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</layer-list>

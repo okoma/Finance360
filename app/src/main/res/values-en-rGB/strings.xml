@@ -28,4 +28,92 @@
     
     <!-- Car Lease -->
     <string name="car_lease_calculator">Vehicle Finance Calculator</string>
+    
+    <!-- Retirement Descriptions -->
+    <string name="retirement_description_html"><![CDATA[
+Pension planning helps you determine how much money you\'ll have when you retire and whether it\'s enough to support your lifestyle.<br/><br/>
+
+<b>How it works:</b> You start with your current pension pot and add regular monthly contributions. Over time, your money grows through compound interest and investment returns. The calculator shows you:<br/>
+• Total pension pot at retirement<br/>
+• Monthly income you can withdraw<br/>
+• How long your pension will last<br/><br/>
+
+<b>For example</b>, if you\'re <b>30 years old</b> with <b>%1$s10,000</b> saved, contribute <b>%1$s500</b> monthly, and expect a <b>7%%</b> annual return, by age <b>65</b> you\'ll have approximately <b>%1$s1.2 million</b> in your pension pot.
+    ]]></string>
+    <string name="retirement_explain_html"><![CDATA[
+🎯 Great planning! Here\'s your pension outlook:<br/><br/>
+
+<b>💰 Pension Savings:</b><br/>
+• <b>Total Pension Pot:</b> %1$s (what you\'ll have saved)<br/>
+• <b>Monthly Income Available:</b> %2$s (safe withdrawal amount)<br/>
+• <b>Years of Income:</b> %3$s (how long it will last)<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+By contributing <b>%4$s</b> monthly starting at age <b>%5$s</b>, you\'ll have <b>%1$s</b> saved by age <b>%6$s</b>. This gives you <b>%2$s</b> per month in retirement, which should last for <b>%3$s</b> years if you follow the 4%% withdrawal rule.<br/><br/>
+
+<b>✅ Next Steps:</b><br/>
+• Make sure <b>%2$s</b> monthly covers your retirement expenses<br/>
+• Consider increasing contributions if you want more income<br/>
+• Review your plan annually and adjust as needed<br/>
+• Factor in State Pension and other income sources
+    ]]></string>
+    
+    <!-- Net Worth Description -->
+    <string name="networth_description_html"><![CDATA[
+Net worth is a measure of your financial health. It\'s calculated by subtracting your total liabilities (what you owe) from your total assets (what you own).<br/><br/>
+<b>Assets include:</b><br/>
+- Liquid assets (cash, savings, current accounts)<br/>
+- Investment assets (stocks, bonds, ISAs, property investments)<br/>
+- Retirement assets (workplace pensions, SIPPs, personal pensions)<br/>
+- Personal assets (home, car, valuables, collectibles)<br/><br/>
+<b>Liabilities include:</b><br/>
+- Short-term debts (credit cards, overdrafts, outstanding council tax)<br/>
+- Long-term debts (mortgages, student loans, car finance)<br/><br/>
+<b>For example</b>, if you have <b>%1$s500,000</b> in assets and <b>%1$s200,000</b> in liabilities, your net worth is <b>%1$s300,000</b>.<br/><br/>
+A positive net worth means you own more than you owe, which is a sign of financial stability. Tracking your net worth over time helps you measure your financial progress and make informed decisions about your money.
+    ]]></string>
+    
+    <!-- Mortgage Description -->
+    <string name="mortgage_description_html"><![CDATA[
+A mortgage is a loan used to purchase property. The property itself serves as security for the loan, meaning the lender can repossess if you fail to make payments.<br/><br/>
+<b>How it works:</b> When you take out a mortgage, you borrow money to buy a property and repay it over a set period (usually 15-35 years) through monthly payments. Each payment includes:<br/>
+- <b>Principal:</b> The amount borrowed<br/>
+- <b>Interest:</b> The cost of borrowing<br/>
+- <b>Council Tax:</b> Annual local authority tax (paid separately but included in affordability)<br/>
+- <b>Buildings Insurance:</b> Required by most lenders<br/>
+- <b>Contents Insurance:</b> Optional but recommended<br/><br/>
+<b>For example</b>, if you buy a home for <b>%1$s300,000</b> with a <b>%1$s60,000</b> deposit, you\'ll borrow <b>%1$s240,000</b>. At a <b>4%%</b> interest rate over <b>25 years</b>, your monthly repayment will be approximately <b>%1$s1,300</b>.
+    ]]></string>
+    
+    <!-- Tax Descriptions -->
+    <string name="tax_description_html"><![CDATA[
+A tax calculator helps you estimate your income tax liability based on your income, tax code, and allowances. This helps you plan your finances and understand your take-home pay.<br/><br/>
+
+<b>How it works:</b> Enter your annual income, tax code, and any deductions. The calculator estimates your tax liability using UK tax bands and shows your effective tax rate. Remember that National Insurance is calculated separately.<br/><br/>
+
+<b>For example</b>, if you earn <b>%1$s40,000</b> annually with the standard personal allowance of <b>%1$s12,570</b>, your taxable income is <b>%1$s27,430</b>, resulting in approximately <b>%1$s5,486</b> in income tax (plus National Insurance contributions).
+    ]]></string>
+    <string name="tax_explain_html"><![CDATA[
+📋 Your tax estimate:<br/><br/>
+
+<b>💰 Tax Details:</b><br/>
+• <b>Annual Income:</b> %1$s<br/>
+• <b>Tax Code:</b> %2$s<br/>
+• <b>Personal Allowance &amp; Deductions:</b> %3$s<br/>
+• <b>Taxable Income:</b> %4$s<br/>
+• <b>Estimated Income Tax:</b> %5$s<br/>
+• <b>Tax Deducted (PAYE):</b> %6$s<br/>
+• <b>Refund/Owed:</b> %7$s<br/>
+• <b>Effective Tax Rate:</b> %8$s%%<br/><br/>
+
+<b>💡 What This Means:</b><br/>
+With <b>%1$s</b> income and <b>%3$s</b> allowances, your taxable income is <b>%4$s</b>. Your estimated income tax is <b>%5$s</b>, giving you an effective tax rate of <b>%8$s%%</b>. You\'ve already had <b>%6$s</b> deducted via PAYE, so you\'ll %9$s <b>%7$s</b>.<br/><br/>
+
+<b>✅ Tax Tips:</b><br/>
+• Maximise pension contributions to reduce taxable income<br/>
+• Use your ISA allowance for tax-free savings and investments<br/>
+• Consider salary sacrifice schemes if available<br/>
+• Check your tax code is correct with HMRC<br/>
+• Keep records of expenses if you\'re self-employed
+    ]]></string>
 </resources>

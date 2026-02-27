@@ -33,7 +33,7 @@ class SimpleInterestStatisticsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_simple_interest_statistics)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById(R.id.banner), this)
+        adAdmob.BannerAd(findViewById(R.id.banner))
         adAdmob.FullscreenAd(this)
 
         init()

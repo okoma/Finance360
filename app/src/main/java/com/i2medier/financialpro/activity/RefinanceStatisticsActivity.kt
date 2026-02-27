@@ -55,7 +55,7 @@ class RefinanceStatisticsActivity : AppCompatActivity() {
         setUpToolbar()
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner), this)
+        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner))
         adAdmob.FullscreenAd(this)
     }
 

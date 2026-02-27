@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardCalculator"
-    android:layout_width="165dp"
-    android:layout_height="wrap_content"
+    android:id="@+id/cardCategory"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
     android:layout_margin="6dp"
     app:cardBackgroundColor="@android:color/transparent"
     app:cardCornerRadius="16dp"
@@ -16,55 +16,57 @@
 
         <!-- Gradient Background - Will be set programmatically or use default -->
         <View
-            android:id="@+id/calculatorGradientBackground"
+            android:id="@+id/categoryGradientBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_calculator_card_gradient_blue" />
+            android:background="@drawable/bg_category_card_gradient_purple" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:orientation="vertical"
             android:padding="16dp">
 
             <!-- Icon Container with Glass Effect -->
             <FrameLayout
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="@drawable/bg_icon_container">
 
                 <ImageView
-                    android:id="@+id/ivCalculatorIcon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:id="@+id/ivCategoryIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/calculator_icon"
-                    android:src="@drawable/ic_calculator"
+                    android:src="@drawable/ic_money"
                     app:tint="@android:color/white" />
             </FrameLayout>
 
             <TextView
-                android:id="@+id/tvCalculatorTitle"
-                android:layout_width="match_parent"
+                android:id="@+id/tvCategoryTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:maxLines="2"
+                android:layout_marginTop="10dp"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-medium" />
 
             <TextView
-                android:id="@+id/tvCalculatorSubtitle"
-                android:layout_width="match_parent"
+                android:id="@+id/tvToolCount"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="Quick estimate"
                 android:textColor="#CCF0FDF4"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvCategorySubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="#99FFFFFF"
                 android:textSize="11sp" />
 
         </LinearLayout>

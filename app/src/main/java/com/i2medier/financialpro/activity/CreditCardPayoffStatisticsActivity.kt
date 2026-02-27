@@ -49,7 +49,7 @@ class CreditCardPayoffStatisticsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_credit_card_payoff_statistics)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById(R.id.banner), this)
+        adAdmob.BannerAd(findViewById(R.id.banner))
         adAdmob.FullscreenAd(this)
 
         monthModels = ArrayList()

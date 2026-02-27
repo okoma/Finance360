@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bg_category_card_gradient_rose.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base gradient - Rose/Pink theme -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="135"
+                android:startColor="#881337"
+                android:centerColor="#E11D48"
+                android:endColor="#FB7185"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Overlay gradient for depth -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="45"
+                android:startColor="#1AFF99AA"
+                android:centerColor="#00FFFFFF"
+                android:endColor="#1AFDA4AF"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</layer-list>

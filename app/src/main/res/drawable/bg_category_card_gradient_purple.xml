@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/bg_category_card_gradient_purple.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base gradient - Purple theme for categories -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="135"
+                android:startColor="#312E81"
+                android:centerColor="#7C3AED"
+                android:endColor="#A78BFA"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Overlay gradient for depth -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="45"
+                android:startColor="#1AC084F5"
+                android:centerColor="#00FFFFFF"
+                android:endColor="#1A8B5CF6"
+                android:type="linear" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</layer-list>

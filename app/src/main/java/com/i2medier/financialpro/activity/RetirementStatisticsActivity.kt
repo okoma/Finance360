@@ -51,7 +51,7 @@ class RetirementStatisticsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_retirement_statistics)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById(R.id.banner), this)
+        adAdmob.BannerAd(findViewById(R.id.banner))
         adAdmob.FullscreenAd(this)
 
         monthModels = ArrayList()

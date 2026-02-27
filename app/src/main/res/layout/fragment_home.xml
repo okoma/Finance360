@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg_app_gradient"
->
+    android:background="@drawable/bg_app_gradient">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:background="#00FFFFFF"
+        android:stateListAnimator="@null"
+        app:elevation="0dp"
+        app:liftOnScroll="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="16dp">
 
             <ImageView
-                android:layout_width="38dp"
-                android:layout_height="38dp"
+                android:id="@+id/ivProfile"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:src="@drawable/icon200" />
 
             <LinearLayout
@@ -33,365 +36,322 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvAppTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dashboard_title"
-                    android:textColor="@color/colorDark"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/semi_bold" />
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvSubtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:alpha="0.9"
                     android:text="@string/dashboard_subtitle"
-                    android:textColor="#667085"
-                    android:textSize="14sp" />
+                    android:textColor="@android:color/black"
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/ivSearch"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+            <ImageButton
+                android:id="@+id/btnSearch"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/search"
                 android:src="@android:drawable/ic_menu_search"
-                app:tint="@color/colorDark" />
+                app:tint="@android:color/black" />
 
-            <ImageView
-                android:id="@+id/ivNotificationBell"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="14dp"
+            <ImageButton
+                android:id="@+id/btnNotifications"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/notifications"
                 android:src="@android:drawable/ic_dialog_info"
-                app:tint="@color/colorDark" />
+                app:tint="@android:color/black" />
         </LinearLayout>
-    </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCategoryChips"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:paddingHorizontal="6dp"
-        android:paddingVertical="10dp"
-        android:clipToPadding="false" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategoryChips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            tools:listitem="@layout/item_category_chip" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingHorizontal="6dp"
-        android:paddingBottom="12dp"
-        android:scrollbarStyle="outsideOverlay">
+        android:paddingBottom="80dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+           <!--Month card  -->
+            <!-- Updated This Month Card with Finance Gradient -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMonthlyPlan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="14dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="4dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:strokeWidth="0dp">
 
-                <LinearLayout
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="14dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tvPlanTitle"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/this_month_plan"
-                            android:textColor="@color/colorDark"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/semi_bold" />
-
-                        <ImageButton
-                            android:id="@+id/btnPlanMore"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="@string/plan_period_options"
-                            android:src="@android:drawable/ic_menu_more"
-                            app:tint="#98A2B3" />
-                    </LinearLayout>
-
+                    <!-- Finance Gradient Background -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="#E6EAF0" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/spent_vs_budget"
-                        android:textColor="@color/colorDark"
-                        android:textSize="16sp" />
-
-                    <ProgressBar
-                        android:id="@+id/progressSpent"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp"
-                        android:layout_marginTop="8dp"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progress="48"
-                        android:progressDrawable="@drawable/progress_horizontal" />
-
-                    <TextView
-                        android:id="@+id/tvSpentVsBudgetValue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="$1,200 / $2,500"
-                        android:textColor="@color/colorDark"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/semi_bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="#E6EAF0" />
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_finance_card_gradient_layered" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/money_recive" />
-
-                            <TextView
-                                android:id="@+id/tvSavingsTarget"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="6dp"
-                                android:text="Savings target: $800"
-                                android:textColor="#576581"
-                                android:textSize="13sp" />
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="16dp"
-                            android:layout_marginHorizontal="8dp"
-                            android:background="#D7DCE6" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/calendar"
-                                app:tint="#8C97A8" />
-
-                            <TextView
-                                android:id="@+id/tvBillsDue"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="6dp"
-                                android:text="Bills due: 4"
-                                android:textColor="#576581"
-                                android:textSize="13sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/planActionsContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#F2F4F8"
-                        android:orientation="vertical"
-                        android:padding="10dp">
-
+                        <!-- Main Content Section -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:padding="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
 
-                            <Button
+                            <!-- Header Row -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvPlanTitle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/this_month_plan"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:letterSpacing="0.01"
+                                    android:fontFamily="sans-serif-medium" />
+
+                                <ImageButton
+                                    android:id="@+id/btnPlanMenu"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:contentDescription="@string/menu"
+                                    android:src="@android:drawable/ic_menu_more"
+                                    app:tint="#B3FFFFFF" />
+                            </LinearLayout>
+
+                            <!-- Spent vs Budget Label -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/spent_vs_budget"
+                                android:textColor="#CCF0FDF4"
+                                android:textSize="13sp"
+                                android:textAllCaps="true"
+                                android:letterSpacing="0.05" />
+
+                            <!-- Progress Bar -->
+                            <ProgressBar
+                                android:id="@+id/progressSpent"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                android:layout_marginTop="10dp"
+                                android:progressBackgroundTint="#33FFFFFF"
+                                android:progressDrawable="@drawable/progress_horizontal"
+                                android:progressTint="#10B981" />
+
+                            <!-- Amount Display -->
+                            <TextView
+                                android:id="@+id/tvSpentVsBudgetValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:fontFamily="sans-serif-medium"
+                                tools:text="$1,200 / $2,500" />
+
+                            <!-- Info Row with Stats -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bg_stats_container"
+                                android:padding="12dp">
+
+                                <!-- Savings Target -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:src="@drawable/money_recive"
+                                        app:tint="#10B981" />
+
+                                    <TextView
+                                        android:id="@+id/tvSavingsTarget"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:textColor="#E6FFFFFF"
+                                        android:textSize="13sp"
+                                        android:fontFamily="sans-serif"
+                                        tools:text="Savings: $800" />
+                                </LinearLayout>
+
+                                <!-- Divider -->
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginHorizontal="12dp"
+                                    android:background="#33FFFFFF" />
+
+                                <!-- Bills Due -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:src="@drawable/calendar"
+                                        app:tint="#14B8A6" />
+
+                                    <TextView
+                                        android:id="@+id/tvBillsDue"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:textColor="#E6FFFFFF"
+                                        android:textSize="13sp"
+                                        android:fontFamily="sans-serif"
+                                        tools:text="Bills: 4" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Action Buttons Section -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#1A000000"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            android:gravity="center">
+
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnOpenPlanner"
+                                style="@style/Widget.Material3.Button.TonalButton"
                                 android:layout_width="0dp"
-                                android:layout_height="42dp"
+                                android:layout_height="52dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/bg_button_blue_gradient"
+                                android:layout_marginEnd="8dp"
+                                android:backgroundTint="#33FFFFFF"
                                 android:text="@string/open_planner"
-                                android:textAllCaps="false"
-                                android:textColor="@color/colorWhite"
-                                android:textStyle="bold" />
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                app:cornerRadius="12dp"
+                                app:strokeColor="#4DFFFFFF"
+                                app:strokeWidth="1dp" />
 
-                            <Button
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnAddGoal"
+                                style="@style/Widget.Material3.Button"
                                 android:layout_width="0dp"
-                                android:layout_height="42dp"
+                                android:layout_height="52dp"
                                 android:layout_weight="1"
                                 android:layout_marginStart="8dp"
-                                android:background="@drawable/bg_button_blue_gradient"
+                                android:backgroundTint="#10B981"
                                 android:text="@string/add_goal"
-                                android:textAllCaps="false"
-                                android:textColor="@color/colorWhite"
-                                android:textStyle="bold" />
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                app:cornerRadius="12dp"
+                                android:elevation="2dp" />
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <FrameLayout
                 android:id="@+id/nativeAdHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/featured_calculators"
-                android:textColor="@color/colorDark"
-                android:layout_marginStart="8dp"
-                android:textSize="18sp"
-                android:fontFamily="@font/semi_bold"
-                android:textStyle="bold"/>
+                android:textColor="@color/calc_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvFeatured"
+                android:id="@+id/rvFeaturedCalculators"
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:paddingVertical="6dp"
-                android:scrollbarStyle="outsideOverlay" />
+                android:paddingHorizontal="8dp"
+                tools:listitem="@layout/item_featured_calculator" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/browse_categories"
-                android:textColor="@color/colorDark"
-                android:layout_marginStart="8dp"
-                android:textSize="18sp"
-                android:fontFamily="@font/semi_bold"
-                android:textStyle="bold"/>
+                android:textColor="@color/calc_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBrowseCategories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="horizontal">
+                android:clipToPadding="false"
+                android:paddingHorizontal="8dp"
+                tools:listitem="@layout/item_browse_category" />
 
-                <TextView
-                    android:id="@+id/cardLoans"
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_category_loans"
-                    android:drawableEnd="@drawable/dollar_circle"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:padding="12dp"
-                    android:text="Loans\n12 tools"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/cardSavings"
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/bg_category_savings"
-                    android:drawableEnd="@drawable/money_recive"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:padding="12dp"
-                    android:text="Savings\n12 tools"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/cardInvesting"
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_category_investing"
-                    android:drawableEnd="@drawable/trend_up"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:padding="12dp"
-                    android:text="Investing\n12 tools"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/cardTax"
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/bg_category_tax"
-                    android:drawableEnd="@drawable/ic_percentage"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:padding="12dp"
-                    android:text="Tax\n12 tools"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

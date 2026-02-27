@@ -23,10 +23,15 @@ class BudgetDonutChartView @JvmOverloads constructor(
         val UI_DONUT_SAVING_COLOR: Int = Color.parseColor("#4DB6AC")
         // Category colors matching skills design
         val UI_DONUT_COLORS: List<Int> = listOf(
-            Color.parseColor("#4DB6AC"),  // Teal - Primary category (e.g., Rent/Housing)
-            Color.parseColor("#81C784"),  // Light Green - Secondary category (e.g., Food)
-            Color.parseColor("#FFD54F"),  // Yellow - Tertiary category (e.g., Transport)
-            Color.parseColor("#FFB74D")   // Light Orange - Other categories
+            Color.parseColor("#4DB6AC"),  // Teal
+            Color.parseColor("#81C784"),  // Green
+            Color.parseColor("#FFD54F"),  // Yellow
+            Color.parseColor("#FFB74D"),  // Orange
+            Color.parseColor("#9575CD"),  // Purple
+            Color.parseColor("#64B5F6"),  // Blue
+            Color.parseColor("#4FC3F7"),  // Light Blue
+            Color.parseColor("#AED581"),  // Lime
+            Color.parseColor("#F06292")   // Pink
         )
         val UI_DONUT_REMAINING_COLOR: Int = Color.parseColor("#FF8A65")  // Orange/Red - Remaining/Unspent
         private val UI_PROGRESS_COLOR: Int = Color.parseColor("#42A5F5")

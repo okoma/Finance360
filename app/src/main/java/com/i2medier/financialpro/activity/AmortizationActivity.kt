@@ -67,7 +67,7 @@ class AmortizationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_amortization)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner), this)
+        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner))
 
         init()
         setUpToolbar()

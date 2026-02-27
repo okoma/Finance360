@@ -3,9 +3,9 @@ package com.i2medier.financialpro.adapter.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.i2medier.financialpro.R
 
 data class CalculatorCategory(
@@ -31,20 +31,22 @@ class CategoryChipAdapter(
         holder.chip.text = item.label
 
         val isSelected = position == selectedPosition
-        val density = holder.itemView.resources.displayMetrics.density
 
-        holder.chip.setBackgroundResource(
-            if (isSelected) R.drawable.bg_chip_selected_blue else R.drawable.bg_home_chip_white
+        holder.chip.chipBackgroundColor = ContextCompat.getColorStateList(
+            holder.itemView.context,
+            if (isSelected) R.color.nav_blue else R.color.colorWhite
         )
-        holder.chip.elevation = if (isSelected) 4f * density else 2f * density
+        holder.chip.chipStrokeWidth = 0f
+        holder.chip.elevation = if (isSelected) 0f else 6f
         holder.chip.setTextColor(
             ContextCompat.getColor(
                 holder.itemView.context,
                 if (isSelected) R.color.colorWhite else R.color.colorDark
             )
         )
+        holder.chip.isChecked = isSelected
 
-        holder.itemView.setOnClickListener {
+        holder.chip.setOnClickListener {
             val newPosition = holder.adapterPosition
             if (newPosition == RecyclerView.NO_POSITION) return@setOnClickListener
             val oldPosition = selectedPosition
@@ -58,6 +60,6 @@ class CategoryChipAdapter(
     override fun getItemCount(): Int = items.size
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val chip: TextView = itemView.findViewById(R.id.chipText)
+        val chip: Chip = itemView.findViewById(R.id.chip)
     }
 }

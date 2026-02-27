@@ -23,6 +23,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.i2medier.financialpro.R
@@ -30,6 +31,8 @@ import com.i2medier.financialpro.AdAdmob
 import com.i2medier.financialpro.activity.MainActivity
 import com.i2medier.financialpro.activity.ReminderCenterActivity
 import com.i2medier.financialpro.activity.SearchActivity
+import com.i2medier.financialpro.adapter.home.BrowseCategory
+import com.i2medier.financialpro.adapter.home.BrowseCategoryAdapter
 import com.i2medier.financialpro.adapter.home.CalculatorCategory
 import com.i2medier.financialpro.adapter.home.CategoryChipAdapter
 import com.i2medier.financialpro.adapter.home.FeaturedCalculatorAdapter
@@ -81,11 +84,12 @@ class HomeFragment : Fragment() {
         )[PlannerViewModel::class.java]
 
         val rvCategoryChips = view.findViewById<RecyclerView>(R.id.rvCategoryChips)
-        val rvFeatured = view.findViewById<RecyclerView>(R.id.rvFeatured)
-        val btnPlanMore = view.findViewById<ImageButton>(R.id.btnPlanMore)
+        val rvFeatured = view.findViewById<RecyclerView>(R.id.rvFeaturedCalculators)
+        val rvBrowseCategories = view.findViewById<RecyclerView>(R.id.rvBrowseCategories)
+        val btnPlanMore = view.findViewById<ImageButton>(R.id.btnPlanMenu)
         val tvPlanTitle = view.findViewById<TextView>(R.id.tvPlanTitle)
-        val searchIcon = view.findViewById<View>(R.id.ivSearch)
-        val notificationBell = view.findViewById<View>(R.id.ivNotificationBell)
+        val searchIcon = view.findViewById<View>(R.id.btnSearch)
+        val notificationBell = view.findViewById<View>(R.id.btnNotifications)
         val nativeAdHome = view.findViewById<FrameLayout>(R.id.nativeAdHome)
         val progressSpent = view.findViewById<ProgressBar>(R.id.progressSpent)
         val tvSpentVsBudget = view.findViewById<TextView>(R.id.tvSpentVsBudgetValue)
@@ -93,6 +97,7 @@ class HomeFragment : Fragment() {
         val tvBillsDue = view.findViewById<TextView>(R.id.tvBillsDue)
         rvCategoryChips.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         rvFeatured.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        rvBrowseCategories.layoutManager = GridLayoutManager(requireContext(), 2)
 
         rvCategoryChips.adapter = CategoryChipAdapter(calculatorCategories) { category ->
             viewModel.onCategorySelected(category.id)
@@ -136,23 +141,42 @@ class HomeFragment : Fragment() {
         val savingsCount = CalculatorRegistry.byCategory(requireContext(), CalculatorRegistry.CATEGORY_SAVINGS).size
         val investingCount = CalculatorRegistry.byCategory(requireContext(), CalculatorRegistry.CATEGORY_INVESTING).size
         val taxCount = CalculatorRegistry.byCategory(requireContext(), CalculatorRegistry.CATEGORY_TAX).size
-
-        view.findViewById<TextView>(R.id.cardLoans).text = "Loans\n$loansCount tools"
-        view.findViewById<TextView>(R.id.cardSavings).text = "Savings\n$savingsCount tools"
-        view.findViewById<TextView>(R.id.cardInvesting).text = "Investing\n$investingCount tools"
-        view.findViewById<TextView>(R.id.cardTax).text = "Tax\n$taxCount tools"
-
-        view.findViewById<View>(R.id.cardLoans).setOnClickListener {
-            mainActivity?.selectCalculatorsCategory(CalculatorRegistry.CATEGORY_LOANS) ?: openCalculatorsClick.onClick(it)
-        }
-        view.findViewById<View>(R.id.cardSavings).setOnClickListener {
-            mainActivity?.selectCalculatorsCategory(CalculatorRegistry.CATEGORY_SAVINGS) ?: openCalculatorsClick.onClick(it)
-        }
-        view.findViewById<View>(R.id.cardInvesting).setOnClickListener {
-            mainActivity?.selectCalculatorsCategory(CalculatorRegistry.CATEGORY_INVESTING) ?: openCalculatorsClick.onClick(it)
-        }
-        view.findViewById<View>(R.id.cardTax).setOnClickListener {
-            mainActivity?.selectCalculatorsCategory(CalculatorRegistry.CATEGORY_TAX) ?: openCalculatorsClick.onClick(it)
+        val browseItems = listOf(
+            BrowseCategory(
+                id = CalculatorRegistry.CATEGORY_LOANS,
+                title = "Loans",
+                subtitle = "Loan & Mortgage",
+                toolCount = loansCount,
+                iconRes = R.drawable.ic_money,
+                colorRes = R.color.home_browse_loans
+            ),
+            BrowseCategory(
+                id = CalculatorRegistry.CATEGORY_SAVINGS,
+                title = "Savings",
+                subtitle = "Build Your Savings",
+                toolCount = savingsCount,
+                iconRes = R.drawable.money_recive,
+                colorRes = R.color.home_browse_savings
+            ),
+            BrowseCategory(
+                id = CalculatorRegistry.CATEGORY_INVESTING,
+                title = "Investing",
+                subtitle = "Grow Your Wealth",
+                toolCount = investingCount,
+                iconRes = R.drawable.ic_calculator,
+                colorRes = R.color.home_browse_investing
+            ),
+            BrowseCategory(
+                id = CalculatorRegistry.CATEGORY_TAX,
+                title = "Tax",
+                subtitle = "Tax Estimators",
+                toolCount = taxCount,
+                iconRes = R.drawable.ic_percentage,
+                colorRes = R.color.home_browse_tax
+            )
+        )
+        rvBrowseCategories.adapter = BrowseCategoryAdapter(browseItems) { item ->
+            mainActivity?.selectCalculatorsCategory(item.id) ?: openCalculatorsClick.onClick(rvBrowseCategories)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

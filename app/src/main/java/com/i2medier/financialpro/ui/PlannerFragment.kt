@@ -35,7 +35,6 @@ import androidx.appcompat.widget.SwitchCompat
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.cardview.widget.CardView
 import com.i2medier.financialpro.R
 import com.i2medier.financialpro.AdAdmob
 import com.i2medier.financialpro.activity.MainActivity
@@ -292,31 +291,7 @@ class PlannerFragment : Fragment() {
         val budgetSavedAmount = view.findViewById<TextView>(R.id.tvBudgetSavedAmount)
         val budgetMainProgress = view.findViewById<android.widget.ProgressBar>(R.id.progressBudgetMain)
         val budgetTotalSpentInline = view.findViewById<TextView>(R.id.tvBudgetTotalSpentInline)
-        val topExpenseNames = listOf(
-            view.findViewById<TextView>(R.id.tvTopExpense1Name),
-            view.findViewById<TextView>(R.id.tvTopExpense2Name),
-            view.findViewById<TextView>(R.id.tvTopExpense3Name)
-        )
-        val topExpenseIcons = listOf(
-            view.findViewById<ImageView>(R.id.ivTopExpense1Icon),
-            view.findViewById<ImageView>(R.id.ivTopExpense2Icon),
-            view.findViewById<ImageView>(R.id.ivTopExpense3Icon)
-        )
-        val topExpenseAmounts = listOf(
-            view.findViewById<TextView>(R.id.tvTopExpense1Amount),
-            view.findViewById<TextView>(R.id.tvTopExpense2Amount),
-            view.findViewById<TextView>(R.id.tvTopExpense3Amount)
-        )
-        val topExpenseProgress = listOf(
-            view.findViewById<android.widget.ProgressBar>(R.id.progressTopExpense1),
-            view.findViewById<android.widget.ProgressBar>(R.id.progressTopExpense2),
-            view.findViewById<android.widget.ProgressBar>(R.id.progressTopExpense3)
-        )
-        val topExpenseCards = listOf(
-            view.findViewById<CardView>(R.id.cardTopExpense1),
-            view.findViewById<CardView>(R.id.cardTopExpense2),
-            view.findViewById<CardView>(R.id.cardTopExpense3)
-        )
+        val topExpensesContainer = view.findViewById<LinearLayout>(R.id.layoutTopExpensesContainer)
         val topExpensesEmpty = view.findViewById<TextView>(R.id.tvTopExpensesEmpty)
         val btnQuickAddExpense = view.findViewById<Button>(R.id.btnQuickAddExpense)
         val btnQuickAddIncome = view.findViewById<Button>(R.id.btnQuickAddIncome)
@@ -755,35 +730,39 @@ class PlannerFragment : Fragment() {
                 .mapValues { (_, items) -> items.sumOf { it.amount } }
                 .entries
                 .sortedByDescending { it.value }
-                .take(3)
+                .take(9)
 
             val topBase = groupedExpense.firstOrNull()?.value ?: 0.0
             topExpensesEmpty.visibility = if (groupedExpense.isEmpty()) View.VISIBLE else View.GONE
-            repeat(3) { index ->
-                val item = groupedExpense.getOrNull(index)
-                if (item == null) {
-                    topExpenseCards[index].visibility = View.GONE
-                } else {
-                    topExpenseCards[index].visibility = View.VISIBLE
-                    val categoryKey = item.key
-                    topExpenseNames[index].text = expenseCategoryLabel(categoryKey)
-                    topExpenseIcons[index].setImageResource(expenseIconForCategory(categoryKey))
-                    topExpenseAmounts[index].text = formatCurrency(item.value)
-                    val pct = if (topBase > 0.0) ((item.value / topBase) * 100.0).roundToInt() else 0
-                    topExpenseProgress[index].progress = pct.coerceIn(0, 100)
-                    val shareOfIncome = if (income > 0.0) (item.value / income).toFloat() else 0f
-                    val isHighCategory = shareOfIncome >= TOP_EXPENSE_HIGH_THRESHOLD
-                    
-                    // Match donut chart colors to top expense cards for consistency
-                    val categoryColor = BudgetDonutChartView.UI_DONUT_COLORS.getOrNull(index)
-                        ?: BudgetDonutChartView.UI_DONUT_SPENT_COLOR
-                    
-                    topExpenseNames[index].setTextColor(
-                        Color.parseColor(if (isHighCategory) "#2E7D32" else "#1E293B")
-                    )
-                    topExpenseAmounts[index].setTextColor(categoryColor)
-                    topExpenseProgress[index].progressTintList = ColorStateList.valueOf(categoryColor)
-                }
+            topExpensesContainer.removeAllViews()
+            groupedExpense.forEachIndexed { index, item ->
+                val expenseView = layoutInflater.inflate(
+                    R.layout.item_top_expense,
+                    topExpensesContainer,
+                    false
+                )
+                val topExpenseName = expenseView.findViewById<TextView>(R.id.tvTopExpenseName)
+                val topExpenseIcon = expenseView.findViewById<ImageView>(R.id.ivTopExpenseIcon)
+                val topExpenseAmount = expenseView.findViewById<TextView>(R.id.tvTopExpenseAmount)
+                val topExpenseBar = expenseView.findViewById<android.widget.ProgressBar>(R.id.progressTopExpense)
+
+                val categoryKey = item.key
+                topExpenseName.text = expenseCategoryLabel(categoryKey)
+                topExpenseIcon.setImageResource(expenseIconForCategory(categoryKey))
+                topExpenseAmount.text = formatCurrency(item.value)
+                val pct = if (topBase > 0.0) ((item.value / topBase) * 100.0).roundToInt() else 0
+                topExpenseBar.progress = pct.coerceIn(0, 100)
+
+                val shareOfIncome = if (income > 0.0) (item.value / income).toFloat() else 0f
+                val isHighCategory = shareOfIncome >= TOP_EXPENSE_HIGH_THRESHOLD
+                val categoryColor = donutCategoryColorForIndex(index)
+
+                topExpenseName.setTextColor(
+                    Color.parseColor(if (isHighCategory) "#2E7D32" else "#1E293B")
+                )
+                topExpenseAmount.setTextColor(categoryColor)
+                topExpenseBar.progressTintList = ColorStateList.valueOf(categoryColor)
+                topExpensesContainer.addView(expenseView)
             }
 
             // Build donut chart with category breakdown (matching skills design)
@@ -799,12 +778,10 @@ class PlannerFragment : Fragment() {
                     .sortedByDescending { it.value }
                 
                 // Add top expense categories as segments (like skills: Rent, Food, Transport, etc.)
-                categoryExpenses.take(4).forEachIndexed { index, (category, amount) ->
+                categoryExpenses.take(9).forEachIndexed { index, (_, amount) ->
                     val pct = ((amount / income) * 100.0).toFloat()
                     if (pct > 0f) {
-                        val color = BudgetDonutChartView.UI_DONUT_COLORS.getOrElse(index) { 
-                            BudgetDonutChartView.UI_DONUT_SPENT_COLOR 
-                        }
+                        val color = donutCategoryColorForIndex(index)
                         donutSegments += BudgetDonutChartView.ChartSegment(
                             percentage = pct,
                             color = color
@@ -842,12 +819,10 @@ class PlannerFragment : Fragment() {
                 
                 val totalSpent = categoryExpenses.sumOf { it.value }
                 if (totalSpent > 0.0) {
-                    categoryExpenses.take(4).forEachIndexed { index, (category, amount) ->
+                    categoryExpenses.take(9).forEachIndexed { index, (_, amount) ->
                         val pct = ((amount / totalSpent) * 100.0).toFloat()
                         if (pct > 0f) {
-                            val color = BudgetDonutChartView.UI_DONUT_COLORS.getOrElse(index) { 
-                                BudgetDonutChartView.UI_DONUT_SPENT_COLOR 
-                            }
+                            val color = donutCategoryColorForIndex(index)
                             donutSegments += BudgetDonutChartView.ChartSegment(
                                 percentage = pct,
                                 color = color
@@ -2286,6 +2261,12 @@ class PlannerFragment : Fragment() {
         return label.take(1).uppercase(Locale.getDefault())
     }
 
+    private fun donutCategoryColorForIndex(index: Int): Int {
+        val palette = BudgetDonutChartView.UI_DONUT_COLORS
+        if (palette.isEmpty()) return BudgetDonutChartView.UI_DONUT_SPENT_COLOR
+        return palette[index % palette.size]
+    }
+
     private fun normalizeExpenseCategoryKey(category: String?, note: String?): String {
         val key = category?.trim().orEmpty().lowercase(Locale.getDefault())
         if (key.isNotBlank() && key != CalculatorRegistry.CATEGORY_ALL) return key
@@ -2318,6 +2299,10 @@ class PlannerFragment : Fragment() {
             "shopping" -> "Shopping"
             "health" -> "Healthcare"
             "bills" -> "Bills"
+            "subscriptions" -> "Subscriptions"
+            "internet_phone" -> "Internet & Phone"
+            "credit_loans" -> "Credit / Loans"
+            "education" -> "Education"
             "entertainment" -> "Entertainment"
             else -> getString(R.string.planner_other_expense)
         }
@@ -2328,6 +2313,14 @@ class PlannerFragment : Fragment() {
             "housing" -> R.drawable.budget_ui_ic_home
             "food" -> R.drawable.budget_ui_ic_restaurant
             "transport" -> R.drawable.budget_ui_ic_directions_car
+            "utilities" -> R.drawable.ic_bank
+            "shopping" -> R.drawable.ic_money
+            "health" -> R.drawable.ic_calendar
+            "bills" -> R.drawable.ic_percentage
+            "subscriptions" -> R.drawable.ic_calendar
+            "internet_phone" -> R.drawable.ic_calculator
+            "credit_loans" -> R.drawable.ic_percentage
+            "education" -> R.drawable.ic_calculator
             "entertainment" -> R.drawable.budget_ui_ic_wallet
             else -> R.drawable.budget_ui_ic_wallet
         }

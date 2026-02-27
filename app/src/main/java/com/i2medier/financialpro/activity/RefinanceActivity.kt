@@ -76,7 +76,7 @@ class RefinanceActivity : AppCompatActivity() {
         setUpToolbar()
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner), this)
+        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner))
     }
 
     private fun setUpToolbar() {

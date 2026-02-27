@@ -418,7 +418,7 @@
             android:layout_marginStart="4dp"
             android:background="@drawable/bg_calc_button"
             android:text="@string/share_result"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/btnAddToPlanner"

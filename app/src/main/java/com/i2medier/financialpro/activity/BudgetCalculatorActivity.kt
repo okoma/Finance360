@@ -65,7 +65,7 @@ class BudgetCalculatorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_budget_calculator)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner), this)
+        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner))
 
         init()
         setUpToolbar()

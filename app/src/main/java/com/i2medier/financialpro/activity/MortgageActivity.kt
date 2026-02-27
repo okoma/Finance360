@@ -82,7 +82,7 @@ class MortgageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mortgage)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner), this)
+        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner))
 
         init()
         setUpToolbar()

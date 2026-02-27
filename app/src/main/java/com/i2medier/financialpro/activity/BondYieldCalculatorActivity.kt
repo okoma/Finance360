@@ -67,7 +67,7 @@ class BondYieldCalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelec
         setContentView(R.layout.activity_bond_yield_calculator)
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner), this)
+        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner))
 
         init()
         setUpToolbar()

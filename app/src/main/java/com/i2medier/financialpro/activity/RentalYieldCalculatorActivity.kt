@@ -64,7 +64,7 @@ class RentalYieldCalculatorActivity : AppCompatActivity(), AdapterView.OnItemSel
         setExpenseSpinner()
 
         val adAdmob = AdAdmob(this)
-        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner), this)
+        adAdmob.BannerAd(findViewById<RelativeLayout>(R.id.banner))
     }
 
     private fun setSpinner() {

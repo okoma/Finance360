@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/values/colors_finance.xml -->
+<resources>
+    <!-- Finance Gradient Colors -->
+    <color name="finance_gradient_start">#0F172A</color>
+    <color name="finance_gradient_middle">#0F766E</color>
+    <color name="finance_gradient_end">#065F46</color>
+
+    <!-- Accent Colors -->
+    <color name="finance_teal">#14B8A6</color>
+    <color name="finance_green">#10B981</color>
+    <color name="finance_emerald">#059669</color>
+
+    <!-- Text on Gradient -->
+    <color name="text_on_gradient_primary">#FFFFFF</color>
+    <color name="text_on_gradient_secondary">#CCF0FDF4</color>
+    <color name="text_on_gradient_tertiary">#99FFFFFF</color>
+
+    <!-- Overlay Colors -->
+    <color name="overlay_light_10">#1AFFFFFF</color>
+    <color name="overlay_light_20">#33FFFFFF</color>
+    <color name="overlay_light_30">#4DFFFFFF</color>
+    <color name="overlay_dark_10">#1A000000</color>
+</resources>

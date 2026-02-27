@@ -18,9 +18,24 @@ Each month, you\'ll make the same payment, but the portion that goes to interest
 ]]></string>
     <string name="amortization_explain_html">
     <![CDATA[
-  Each month, you\'ll pay <b>%1$s</b> toward your loan.
-  Over the entire loan term, that adds up to <b>%2$s</b> in total payments.<br/><br/>
-  Out of that, <b>%3$s</b> is interest, <i>that’s the fee you pay to borrow money</i>.
+  📅 Here\'s your complete loan amortization breakdown:<br/><br/>
+  
+  <b>💰 Payment Summary:</b><br/>
+  • <b>Monthly Payment:</b> %1$s (fixed amount each month)<br/>
+  • <b>Total Payments:</b> %2$s (over the life of the loan)<br/>
+  • <b>Total Interest:</b> %3$s (the cost of borrowing)<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  Each month, you\'ll pay <b>%1$s</b> toward your loan. This payment includes both principal (paying down what you borrowed) and interest (the lender\'s fee). Early in the loan, most of your payment goes toward interest. Over time, more goes toward principal as your balance decreases.<br/><br/>
+  
+  <b>📊 Over the Loan Term:</b><br/>
+  Your total payments will be <b>%2$s</b>, which includes the amount you borrowed plus <b>%3$s</b> in interest. This interest is the cost of borrowing money and having the flexibility to pay it back over time.<br/><br/>
+  
+  <b>✅ Money-Saving Tips:</b><br/>
+  • Make extra payments toward principal to pay off faster and save on interest<br/>
+  • Even one extra payment per year can significantly reduce total interest<br/>
+  • Consider bi-weekly payments instead of monthly to pay down faster<br/>
+  • Review your amortization schedule to see how payments are applied
     ]]>
 </string>
 
@@ -365,12 +380,26 @@ It helps you make apples-to-apples comparisons between money received or paid at
     ]]></string>
     <string name="present_value_explain_html">
     <![CDATA[
-  Based on a future value of <b>%1$s</b> at a discount rate of <b>%2$s%%</b> over <b>%3$s</b> periods, the present value calculation shows:<br/><br/>
-  <b>Future Value:</b> %1$s<br/>
-  <b>Discount Rate:</b> %2$s%%<br/>
-  <b>Present Value:</b> %4$s<br/>
-  <b>Total Interest/Discount:</b> %5$s<br/><br/>
-  The present value represents how much that future amount is worth today. The difference between future value and present value shows the time value of money — how much value is lost or gained due to the time period.
+  💵 Here\'s your present value analysis:<br/><br/>
+  
+  <b>📊 Value Comparison:</b><br/>
+  • <b>Future Value:</b> %1$s (amount you\'ll receive later)<br/>
+  • <b>Present Value:</b> %4$s (what it\'s worth today)<br/>
+  • <b>Discount Rate:</b> %2$s%% (opportunity cost/required return)<br/>
+  • <b>Time Period:</b> %3$s<br/>
+  • <b>Time Value Discount:</b> %5$s (value lost due to waiting)<br/><br/>
+  
+  <b>💡 What This Means:</b><br/>
+  A future payment of <b>%1$s</b> is only worth <b>%4$s</b> today when discounted at <b>%2$s%%</b>. This is because money today is worth more than the same amount in the future — you could invest it and earn returns. The <b>%5$s</b> difference represents the opportunity cost of waiting.<br/><br/>
+  
+  <b>🔍 Practical Application:</b><br/>
+  Use this to compare offers: If someone offers you <b>%4$s</b> today versus <b>%1$s</b> in the future, they\'re roughly equivalent at a <b>%2$s%%</b> return rate. This helps you make informed decisions about when to take payments or which investment offers better value.<br/><br/>
+  
+  <b>✅ Decision Guide:</b><br/>
+  • Lower present value means less attractive future payment<br/>
+  • Higher discount rates make future payments worth less today<br/>
+  • Use this to evaluate lump sum vs. payment plans<br/>
+  • Compare different investments or payment schedules
     ]]>
 </string>
 
@@ -912,7 +941,7 @@ A tax calculator helps you estimate your income tax liability based on your inco
 
 <b>How it works:</b> Enter your annual income, filing status (Single, Married, etc.), and deductions. The calculator estimates your tax liability using standard tax brackets and shows your effective tax rate.<br/><br/>
 
-<b>For example</b>, if you earn <b>%1$s75,000</b> annually as a single filer with <b>%1$s12,000</b> in deductions, your taxable income is <b>%1$s63,000</b>, resulting in approximately <b>%1$s9,500</b> in federal taxes.
+<b>For example</b>, if you earn <b>%1$s75,000</b> annually as a single filer with <b>%1$s12,000</b> in deductions, your taxable income is <b>%1$s63,000</b>, resulting in approximately <b>%1$s9,500</b> in income taxes.
     ]]></string>
     <string name="tax_explain_html"><![CDATA[
 📋 Your tax estimate:<br/><br/>
@@ -946,7 +975,7 @@ With <b>%1$s</b> income and <b>%3$s</b> deductions, your taxable income is <b>%4
     <string name="this_month_plan">This Month Plan</string>
     <string name="spent_vs_budget">Spent vs Budget</string>
     <string name="spent_vs_budget_value">%1$s / %2$s</string>
-    <string name="savings_target_value">Savings target: %1$s</string>
+    <string name="savings_target_value">Target: %1$s</string>
     <string name="bills_due_value">Bills due: %1$d</string>
     <string name="bills_cleared">👍 Bills cleared</string>
     <string name="plan_period_options">Plan period options</string>
@@ -961,6 +990,11 @@ With <b>%1$s</b> income and <b>%3$s</b> deductions, your taxable income is <b>%4
     <string name="add_goal">Add Goal</string>
     <string name="featured_calculators">Featured Calculators</string>
     <string name="browse_categories">Browse Categories</string>
+    <string name="home_tools_count">%1$d tools</string>
+    <string name="search">Search</string>
+    <string name="notifications">Notifications</string>
+    <string name="menu">Menu</string>
+    <string name="calculator_icon">Calculator icon</string>
     <string name="monthly_planner">Planner</string>
     <string name="create_new_goal">Create New Goal</string>
     <string name="planner_reminder_status_default">Reminder: ON - 8:00 PM</string>
@@ -986,9 +1020,9 @@ With <b>%1$s</b> income and <b>%3$s</b> deductions, your taxable income is <b>%4
     <string name="planner_top_expenses">Top Expenses</string>
     <string name="planner_top_expenses_empty">No expense entries for this month yet.</string>
     <string name="planner_spent_label">Spent:</string>
-    <string name="planner_quick_add_expense">+ Expense</string>
-    <string name="planner_quick_add_income">+ Income</string>
-    <string name="planner_quick_add_saving">+ Saving</string>
+    <string name="planner_quick_add_expense">Expense</string>
+    <string name="planner_quick_add_income">Income</string>
+    <string name="planner_quick_add_saving">Saving</string>
     <string name="planner_other_expense">Other</string>
     <string name="planner_expense_placeholder">No expense</string>
     <string name="planner_streak_default">Streak: 0 days - Start saving today!</string>
